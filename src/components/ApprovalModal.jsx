@@ -1,11 +1,16 @@
 import React from "react";
 import { FiCheckCircle } from "react-icons/fi";
-import { MdOutlineCancel } from "react-icons/md";
+import { MdOutlineCancel,MdOutlineDelete } from "react-icons/md";
+import Toast from "./Toast";
+import { toast } from "react-toastify";
 
 const ApprovalModal = ({ setModal }) => {
-  const handleModal = (state) => {
-   
-    setModal(state);
+  const handleModal = (modal) => {
+    setModal(modal);
+  };
+
+  const handleToast = (message, icon, success) => {
+    toast.success(<Toast message={message} icon={icon} success={success} />);
   };
 
   const table = [
@@ -57,7 +62,7 @@ const ApprovalModal = ({ setModal }) => {
             <p className="text-grey font-normal">Posted by : Ed Drummond</p>
           </div>
           <div className="caption pr-8 h-[4rem] overflow-hidden">
-            <p className="text-white font-medium text-sm">
+            <p className="text-white font-bold text-sm">
               Going for a walk, this caption can be long this is only an example
               of a long caption, they might usually be small
             </p>
@@ -102,8 +107,8 @@ const ApprovalModal = ({ setModal }) => {
             </thead>
             <tbody>
               {table.map((item, i) => (
-                <tr>
-                  <td className="py-2 text-left flex items-center gap-x-3">
+                <tr className=" odd:bg-[#232323]">
+                  <td className="py-2 pl-1 text-left flex items-center gap-x-3">
                     <div className="bg-[#00875A] w-[1.5rem] h-[1.5rem] rounded-full p-1 flex items-center justify-center cursor-pointer">
                       <p className="text-xs uppercase">ED</p>
                     </div>
@@ -130,13 +135,19 @@ const ApprovalModal = ({ setModal }) => {
         <div className="buttons border-t border-[#2F2F2F] py-6 flex items-center justify-around">
           <button
             className="rounded-2xl px-6 sm:px-10 py-3 bg-[#ffffff0d]"
-            onClick={() => handleModal(false)}
+            onClick={() => {
+              handleModal(false);
+              handleToast('Post Rejected',<MdOutlineDelete/>,false);
+            }}
           >
             Reject
           </button>
           <button
             className="rounded-2xl px-6 sm:px-10 py-3 bg-gradient-to-r from-btnFrom to-btnTo"
-            onClick={() => handleModal(false)}
+            onClick={() => {
+              handleModal(false);
+              handleToast("Post Shared", <FiCheckCircle />, true);
+            }}
           >
             Approve
           </button>

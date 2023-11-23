@@ -30,6 +30,7 @@ module.exports = {
         cardTo:"rgba(90, 24, 154, 0.35)",
         red:'#DE350B',
         green:"#00875A",
+        blue:"#0052CC",
         sharpGreen:"#1EFF86",
         barColor:"#D9D9D9"
       },

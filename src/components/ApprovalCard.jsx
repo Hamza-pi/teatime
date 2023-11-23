@@ -1,11 +1,20 @@
 import { useState } from "react";
+import { FiCheckCircle } from "react-icons/fi";
+import { toast } from "react-toastify";
+import Toast from "./Toast";
 
-const ApprovalCard = ({ req,setModal }) => {
+const ApprovalCard = ({ req, setModal }) => {
   const [toolTip, setToolTip] = useState(false);
 
-  const handleModal = (state)=>{
-    setModal(state)
-  }
+  const handleModal = (modal) => {
+    setModal(modal);
+  };
+
+  const handleToast = (message, icon, success) => {
+    toast.success(
+      <Toast message={message} icon={icon} success={success}/>
+    );
+  };
 
   return (
     <div className="card bg-lightDark rounded-xl p-3 flex flex-col gap-y-4">
@@ -31,7 +40,7 @@ const ApprovalCard = ({ req,setModal }) => {
         </div>
         <div
           className={`${
-            toolTip? "block" : "hidden"
+            toolTip ? "block" : "hidden"
           } absolute -top-12 -right-10 bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-lg`}
         >
           <p className="bg-[#303030] px-6 py-2 rounded-lg text-[#E3E3E3] text-sm">
@@ -40,7 +49,7 @@ const ApprovalCard = ({ req,setModal }) => {
         </div>
       </div>
       <div className="caption pr-8 h-[4rem] overflow-hidden">
-        <p className="text-white font-medium text-sm">{req.caption}</p>
+        <p className="text-white font-bold text-sm">{req.caption}</p>
       </div>
       <div className="consent flex items-center justify-between">
         <div className="meter">
@@ -80,7 +89,10 @@ const ApprovalCard = ({ req,setModal }) => {
         >
           Review
         </button>
-        <button className="rounded-2xl px-6 sm:px-10 py-3 bg-gradient-to-r from-btnFrom to-btnTo">
+        <button
+          className="rounded-2xl px-6 sm:px-10 py-3 bg-gradient-to-r from-btnFrom to-btnTo"
+          onClick={() => handleToast("Post Shared", <FiCheckCircle />, true)}
+        >
           Approve
         </button>
       </div>

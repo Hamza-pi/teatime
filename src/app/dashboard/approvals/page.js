@@ -68,27 +68,6 @@ const Approvals = () => {
     },
   ];
 
-  const table = [
-    {
-      title: "Mr",
-      fname: "Ed",
-      lname: "Trick",
-      consent: false,
-    },
-    {
-      title: "Mr",
-      fname: "Jimmy",
-      lname: "Jhonson",
-      consent: true,
-    },
-    {
-      title: "Mrs",
-      fname: "Rhonda",
-      lname: "Patrick",
-      consent: true,
-    },
-  ];
-
   return (
     <div className="py-8">
       {/* Toggle */}

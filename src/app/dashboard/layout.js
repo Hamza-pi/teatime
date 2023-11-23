@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Outfit } from "next/font/google";
+import { Outfit, DM_Sans } from "next/font/google";
 import { MdMenu } from "react-icons/md";
 import { FaPlus, FaRegHeart } from "react-icons/fa6";
 import { PiBell } from "react-icons/pi";
@@ -8,11 +8,20 @@ import { RiSettings4Line } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 import { FiCheckCircle, FiUser, FiUsers } from "react-icons/fi";
 import { TbMessageCircle } from "react-icons/tb";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { ToastContainer } from "react-toastify";
+import { useRouter } from "next/router";
+import "react-toastify/dist/ReactToastify.css";
 import CIcon from "@/components/CIcon";
 
 const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const dm = DM_Sans({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
@@ -38,7 +47,7 @@ export default function AdminLayout({ children }) {
     {
       icon: TbMessageCircle,
       title: "Broadcast",
-      route: "",
+      route: "/dashboard/broadcast",
     },
     {
       icon: FiUser,
@@ -57,8 +66,10 @@ export default function AdminLayout({ children }) {
     },
   ];
 
+  
+
   return (
-    <section className={`bg-shade min-h-screen ${outfit.className}`}>
+    <section className={`bg-shade min-h-screen ${outfit.className} relative`}>
       <nav className="sticky top-0 z-50 w-full bg-dark">
         <div className="px-3 py-4 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
@@ -196,12 +207,30 @@ export default function AdminLayout({ children }) {
           </div>
         </aside>
         <div className="flex-1 lg:ml-64 px-4 2xl:px-16 overflow-hidden">
-          <div className="w-full mx-auto">
-            {children}
-          </div>
+          <div className={`w-full mx-auto ${dm.className}`}>{children}</div>
         </div>
       </div>
-
+      <ToastContainer
+        toastStyle={{
+          margin: 0,
+          padding: 0,
+          backgroundColor: "transparent",
+          top: "50px",
+          boxShadow: "none",
+        }}
+        closeButton={false}
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+        icon={false}
+      />
     </section>
   );
 }
