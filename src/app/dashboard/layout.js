@@ -56,17 +56,18 @@ export default function AdminLayout({ children }) {
     {
       icon: FiUser,
       title: "Residents",
-      route: "/dashboard/family",
+      route: "",
     },
     {
       icon: FiUsers,
       title: "Family",
       route: "/dashboard/family",
+      check:"family"
     },
     {
       icon: FaRegHeart,
       title: "Care workers",
-      route: "/dashboard/family",
+      route: "",
     },
   ];
 
