@@ -61,7 +61,7 @@ const BoradCasts = () => {
                     </p>
                   </div>
                   <div className="py-4 px-6 w-full text-right border-t border-[#FFFFFF0D]">
-                    <Link ></Link>
+                  
                   </div>
                 </div>
               ))}
