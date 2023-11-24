@@ -27,14 +27,14 @@ const WhatsOn = () => {
       <div className="flex items-center justify-between px-8 sm:px-16 pt-4 pb-8 border-b border-[#FFFFFF0D]">
         <h3 className="font-bold">Whats on this week</h3>
         <div className="flex items-center sm:gap-x-10 gap-x-2 text-[1.5rem] text-lightWhite">
-          <Link href='/dashboard/broadcast'>
+          <Link href="/dashboard/broadcast">
             <MdOutlineDelete className="cursor-pointer" />
           </Link>
           <RiSettings4Line className="cursor-pointer" />
         </div>
       </div>
       {/* Form */}
-      <div className="flex xl:flex-row flex-col items-start justify-normal 2xl:justify-center gap-x-20 px-2">
+      <div className="flex xl:flex-row flex-col items-start xl:gap-x-14 2xl:gap-x-20 px-2">
         {/* Table */}
         <div className="bg-lightDark px-6 py-4 rounded-xl max-w-full">
           <div className="relative overflow-x-auto ">
@@ -91,7 +91,7 @@ const WhatsOn = () => {
               Week commencing
             </p>
             <div
-              className={`${inputStyle} flex items-center justify-between text-[14px]`}
+              className={`${inputStyle} flex items-center justify-between`}
             >
               <input
                 type="date"

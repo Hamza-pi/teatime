@@ -1,17 +1,14 @@
 import React from "react";
 import { FiCheckCircle } from "react-icons/fi";
 import { MdOutlineCancel,MdOutlineDelete } from "react-icons/md";
-import Toast from "./Toast";
-import { toast } from "react-toastify";
+import { handleToast } from "@/utils/showToast";
 
 const ApprovalModal = ({ setModal }) => {
+  
   const handleModal = (modal) => {
     setModal(modal);
   };
 
-  const handleToast = (message, icon, success) => {
-    toast.success(<Toast message={message} icon={icon} success={success} />);
-  };
 
   const table = [
     {

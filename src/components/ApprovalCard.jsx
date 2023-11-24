@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FiCheckCircle } from "react-icons/fi";
-import { toast } from "react-toastify";
-import Toast from "./Toast";
+import { handleToast } from "@/utils/showToast";
 
 const ApprovalCard = ({ req, setModal }) => {
   const [toolTip, setToolTip] = useState(false);
@@ -10,11 +9,6 @@ const ApprovalCard = ({ req, setModal }) => {
     setModal(modal);
   };
 
-  const handleToast = (message, icon, success) => {
-    toast.success(
-      <Toast message={message} icon={icon} success={success}/>
-    );
-  };
 
   return (
     <div className="card bg-lightDark rounded-xl p-3 flex flex-col gap-y-4">
