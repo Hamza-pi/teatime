@@ -22,6 +22,8 @@ module.exports = {
         greyText: "#595959",
         greyText2: "#505050",
         textBlack: "#010101",
+        checkbox:'#6A6A6A',
+        table:'#171717',
         field: "rgba(255, 255, 255, 0.05)",
         lightWhite: "rgba(255, 255, 255, 0.6)",
         btnFrom: "rgba(255, 61, 0, 0.88)",
