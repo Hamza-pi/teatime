@@ -1,13 +1,9 @@
 import React from "react";
-import PopUp from "@/components/PopUp";
 import { RiSettings4Line } from "react-icons/ri";
-import { MdOutlineDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import Link from "next/link";
 
 const BoradCasts = () => {
- 
-
   const broadCasts = [
     {
       title: "Whats on this week",
@@ -22,52 +18,49 @@ const BoradCasts = () => {
   ];
 
   return (
-    <div className="py-8">
-      <h3 className="uppercase text-grey font-bold text-xs">MY BROADCASTS</h3>
-      <div className="pt-6 2xl:pt-12">
-        <PopUp>
-          <div>
-            <div className="flex items-center justify-between px-8 sm:px-16 pt-4 pb-8 border-b border-[#FFFFFF0D]">
-              <h4 className="font-bold text-sm">
-                Templates <span className="text-grey">(2)</span>
-              </h4>
-              <div className="text-[1.5rem] text-grey cursor-pointer">
-                <RiSettings4Line />
-              </div>
+    <div className="pt-6 2xl:pt-12 bg-lightDark rounded-xl py-4">
+      <div className="flex items-center justify-between px-8 sm:px-16 pt-4 pb-8 border-b border-[#FFFFFF0D]">
+        <h4 className="font-bold text-sm">
+          Templates <span className="text-grey">(2)</span>
+        </h4>
+        <div className="text-[1.5rem] text-[#FFFFFF99] cursor-pointer">
+          <RiSettings4Line />
+        </div>
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-4 2xl:gap-x-8 py-6">
+        {/* Add Blank broadcast */}
+        <div className="w-[242px] h-[312px] bg-[#FFFFFF0D] rounded-xl flex flex-col items-center justify-center gap-6">
+          <div className="bg-lightDark px-7 py-6 rounded-2xl cursor-pointer">
+            <FaPlus className="text-blue text-[1.5rem]" />
+          </div>
+          <div className="text-center space-y-4">
+            <h3 className="font-bold ">Add New Blank broadcast</h3>
+            <p className="text-xs text-grey px-8 leading-[20px]">
+              Send information to all resident groups
+            </p>
+          </div>
+        </div>
+        {broadCasts.map((item, i) => (
+          <div
+            key={i}
+            className="w-[242px] h-[312px] rounded-xl flex flex-col items-center justify-between gap-6"
+            style={{ backgroundColor: `${item.bg}` }}
+          >
+            <div className="px-6 py-4 space-y-8">
+              <h3 className="font-bold">{item.title}</h3>
+              <p className="text-xs font-normal leading-[20px] text-grey">
+                {item.slogon}
+              </p>
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-4 2xl:gap-x-8 py-6">
-              {/* Add Blank broadcast */}
-              <div className="w-[242px] h-[312px] bg-[#FFFFFF0D] rounded-xl flex flex-col items-center justify-center gap-6">
-                <div className="bg-lightDark px-7 py-6 rounded-2xl cursor-pointer">
-                  <FaPlus className="text-blue text-[1.5rem]" />
-                </div>
-                <div className="text-center space-y-4">
-                  <h3 className="font-bold ">Add New Blank broadcast</h3>
-                  <p className="text-xs text-grey px-8 leading-[20px]">
-                    Send information to all resident groups
-                  </p>
-                </div>
-              </div>
-              {broadCasts.map((item, i) => (
-                <div
-                  key={i}
-                  className="w-[242px] h-[312px] rounded-xl flex flex-col items-center justify-between gap-6"
-                  style={{ backgroundColor: `${item.bg}` }}
-                >
-                  <div className="px-6 py-4 space-y-8">
-                    <h3 className="font-bold">{item.title}</h3>
-                    <p className="text-xs font-normal leading-[20px] text-grey">
-                      {item.slogon}
-                    </p>
-                  </div>
-                  <div className="py-4 px-6 w-full text-right border-t border-[#FFFFFF0D]">
-                    <Link ></Link>
-                  </div>
-                </div>
-              ))}
+            <div className="py-4 px-6 w-full text-right border-t border-[#FFFFFF0D]">
+              <Link href="/dashboard/broadcast/whatson">
+                <button className="px-8 py-3 rounded-full bg-[#FFFFFF0D] text-xs font-bold">
+                  Edit
+                </button>
+              </Link>
             </div>
           </div>
-        </PopUp>
+        ))}
       </div>
     </div>
   );

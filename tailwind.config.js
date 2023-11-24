@@ -32,7 +32,8 @@ module.exports = {
         green:"#00875A",
         blue:"#0052CC",
         sharpGreen:"#1EFF86",
-        barColor:"#D9D9D9"
+        barColor:"#D9D9D9",
+        lightWhite:"#FFFFFF99"
       },
       boxShadow: {
         form: "80px 120px 504px 0px rgba(0, 0, 0, 0.16)",

@@ -8,10 +8,10 @@ import { RiSettings4Line } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 import { FiCheckCircle, FiUser, FiUsers } from "react-icons/fi";
 import { TbMessageCircle } from "react-icons/tb";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { ToastContainer } from "react-toastify";
-import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import CIcon from "@/components/CIcon";
 
@@ -30,24 +30,28 @@ const dm = DM_Sans({
 export default function AdminLayout({ children }) {
   const [sider, setSider] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [active, setActive] = useState(0);
+
+  const pathname = usePathname();
 
   const links = [
     {
       icon: RxDashboard,
       title: "Dashboard",
       route: "/dashboard",
+      check: "dashboard",
     },
     {
       icon: FiCheckCircle,
       title: "Approval requests",
       count: 1,
       route: "/dashboard/approvals",
+      check: "approvals",
     },
     {
       icon: TbMessageCircle,
       title: "Broadcast",
       route: "/dashboard/broadcast",
+      check: "broadcast",
     },
     {
       icon: FiUser,
@@ -65,8 +69,6 @@ export default function AdminLayout({ children }) {
       route: "",
     },
   ];
-
-  
 
   return (
     <section className={`bg-shade min-h-screen ${outfit.className} relative`}>
@@ -167,18 +169,27 @@ export default function AdminLayout({ children }) {
           <div className="h-full pb-4 flex flex-col items-start justify-between overflow-y-auto bg-dark text-disable">
             <ul className="space-y-8 font-medium">
               {links.map((item, i) => (
-                <li key={i} onClick={() => setActive(i)}>
+                <li key={i}>
                   <Link
                     href={`${item.route}`}
                     className={`font-bold text-base flex items-center gap-3 relative ${
-                      active === i
+                      i === 0
+                        ? pathname === item.route || pathname.includes("/home")
+                          ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
+                          : ""
+                        : pathname.includes(item.check)
                         ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
                         : ""
                     }`}
                   >
                     <div
                       className={`min-w-[3px] min-h-[28px] ${
-                        active === i
+                        i === 0
+                          ? pathname === item.route ||
+                            pathname.includes("/home")
+                            ? "bg-gradient-to-r from-btnFrom to-btnTo"
+                            : ""
+                          : pathname.includes(item.check)
                           ? "bg-gradient-to-r from-btnFrom to-btnTo "
                           : "bg-none"
                       } rounded-r-full`}
@@ -186,7 +197,16 @@ export default function AdminLayout({ children }) {
                     <div className="text-[1.5rem]">
                       {
                         <CIcon
-                          isActive={active === i ? true : false}
+                          isActive={
+                            i === 0
+                              ? pathname === item.route ||
+                                pathname.includes("/home")
+                                ? true
+                                : false
+                              : pathname.includes(item.check)
+                              ? true
+                              : false
+                          }
                           Icon={item.icon}
                         />
                       }
@@ -206,7 +226,7 @@ export default function AdminLayout({ children }) {
             </p>
           </div>
         </aside>
-        <div className="flex-1 lg:ml-64 px-4 2xl:px-16 overflow-hidden">
+        <div className="flex-1 lg:ml-64 px-2 sm:px-4 2xl:px-16 overflow-hidden">
           <div className={`w-full mx-auto ${dm.className}`}>{children}</div>
         </div>
       </div>
