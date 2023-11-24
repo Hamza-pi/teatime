@@ -1,19 +1,19 @@
 "use client";
+import CIcon from "@/components/CIcon";
+import { DM_Sans, Outfit } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
-import { Outfit, DM_Sans } from "next/font/google";
-import { MdMenu } from "react-icons/md";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FaPlus, FaRegHeart } from "react-icons/fa6";
+import { FiCheckCircle, FiUser, FiUsers } from "react-icons/fi";
+import { MdMenu } from "react-icons/md";
 import { PiBell } from "react-icons/pi";
 import { RiSettings4Line } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
-import { FiCheckCircle, FiUser, FiUsers } from "react-icons/fi";
 import { TbMessageCircle } from "react-icons/tb";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CIcon from "@/components/CIcon";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -62,7 +62,7 @@ export default function AdminLayout({ children }) {
       icon: FiUsers,
       title: "Family",
       route: "/dashboard/family",
-      check:"family"
+      check: "family"
     },
     {
       icon: FaRegHeart,
@@ -131,9 +131,8 @@ export default function AdminLayout({ children }) {
                   />
                 </button>
                 <div
-                  className={`z-50 my-4 text-base sm:hidden ${
-                    menu ? "block" : "hidden"
-                  } list-none bg-dark divide-y divide-gray-100 rounded shadow  text-white absolute top-10 right-0`}
+                  className={`z-50 my-4 text-base sm:hidden ${menu ? "block" : "hidden"
+                    } list-none bg-dark divide-y divide-gray-100 rounded shadow  text-white absolute top-10 right-0`}
                 >
                   <div className="px-4 py-3">
                     <p className="text-sm">Jimmy Trick</p>
@@ -161,11 +160,10 @@ export default function AdminLayout({ children }) {
           </div>
         </div>
       </nav>
-      <div className="flex items-start">
+      <div className="flex items-start z-50">
         <aside
-          className={`fixed top-18 lg:pt-0 left-0 z-40 w-64 h-[calc(100vh-72px)] transition-transform ${
-            sider ? "translate-x-0" : "-translate-x-full"
-          } bg-dark lg:translate-x-0`}
+          className={`fixed top-18 lg:pt-0 left-0 z-40 w-64 h-[calc(100vh-72px)] transition-transform ${sider ? "translate-x-0" : "-translate-x-full"
+            } bg-dark lg:translate-x-0`}
         >
           <div className="h-full pb-4 flex flex-col items-start justify-between overflow-y-auto bg-dark text-disable">
             <ul className="space-y-8 font-medium">
@@ -173,27 +171,25 @@ export default function AdminLayout({ children }) {
                 <li key={i}>
                   <Link
                     href={`${item.route}`}
-                    className={`font-bold text-base flex items-center gap-3 relative ${
-                      i === 0
+                    className={`font-bold text-base flex items-center gap-3 relative ${i === 0
                         ? pathname === item.route || pathname.includes("/home")
                           ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
                           : ""
                         : pathname.includes(item.check)
-                        ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
-                        : ""
-                    }`}
+                          ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
+                          : ""
+                      }`}
                   >
                     <div
-                      className={`min-w-[3px] min-h-[28px] ${
-                        i === 0
+                      className={`min-w-[3px] min-h-[28px] ${i === 0
                           ? pathname === item.route ||
                             pathname.includes("/home")
                             ? "bg-gradient-to-r from-btnFrom to-btnTo"
                             : ""
                           : pathname.includes(item.check)
-                          ? "bg-gradient-to-r from-btnFrom to-btnTo "
-                          : "bg-none"
-                      } rounded-r-full`}
+                            ? "bg-gradient-to-r from-btnFrom to-btnTo "
+                            : "bg-none"
+                        } rounded-r-full`}
                     ></div>
                     <div className="text-[1.5rem]">
                       {
@@ -205,8 +201,8 @@ export default function AdminLayout({ children }) {
                                 ? true
                                 : false
                               : pathname.includes(item.check)
-                              ? true
-                              : false
+                                ? true
+                                : false
                           }
                           Icon={item.icon}
                         />

@@ -1,8 +1,20 @@
-import React from 'react'
+'use client'
+import Model from '@/components/Model';
+import FamilyModel from '@/components/FamilyModel';
+import React, { useState } from 'react';
+import Button from '../../../components/Button';
+import Familytable from '../../../components/Familytable';
 import Search from '../../../components/Search';
-import Button from '../../../components/Button'
-import Familytable from '../../../components/Familytable'
 const page = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  //imaginary data passes to the table
   const tableData = [
     { id: 1, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'Jimmy Lacrose' },
     { id: 2, col1: 'Mr', col2: 'Jimmy', col3: 'Johnson', col4: 'Jimmy Lacrose' },
@@ -28,22 +40,44 @@ const page = () => {
     { id: 22, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'Razdsahah' },
     { id: 23, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'Razadc sahah' },
     { id: 24, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 25, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 26, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 27, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 28, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 29, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 30, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 31, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 32, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 33, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 34, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 35, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 36, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 37, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 38, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 39, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
+    { id: 40, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'zaryab' },
 
   ];
   return (
-<section className="  sm:p-3  md:pt-16 relative">
-  
-  <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center space-y-3">
-    <p className="text-greyText2 font-bold leading-[26.53px]">Family members</p>
-    <div className="w-full sm:w-fit flex  items-center md:space-x-14 sm:space-x-12 space-x-5 sm:flex-row flex-ro justify-end">
-    <Search />
-    <Button/>
-    
-     </div>
-  </div>
-  <Familytable data={tableData}/>
+    <section className="  sm:p-3  md:pt-16 relative">
 
- </section>  )
+      <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center space-y-3">
+        <p className="text-greyText2 font-bold leading-[26.53px]">Family members</p>
+        <div className="w-full sm:w-fit flex  items-center md:space-x-14 sm:space-x-12 space-x-5 sm:flex-row flex-ro justify-end relative" >
+          <Search />
+          <Button onopen={openModal} />
+         
+         
+        </div>
+      </div> <Model isOpen={isModalOpen} onClose={closeModal}>
+            <div className="w-full h-full ">
+             <FamilyModel onClose={closeModal}></FamilyModel>
+            </div>
+          </Model>
+      <Familytable data={tableData} />
+
+
+    </section>)
 }
 
 export default page

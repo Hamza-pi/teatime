@@ -24,6 +24,7 @@ module.exports = {
         textBlack: "#010101",
         checkbox:'#6A6A6A',
         table:'#171717',
+        model:'#121212',
         field: "rgba(255, 255, 255, 0.05)",
         lightWhite: "rgba(255, 255, 255, 0.6)",
         btnFrom: "rgba(255, 61, 0, 0.88)",

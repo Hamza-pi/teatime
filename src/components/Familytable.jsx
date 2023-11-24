@@ -1,49 +1,19 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
+import {
+	HiOutlineChevronDoubleLeft,
+	HiOutlineChevronDoubleRight,
+	HiOutlineChevronLeft,
+	HiOutlineChevronRight,
+	HiOutlineDotsHorizontal,
+} from 'react-icons/hi';
 import ReactPaginate from 'react-paginate';
 const Familytable = (props) => {
-	const {data}=props;
-	const [selectedRows, setSelectedRows] = useState([]);
+	const { data } = props;
+	const [selectedRows, setSelectedRows] = useState([]); //can use in futre for checkbox implementaion
 
-	// Example data for the first table in object form
-	const tableData = [
-		{ id: 1, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'Jimmy Lacrose' },
-		{
-			id: 2,
-			col1: 'Mr',
-			col2: 'Jimmy',
-			col3: 'Johnson',
-			col4: 'Jimmy Lacrose',
-		},
-		{
-			id: 3,
-			col1: 'Mrs',
-			col2: 'Rhonda ',
-			col3: 'Patrick',
-			col4: 'Conor Mcgregor',
-		},
-		{
-			id: 4,
-			col1: 'Mrs',
-			col2: 'Rhonda ',
-			col3: 'Patrick',
-			col4: 'Conor Mcgregor',
-		},
-		{ id: 5, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'Jimmy Lacrose' },
-		{ id: 6, col1: 'Mrs', col2: 'Ed ', col3: 'Trick', col4: 'Jimmy Lacrose' },
-		{ id: 7, col1: 'Mr', col2: 'Jimmy ', col3: 'Johnson', col4: 'Mitch Ross' },
-		{
-			id: 8,
-			col1: 'Mrs',
-			col2: 'Rhonda ',
-			col3: 'Patrick',
-			col4: 'Mitch Ross',
-		},
-		{ id: 9, col1: 'Mr', col2: 'Ed ', col3: 'Trick', col4: 'Raza Shah' },
-	];
-
+	//can use in futre for checkbox implementaion
 	const handleCheckboxChange = (rowIndex) => {
 		const updatedSelectedRows = selectedRows.includes(rowIndex)
 			? selectedRows.filter((index) => index !== rowIndex)
@@ -55,29 +25,40 @@ const Familytable = (props) => {
 	// Here we use item offsets; we could also use page offsets
 	// following the API or data you're working with.
 	const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage =9
+		const [selectedPage, setSelectedPage] = useState(0);
+	const itemsPerPage = 9;
 
 	// Simulate fetching items from another resources.
 	// (This could be items from props; or items loaded in a local state
 	// from an API endpoint with useEffect and useState)
 	const endOffset = itemOffset + itemsPerPage;
-	console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+	// console.log(`Loading items from ${itemOffset} to ${endOffset}`);
 	const currentItems = data.slice(itemOffset, endOffset);
 	const pageCount = Math.ceil(data.length / itemsPerPage);
 
 	// Invoke when user click to request another page.
 	const handlePageClick = (event) => {
 		const newOffset = (event.selected * itemsPerPage) % data.length;
-		console.log(
-			`User requested page number ${event.selected}, which is offset ${newOffset}`
-		);
 		setItemOffset(newOffset);
+		setSelectedPage(event.selected);
+	};
+	//double chevron logic
+
+	const handleDoubleLeftClick = () => {
+		const newOffset = 0;
+		setItemOffset(newOffset);
+		setSelectedPage(0);
 	};
 
+	const handleDoubleRightClick = () => {
+		const newOffset = (pageCount - 1) * itemsPerPage;
+		setItemOffset(newOffset);
+		setSelectedPage(pageCount - 1);
+	};
 	return (
-		<div>
+		<div className="flex flex-col ">
 			{/*  Table */}
-			<div className="relative sm:px-7 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3">
+			<div className="relative sm:px-7 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3 min-h-[560px]">
 				<table className="w-full text-sm text-left rtl:text-right text-white  min-w-[540px]">
 					<thead className="w-full text-sm text-white font-bold uppercase bg-white/10 rounded-xl ">
 						<tr className="rounded-xl px-3">
@@ -114,8 +95,8 @@ const Familytable = (props) => {
 											type="checkbox"
 											value=""
 											class="w-4 h-4 text-blue-600 bg-gray-900 border-gray-900 rounded f    dark:bg-gray-900 "
-                      onClick={handleCheckboxChange}
-                      key={row.id}
+											onClick={handleCheckboxChange}
+											key={row.id}
 										/>
 										<label
 											htmlFor={`checkbox-table-search-${row.id}`}
@@ -148,18 +129,52 @@ const Familytable = (props) => {
 					</tbody>
 				</table>
 			</div>
-<div className="flex text-black w-full">
-			<ReactPaginate
-      
-				breakLabel="..."
-				nextLabel="next >"
-				onPageChange={handlePageClick}
-				pageRangeDisplayed={5}
-				pageCount={pageCount}
-				previousLabel="< previous"
-				renderOnZeroPageCount={null}
-        className='text-'
-			/></div>
+			<div className="flex text-black w-full md:justify-end items-center justify-center mt-2 space-x-2 ">
+				<div className=" flex items-center bg-black px-2 py-1 cursor-pointer">
+					<HiOutlineChevronDoubleLeft
+						className={`text-white  text-center sm:text-2xl `}
+						onClick={handleDoubleLeftClick}
+					/>
+				</div>
+
+				<ReactPaginate
+					breakLabel={`of ${pageCount}`}
+					forcePage={selectedPage}
+					breakLinkClassName="px-3 text-2xl leading-[26.53px] flex items-center text-center font-[700] text-greyText2"
+					breakClassName="flex items-center"
+					nextLabel={
+						<HiOutlineChevronRight className="text-2xl text-center " />
+					}
+					onPageChange={(event) => {
+						// Update the offset when the page changes
+						const newOffset = (event.selected * itemsPerPage) % data.length;
+						setItemOffset(newOffset);
+						handlePageClick(event);
+
+						// Update ReactPaginate's state
+						setSelectedPage(event.selected);
+					}}
+					pageRangeDisplayed={1}
+					pageCount={pageCount}
+					previousLabel={<HiOutlineChevronLeft />}
+					renderOnZeroPageCount={null}
+					marginPagesDisplayed={0}
+					containerClassName="flex select-none sm:text-2xl text-center font-[700] space-x-2 "
+					pageClassName="px-2"
+					// prevPageRel="bg-black"
+					previousClassName="bg-black text-white px-2 text-center flex items-center sm:text-2xl "
+					nextClassName="bg-black text-white px-2 text-center flex items-center sm:text-xl"
+					activeClassName="bg-black text-white  px-3 text-center flex items-center sm:text-2xl"
+					disabledClassName="bg-greyText2"
+					pageLinkClassName="custom-page-link" // Add a custom class to the page link
+				/>
+				<div className=" flex items-center bg-black px-2 py-1">
+					<HiOutlineChevronDoubleRight
+						className="text-white  text-center sm:text-2xl cursor-pointer"
+						onClick={handleDoubleRightClick}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 };
