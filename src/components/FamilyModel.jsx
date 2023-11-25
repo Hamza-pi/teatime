@@ -4,7 +4,7 @@ const FamilyModel = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
-  const options = ["Option 1", "Option 2", "Option 3"];
+  const options = ["Mitch Ross", "Raza Shah", "Mitch Ross"];
 
   const handleSelect = (option) => {
     setSelectedOption(option);
@@ -39,52 +39,52 @@ const FamilyModel = ({ onClose }) => {
                 name="brand"
                 id="brand"
                 className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] "
-                value="Apple"
-                placeholder="Product brand"
+                value="Jonathan"
+                placeholder="First Name"
                 required=""
               />
             </div>
             <div className="w-full">
               <label
-                for="price"
+                for="Last Name"
                 className="block mb-2 text-sm font-bold text-white/60 text-start"
               >
-                Price
+                Last Name
               </label>
               <input
-                type="number"
-                name="price"
-                id="price"
+                type="text"
+                name="Last Name"
+                id="Last Name"
                 className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] "
-                value="2999"
-                placeholder="$299"
+                value="Hayes"
+                placeholder="Hayes"
                 required=""
               />
             </div>
             <div className="sm:col-span-2">
               <label
-                for="name"
+                for="Email address"
                 className="block mb-2 text-sm font-bold text-white/60 text-start"
               >
-                Product Name
+                Email address
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
+                name="Email address"
+                id="Email address"
                 className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] "
-                value="Apple iMac 27&ldquo;"
-                placeholder="Type product name"
+                value="Email address"
+                placeholder="Email address"
                 required=""
               />
             </div>
 
             <div className="sm:col-span-2">
               <label
-                htmlFor="category"
+                htmlFor="Family member of"
                 className="block mb-2 text-sm font-bold text-white/60 text-start"
               >
-                Category
+                Family member of
               </label>
               <div className="relative flex items-center">
                 <div
@@ -93,7 +93,7 @@ const FamilyModel = ({ onClose }) => {
                   }`}
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  {selectedOption || "Select an option"}
+                  {selectedOption || "Ed Trick "}
                 </div>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700">
                   <svg

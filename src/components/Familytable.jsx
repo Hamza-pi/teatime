@@ -25,7 +25,7 @@ const Familytable = (props) => {
 	// Here we use item offsets; we could also use page offsets
 	// following the API or data you're working with.
 	const [itemOffset, setItemOffset] = useState(0);
-		const [selectedPage, setSelectedPage] = useState(0);
+	const [selectedPage, setSelectedPage] = useState(0);
 	const itemsPerPage = 9;
 
 	// Simulate fetching items from another resources.
@@ -45,18 +45,22 @@ const Familytable = (props) => {
 	//double chevron logic
 
 	const handleDoubleLeftClick = () => {
-		const newOffset = 0;
-		setItemOffset(newOffset);
-		setSelectedPage(0);
+		if (selectedPage > 0) {
+			const newOffset = 0;
+			setItemOffset(newOffset);
+			setSelectedPage(0);
+		  }
 	};
 
 	const handleDoubleRightClick = () => {
-		const newOffset = (pageCount - 1) * itemsPerPage;
-		setItemOffset(newOffset);
-		setSelectedPage(pageCount - 1);
+		if (selectedPage < pageCount - 1) {
+			const newOffset = (pageCount - 1) * itemsPerPage;
+			setItemOffset(newOffset);
+			setSelectedPage(pageCount - 1);
+		  }
 	};
 	return (
-		<div className="flex flex-col ">
+		<div className="flex flex-col py-8 space-y-4">
 			{/*  Table */}
 			<div className="relative sm:px-7 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3 min-h-[560px]">
 				<table className="w-full text-sm text-left rtl:text-right text-white  min-w-[540px]">
@@ -130,7 +134,7 @@ const Familytable = (props) => {
 				</table>
 			</div>
 			<div className="flex text-black w-full md:justify-end items-center justify-center mt-2 space-x-2 ">
-				<div className=" flex items-center bg-black px-2 py-1 cursor-pointer">
+				<div className={`flex items-center bg-black px-2 py-1 cursor-pointer ${selectedPage === 0 ? 'disabled bg-greyText2' : ''}`}>
 					<HiOutlineChevronDoubleLeft
 						className={`text-white  text-center sm:text-2xl `}
 						onClick={handleDoubleLeftClick}
@@ -159,7 +163,7 @@ const Familytable = (props) => {
 					previousLabel={<HiOutlineChevronLeft />}
 					renderOnZeroPageCount={null}
 					marginPagesDisplayed={0}
-					containerClassName="flex select-none sm:text-2xl text-center font-[700] space-x-2 "
+					containerClassName="flex select-none sm:text-2xl text-center font-[700] sm:space-x-2 space-x-1"
 					pageClassName="px-2"
 					// prevPageRel="bg-black"
 					previousClassName="bg-black text-white px-2 text-center flex items-center sm:text-2xl "
@@ -168,7 +172,7 @@ const Familytable = (props) => {
 					disabledClassName="bg-greyText2"
 					pageLinkClassName="custom-page-link" // Add a custom class to the page link
 				/>
-				<div className=" flex items-center bg-black px-2 py-1">
+				<div className={`flex items-center bg-black px-2 py-1 cursor-pointer ${selectedPage === pageCount - 1 ? 'disabled bg-greyText2' : ''}`}>
 					<HiOutlineChevronDoubleRight
 						className="text-white  text-center sm:text-2xl cursor-pointer"
 						onClick={handleDoubleRightClick}
