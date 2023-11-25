@@ -53,7 +53,13 @@ const BoradCasts = () => {
               </p>
             </div>
             <div className="py-4 px-6 w-full text-right border-t border-[#FFFFFF0D]">
-              <Link href="/dashboard/broadcast/whatson">
+              <Link
+                href={`${
+                  i === 0
+                    ? "/dashboard/broadcast/whatson"
+                    : "/dashboard/broadcast/whatscooking"
+                }`}
+              >
                 <button className="px-8 py-3 rounded-full bg-[#FFFFFF0D] text-xs font-bold">
                   Edit
                 </button>
