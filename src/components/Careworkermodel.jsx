@@ -1,7 +1,7 @@
 import { handleToast } from '@/utils/showToast';
 import React, { useState } from 'react';
 import { FiUser } from 'react-icons/fi';
-const FamilyModel = ({ onClose }) => {
+const Careworkermodel = ({ onClose }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('');
 	const [field1, setField1] = useState('');
@@ -24,7 +24,8 @@ const FamilyModel = ({ onClose }) => {
 		if (field1.trim() !== '' && field2.trim() !== '' && field3.trim() !== '') {
 			onClose();
 			handleToast(
-				`${field1} added as Ed tricks family member`,
+				`${field1}  added as new careworker, 
+                they will recieved a signup email soon`,
 				<FiUser />,
 				true
 			);
@@ -46,7 +47,7 @@ const FamilyModel = ({ onClose }) => {
 		<section className="bg-transparent h-screen flex flex-col items-center justify-center  ">
 			<div className="max-w-[574px]  bg-model rounded-xl">
 				<div className="flex justify-center flex-col py-4">
-					<h2 className="text-[14px] font-bold text-white ">Add family member</h2>
+					<h2 className="text-[14px] font-bold text-white ">Add care-worker</h2>
 					<div
 						className=" bg-greyText2  w-full 
                 h-[0.5px] mt-3  "
@@ -113,48 +114,7 @@ const FamilyModel = ({ onClose }) => {
 							/>
 						</div>
 
-						<div className="sm:col-span-2">
-							<label
-								htmlFor="Family member of"
-								className="block mb-2 text-sm font-bold text-white/60 text-start"
-							>
-								Family member of
-							</label>
-							<div className="relative flex items-center">
-								<div
-									className={`cursor-pointer appearance-none bg-white/10 text-sm rounded-2xl block w-full p-3 outline-none text-white font-[700] text-start ${
-										isOpen ? 'border-b-2 border-black' : ''
-									}`}
-									onClick={() => setIsOpen(!isOpen)}
-								>
-									{selectedOption || 'Ed Trick '}
-								</div>
-								<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700">
-									<svg
-										className={`fill-current h-4 w-4 transition-transform transform ${
-											isOpen ? 'rotate-180' : ''
-										}`}
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 20 20"
-									>
-										<path d="M10 12l-6-6 1.41-1.41L10 9.17l4.59-4.58L16 6z" />
-									</svg>
-								</div>
-								{isOpen && (
-									<div className="absolute w-full mt-2 bg-model rounded-b-md shadow-white/30  shadow-md top-8">
-										{options.map((option) => (
-											<div
-												key={option}
-												className="p-2 cursor-pointer hover:bg-black/10 text-sm font-[700] text-start"
-												onClick={() => handleSelect(option)}
-											>
-												{option}
-											</div>
-										))}
-									</div>
-								)}
-							</div>
-						</div>
+					
 					</div>
 					<div className="w-full h-[0.5px] bg-white/10"></div>
 					<div className="grid sm:grid-cols-2 grid-cols-1 gap-y-3 py-8 gap-x-4">
@@ -175,7 +135,7 @@ const FamilyModel = ({ onClose }) => {
 							onClick={handleAddFamilyMember}
 							// disabled={!field1 || !field2 || !field3}
 						>
-							Add family member
+							Add member
 						</button>
 					</div>
 				</form>
@@ -184,4 +144,4 @@ const FamilyModel = ({ onClose }) => {
 	);
 };
 
-export default FamilyModel;
+export default Careworkermodel;

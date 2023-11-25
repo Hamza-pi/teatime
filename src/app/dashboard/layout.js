@@ -13,6 +13,7 @@ import { RiSettings4Line } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 import { TbMessageCircle } from "react-icons/tb";
 import { ToastContainer } from "react-toastify";
+import { MdOutlineAccountCircle } from "react-icons/md";
 import "react-toastify/dist/ReactToastify.css";
 
 const outfit = Outfit({
@@ -124,13 +125,13 @@ export default function AdminLayout({ children }) {
                   className="flex text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                   onClick={() => setMenu(!menu)}
                 >
-                  <Image
+                 <Link href='/myacc'> <Image
                     className="rounded-full"
                     width={32}
                     height={32}
                     src="/images/user.png"
                     alt="user photo"
-                  />
+                  /></Link>
                 </button>
                 <div
                   className={`z-50 my-4 text-base sm:hidden ${menu ? "block" : "hidden"
@@ -230,14 +231,16 @@ export default function AdminLayout({ children }) {
         </div>
       </div>
       <ToastContainer
-        toastStyle={{
-          margin: 0,
-          padding: 0,
-          backgroundColor: "transparent",
-          top: "50px",
-          boxShadow: "none",
-          maxWidth: "400px",
-        }}
+      className="Toastify__toast-container"
+       toastStyle={{
+        margin: 0,
+        padding: 0,
+        backgroundColor: "transparent",
+        top: "50px",
+        boxShadow: "none",
+    maxWidth:"625px"
+      }}
+      
         closeButton={false}
         position="top-center"
         autoClose={3000}

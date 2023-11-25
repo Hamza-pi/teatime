@@ -1,6 +1,6 @@
 const Toast = ({ icon, message, success }) => {
 	return (
-		<div className="w-full bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl">
+		<div className="w-fit bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl">
 			<div className="bg-lightDark rounded-xl px-4 py-3 flex items-center justify-evenly gap-x-6 w-full">
 				<div
 					className={`${
