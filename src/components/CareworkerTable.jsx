@@ -9,7 +9,15 @@ import {
 	HiOutlineDotsHorizontal,
 } from 'react-icons/hi';
 import ReactPaginate from 'react-paginate';
+import { IoMdArrowDropup } from "react-icons/io";
+
 const CareworkerTable = (props) => {
+//3 dot dropdown
+const [menu, setMenu] = useState({
+    disp: false,
+    index: null,
+  });
+
 	const { data } = props;
 	const [selectedRows, setSelectedRows] = useState([]); //can use in futre for checkbox implementaion
 
@@ -26,7 +34,7 @@ const CareworkerTable = (props) => {
 	// following the API or data you're working with.
 	const [itemOffset, setItemOffset] = useState(0);
 	const [selectedPage, setSelectedPage] = useState(0);
-	const itemsPerPage = 9;
+	const itemsPerPage = 8;
 
 	// Simulate fetching items from another resources.
 	// (This could be items from props; or items loaded in a local state
@@ -71,7 +79,7 @@ const CareworkerTable = (props) => {
 	}
 	const randomColor = getRandomHexColor();
 	return (
-		<div className="flex flex-col  space-y-5">
+		<div className="flex flex-col  space-y-5 mb-8">
 			{/*  Table */}
 			<div className="relative sm:px-7 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3 min-h-[560px]">
 				<table className="w-full text-sm text-left rtl:text-right text-white  min-w-[540px]">
@@ -118,8 +126,8 @@ const CareworkerTable = (props) => {
 											checkbox
 										</label>
 										<div
-											style={{ backgroundColor: getRandomHexColor() }}
-											className="w-[1.5rem] h-[1.5rem] rounded-full p-1 flex items-center justify-center cursor-pointer text-white"
+											style={{ backgroundColor: row.color }}
+											className="w-[1.5rem] h-[1.5rem] bg-green rounded-full p-1 flex items-center justify-center cursor-pointer text-white"
                     
 										>
 											<p className="text-xs uppercase">
@@ -139,12 +147,43 @@ const CareworkerTable = (props) => {
 									<p className="text-[16.88px] font-[500]">{row.col3}</p>
 								</td>
 
-								<td>
-									{' '}
-									<p className="">
-										<HiOutlineDotsHorizontal className="text-lg cursor-pointer" />
-									</p>
-								</td>
+                                <td className="relative">
+                  {" "}
+                  <p
+                    onClick={() =>
+                      setMenu({
+                        disp: !menu.disp,
+                        index: rowIndex,
+                      })
+                    }
+                  >
+                    <HiOutlineDotsHorizontal className=" text-lightWhite text-[1.5rem] cursor-pointer" />
+                  </p>
+                  <div
+                    className={`${
+                      menu.disp && menu.index === rowIndex ? "block" : "hidden"
+                    } absolute top-12 right-2 2xl:right-8 w-[180px] bg-[#232323] z-10 px-2 py-2 rounded-xl`}
+                  >
+                    <div className="absolute -top-5 right-1  text-[2rem] text-[#232323]">
+                      <IoMdArrowDropup />
+                    </div>
+                    <ul className="text-center font-medium text-[1rem]">
+                      
+                      <li
+                        className="px-2 py-2 cursor-pointer border-gradient"
+                        onClick={() => setMenu({ disp: false })}
+                      >
+                        <p>Edit details</p>
+                      </li>
+                      <li
+                        className=" py-2 cursor-pointer"
+                        onClick={() => setMenu({ disp: false })}
+                      >
+                        <p className="text-lightPink">Remove care-worker</p>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
 							</tr>
 						))}
 					</tbody>

@@ -10,10 +10,12 @@ const page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
+
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+
   };
   //imaginary data passes to the table
 
@@ -103,7 +105,7 @@ const page = () => {
     { id: 40, col1: "Mr", col2: "Ed ", col3: "Trick", col4: "zaryab" },
   ];
   return (
-    <section className="  sm:p-3  md:pt-16 relative">
+    <section className={`${isModalOpen?'overflow-hidden ':''}  sm:p-3  md:pt-16 relative`}>
       <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center space-y-3">
         <p className="text-greyText2 font-bold leading-[26.53px]">
           Family members
