@@ -56,7 +56,8 @@ export default function AdminLayout({ children }) {
     {
       icon: FiUser,
       title: "Residents",
-      route: "",
+      route: "/dashboard/residents",
+      check:"residents"
     },
     {
       icon: FiUsers,
