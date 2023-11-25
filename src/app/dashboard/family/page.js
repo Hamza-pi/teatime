@@ -1,10 +1,10 @@
-"use client";
-import Model from "@/components/Model";
-import FamilyModel from "@/components/FamilyModel";
-import React, { useState } from "react";
-import Button from "../../../components/Button";
-import Familytable from "../../../components/Familytable";
-import Search from "../../../components/Search";
+'use client'
+import FamilyModel from '@/components/FamilyModel';
+import Model from '@/components/Model';
+import React, { useState } from 'react';
+import Button from '../../../components/Button';
+import Familytable from '../../../components/Familytable';
+import Search from '../../../components/Search';
 const page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
@@ -110,9 +110,10 @@ const page = () => {
         <div className="w-full sm:w-fit flex  items-center md:space-x-14 sm:space-x-12 space-x-5 sm:flex-row flex-ro justify-end relative">
           <Search />
           <Button onopen={openModal} />
+
+
         </div>
-      </div>{" "}
-      <Model isOpen={isModalOpen} onClose={closeModal}>
+      </div> <Model isOpen={isModalOpen} onClose={closeModal}>
         <div className="w-full h-full ">
           <FamilyModel onClose={closeModal}></FamilyModel>
         </div>
