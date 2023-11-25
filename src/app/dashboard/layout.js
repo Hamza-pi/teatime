@@ -4,7 +4,7 @@ import { DM_Sans, Outfit } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { FaPlus, FaRegHeart } from "react-icons/fa6";
 import { FiCheckCircle, FiUser, FiUsers } from "react-icons/fi";
 import { MdMenu } from "react-icons/md";
