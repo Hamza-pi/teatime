@@ -1,159 +1,186 @@
-import React, { useState } from "react";
-
+import { handleToast } from '@/utils/showToast';
+import React, { useState } from 'react';
+import { FiUser } from 'react-icons/fi';
 const FamilyModel = ({ onClose }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
+	const [isOpen, setIsOpen] = useState(false);
+	const [selectedOption, setSelectedOption] = useState('');
+	const [field1, setField1] = useState('');
+	const [field2, setField2] = useState('');
+	const [field3, setField3] = useState('');
+	const options = ['Mitch Ross', 'Raza Shah', 'Mitch Ross'];
+	// Event handlers for each field
+	const handleField1Change = (e) => {
+		setField1(e.target.value);
+	};
 
-  const options = ["Mitch Ross", "Raza Shah", "Mitch Ross"];
+	const handleField2Change = (e) => {
+		setField2(e.target.value);
+	};
 
-  const handleSelect = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
+	const handleField3Change = (e) => {
+		setField3(e.target.value);
+	};
+	const handleAddFamilyMember = () => {
+		if (field1.trim() !== '' && field2.trim() !== '' && field3.trim() !== '') {
+			onClose();
+			handleToast(
+				`${field1} added as Ed tricks family member`,
+				<FiUser />,
+				true
+			);
+		} else {
+      handleToast(
+				'please input all fields',
+				<FiUser />,
+				true
+			);
+			
+		}
+	};
+	const handleSelect = (option) => {
+		setSelectedOption(option);
+		setIsOpen(false);
+	};
 
-  return (
-    <section className="bg-transparent h-screen flex flex-col items-center justify-center  pt-26 px-2">
-      <div className="max-w-[574px]  bg-model rounded-xl">
-        <div className="flex justify-center flex-col py-4">
-          <h2 className="text-lg font-bold text-white ">Add family member</h2>
-          <div
-            className=" bg-greyText2  w-full 
+	return (
+		<section className="bg-transparent h-screen flex flex-col items-center justify-center  pt-26 px-2">
+			<div className="max-w-[574px]  bg-model rounded-xl">
+				<div className="flex justify-center flex-col py-4">
+					<h2 className="text-lg font-bold text-white ">Add family member</h2>
+					<div
+						className=" bg-greyText2  w-full 
                 h-[0.5px] mt-3  "
-          >
-            <div className="flex justify-center  relative">
-              <div className="w-[150px] border-t-4 border-blue-500 pt-2  rounded-t-md absolute -top-1"></div>
-            </div>
-          </div>
-        </div>
-        <form action="#" className="sm:px-20 px-12 sm:py-8 py-2">
-          <div className="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5 max-w-[432px]">
-            <div className="w-full">
-              <label
-                for="First Name"
-                className="block mb-2 text-sm font-bold text-white/60 text-start"
-              >
-                First Name
-              </label>
-              <input
-                type="text"
-                name="brand"
-                id="brand"
-                className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] "
-                value="Jonathan"
-                placeholder="First Name"
-                required=""
-              />
-            </div>
-            <div className="w-full">
-              <label
-                for="Last Name"
-                className="block mb-2 text-sm font-bold text-white/60 text-start"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                name="Last Name"
-                id="Last Name"
-                className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] "
-                value="Hayes"
-                placeholder="Hayes"
-                required=""
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <label
-                for="Email address"
-                className="block mb-2 text-sm font-bold text-white/60 text-start"
-              >
-                Email address
-              </label>
-              <input
-                type="text"
-                name="Email address"
-                id="Email address"
-                className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] "
-                value="Email address"
-                placeholder="Email address"
-                required=""
-              />
-            </div>
+					>
+						<div className="flex justify-center  relative">
+							<div className="w-[150px] border-t-4 border-blue-500 pt-2  rounded-t-md absolute -top-1"></div>
+						</div>
+					</div>
+				</div>
+				<form action="" className="sm:px-20 px-12 sm:py-8 py-2">
+					<div className="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5 max-w-[432px]">
+						<div className="w-full">
+							<label
+								for="First Name"
+								className="block mb-2 text-sm font-bold text-white/60 text-start"
+							>
+								First Name
+							</label>
+							<input
+								type="text"
+								name="brand"
+								id="brand"
+								className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] placeholder:text-white"
+								placeholder="Jonathan"
+								required=""
+								value={field1}
+								onChange={handleField1Change}
+							/>
+						</div>
+						<div className="w-full">
+							<label
+								for="Last Name"
+								className="block mb-2 text-sm font-bold text-white/60 text-start"
+							>
+								Last Name
+							</label>
+							<input
+								type="text"
+								name="Last Name"
+								id="Last Name"
+								className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] placeholder:text-white"
+								value={field2}
+								onChange={handleField2Change}
+								placeholder="Hayes"
+								required=""
+							/>
+						</div>
+						<div className="sm:col-span-2">
+							<label
+								for="Email address"
+								className="block mb-2 text-sm font-bold text-white/60 text-start "
+							>
+								Email address
+							</label>
+							<input
+								type="text"
+								name="Email address"
+								id="Email address"
+								className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] placeholder:text-white"
+								value={field3}
+								onChange={handleField3Change}
+								placeholder="johnh232@gmail.com"
+								required=""
+							/>
+						</div>
 
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="Family member of"
-                className="block mb-2 text-sm font-bold text-white/60 text-start"
-              >
-                Family member of
-              </label>
-              <div className="relative flex items-center">
-                <div
-                  className={`cursor-pointer appearance-none bg-white/10 text-sm rounded-2xl block w-full p-3 outline-none text-white font-[700] text-start ${
-                    isOpen ? "border-b-2 border-black" : ""
-                  }`}
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {selectedOption || "Ed Trick "}
-                </div>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700">
-                  <svg
-                    className={`fill-current h-4 w-4 transition-transform transform ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 12l-6-6 1.41-1.41L10 9.17l4.59-4.58L16 6z" />
-                  </svg>
-                </div>
-                {isOpen && (
-                  <div className="absolute w-full mt-2 bg-model rounded-b-md shadow-white/30  shadow-md top-8">
-                    {options.map((option) => (
-                      <div
-                        key={option}
-                        className="p-2 cursor-pointer hover:bg-black/10 text-sm font-[700] text-start"
-                        onClick={() => handleSelect(option)}
-                      >
-                        {option}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <button
-              type="submit"
-              className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-              onClick={onClose}
-            >
-              Update product
-            </button>
-            <button
-              type="button"
-              className="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
-              onClick={onClose}
-            >
-              <svg
-                className="w-5 h-5 mr-1 -ml-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              Delete
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-  );
+						<div className="sm:col-span-2">
+							<label
+								htmlFor="Family member of"
+								className="block mb-2 text-sm font-bold text-white/60 text-start"
+							>
+								Family member of
+							</label>
+							<div className="relative flex items-center">
+								<div
+									className={`cursor-pointer appearance-none bg-white/10 text-sm rounded-2xl block w-full p-3 outline-none text-white font-[700] text-start ${
+										isOpen ? 'border-b-2 border-black' : ''
+									}`}
+									onClick={() => setIsOpen(!isOpen)}
+								>
+									{selectedOption || 'Ed Trick '}
+								</div>
+								<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700">
+									<svg
+										className={`fill-current h-4 w-4 transition-transform transform ${
+											isOpen ? 'rotate-180' : ''
+										}`}
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 20 20"
+									>
+										<path d="M10 12l-6-6 1.41-1.41L10 9.17l4.59-4.58L16 6z" />
+									</svg>
+								</div>
+								{isOpen && (
+									<div className="absolute w-full mt-2 bg-model rounded-b-md shadow-white/30  shadow-md top-8">
+										{options.map((option) => (
+											<div
+												key={option}
+												className="p-2 cursor-pointer hover:bg-black/10 text-sm font-[700] text-start"
+												onClick={() => handleSelect(option)}
+											>
+												{option}
+											</div>
+										))}
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+					<div className="flex items-center justify-between sm:p-5  p-2 sm:flex-row flex-col gap-y-3">
+						<button
+							type="button"
+							className="text-white bg-white/5  font-medium rounded-xl text-sm px-12 py-2.5 text-center   "
+							onClick={onClose}
+						>
+							Cancel
+						</button>
+						<button
+							type="button"
+							className={`text-red-600 font-medium rounded-xl text-sm px-5 py-2.5 text-center bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% ${
+								!field1 || !field2 || !field3
+									? 'opacity-50 cursor-not-allowed'
+									: ''
+							}`}
+							onClick={handleAddFamilyMember}
+							// disabled={!field1 || !field2 || !field3}
+						>
+							Add family member
+						</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	);
 };
 
 export default FamilyModel;

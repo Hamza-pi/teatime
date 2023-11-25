@@ -67,8 +67,8 @@ export default function AdminLayout({ children }) {
     {
       icon: FaRegHeart,
       title: "Care workers",
-      route:"/dashboard/family",
-    check: "family",
+      route: "/dashboard/careworker",
+      check: "careworker",
     },
   ];
 
@@ -173,23 +173,23 @@ export default function AdminLayout({ children }) {
                   <Link
                     href={`${item.route}`}
                     className={`font-bold text-base flex items-center gap-3 relative ${i === 0
-                        ? pathname === item.route || pathname.includes("/home")
-                          ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
-                          : ""
-                        : pathname.includes(item.check)
-                          ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
-                          : ""
+                      ? pathname === item.route || pathname.includes("/home")
+                        ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
+                        : ""
+                      : pathname.includes(item.check)
+                        ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
+                        : ""
                       }`}
                   >
                     <div
                       className={`min-w-[3px] min-h-[28px] ${i === 0
-                          ? pathname === item.route ||
-                            pathname.includes("/home")
-                            ? "bg-gradient-to-r from-btnFrom to-btnTo"
-                            : ""
-                          : pathname.includes(item.check)
-                            ? "bg-gradient-to-r from-btnFrom to-btnTo "
-                            : "bg-none"
+                        ? pathname === item.route ||
+                          pathname.includes("/home")
+                          ? "bg-gradient-to-r from-btnFrom to-btnTo"
+                          : ""
+                        : pathname.includes(item.check)
+                          ? "bg-gradient-to-r from-btnFrom to-btnTo "
+                          : "bg-none"
                         } rounded-r-full`}
                     ></div>
                     <div className="text-[1.5rem]">
@@ -235,6 +235,7 @@ export default function AdminLayout({ children }) {
           backgroundColor: "transparent",
           top: "50px",
           boxShadow: "none",
+          maxWidth: "400px",
         }}
         closeButton={false}
         position="top-center"
