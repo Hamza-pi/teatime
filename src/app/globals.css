@@ -21,3 +21,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     #5a189a 98.76%
   ) !important;
 }
+
+.border-gradient {
+  /* Replace these values with your desired gradient */
+  border-image: linear-gradient(
+    90deg,
+    rgba(255, 61, 0, 0.88) -10.93%,
+    rgba(228, 41, 130, 0.85) 80.9%
+  );
+
+  border-image-slice: 1;
+  border-bottom: 1px solid;
+}

@@ -96,7 +96,7 @@ const Approvals = () => {
           modal ? (
             <ApprovalModal setModal={setModal} />
           ) : (
-            <div className="cards grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-x-4 2xl:gap-x-6 gap-y-6 2xl:gap-y-8">
+            <div className="cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-4 2xl:gap-x-6 gap-y-6 2xl:gap-y-8">
               {requests.map((req, i) => (
                 <ApprovalCard req={req} setModal={setModal} key={i} />
               ))}
