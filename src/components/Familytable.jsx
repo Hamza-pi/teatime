@@ -1,48 +1,48 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
-	HiOutlineChevronDoubleLeft,
-	HiOutlineChevronDoubleRight,
-	HiOutlineChevronLeft,
-	HiOutlineChevronRight,
-	HiOutlineDotsHorizontal,
-} from 'react-icons/hi';
-import ReactPaginate from 'react-paginate';
+  HiOutlineChevronDoubleLeft,
+  HiOutlineChevronDoubleRight,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+  HiOutlineDotsHorizontal,
+} from "react-icons/hi";
+import ReactPaginate from "react-paginate";
 const Familytable = (props) => {
-	const { data } = props;
-	const [selectedRows, setSelectedRows] = useState([]); //can use in futre for checkbox implementaion
+  const { data } = props;
+  const [selectedRows, setSelectedRows] = useState([]); //can use in futre for checkbox implementaion
 
-	//can use in futre for checkbox implementaion
-	const handleCheckboxChange = (rowIndex) => {
-		const updatedSelectedRows = selectedRows.includes(rowIndex)
-			? selectedRows.filter((index) => index !== rowIndex)
-			: [...selectedRows, rowIndex];
+  //can use in futre for checkbox implementaion
+  const handleCheckboxChange = (rowIndex) => {
+    const updatedSelectedRows = selectedRows.includes(rowIndex)
+      ? selectedRows.filter((index) => index !== rowIndex)
+      : [...selectedRows, rowIndex];
 
-		setSelectedRows(updatedSelectedRows);
-	};
+    setSelectedRows(updatedSelectedRows);
+  };
 
-	// Here we use item offsets; we could also use page offsets
-	// following the API or data you're working with.
-	const [itemOffset, setItemOffset] = useState(0);
-	const [selectedPage, setSelectedPage] = useState(0);
-	const itemsPerPage = 9;
+  // Here we use item offsets; we could also use page offsets
+  // following the API or data you're working with.
+  const [itemOffset, setItemOffset] = useState(0);
+  const [selectedPage, setSelectedPage] = useState(0);
+  const itemsPerPage = 9;
 
-	// Simulate fetching items from another resources.
-	// (This could be items from props; or items loaded in a local state
-	// from an API endpoint with useEffect and useState)
-	const endOffset = itemOffset + itemsPerPage;
-	// console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-	const currentItems = data.slice(itemOffset, endOffset);
-	const pageCount = Math.ceil(data.length / itemsPerPage);
+  // Simulate fetching items from another resources.
+  // (This could be items from props; or items loaded in a local state
+  // from an API endpoint with useEffect and useState)
+  const endOffset = itemOffset + itemsPerPage;
+  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  const currentItems = data.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(data.length / itemsPerPage);
 
-	// Invoke when user click to request another page.
-	const handlePageClick = (event) => {
-		const newOffset = (event.selected * itemsPerPage) % data.length;
-		setItemOffset(newOffset);
-		setSelectedPage(event.selected);
-	};
-	//double chevron logic
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % data.length;
+    setItemOffset(newOffset);
+    setSelectedPage(event.selected);
+  };
+  //double chevron logic
 
 	const handleDoubleLeftClick = () => {
 		if (selectedPage > 0) {
@@ -141,19 +141,19 @@ const Familytable = (props) => {
 					/>
 				</div>
 
-				<ReactPaginate
-					breakLabel={`of ${pageCount}`}
-					forcePage={selectedPage}
-					breakLinkClassName="px-3 text-2xl leading-[26.53px] flex items-center text-center font-[700] text-greyText2"
-					breakClassName="flex items-center"
-					nextLabel={
-						<HiOutlineChevronRight className="text-2xl text-center " />
-					}
-					onPageChange={(event) => {
-						// Update the offset when the page changes
-						const newOffset = (event.selected * itemsPerPage) % data.length;
-						setItemOffset(newOffset);
-						handlePageClick(event);
+        <ReactPaginate
+          breakLabel={`of ${pageCount}`}
+          forcePage={selectedPage}
+          breakLinkClassName="px-3 text-2xl leading-[26.53px] flex items-center text-center font-[700] text-greyText2"
+          breakClassName="flex items-center"
+          nextLabel={
+            <HiOutlineChevronRight className="text-2xl text-center " />
+          }
+          onPageChange={(event) => {
+            // Update the offset when the page changes
+            const newOffset = (event.selected * itemsPerPage) % data.length;
+            setItemOffset(newOffset);
+            handlePageClick(event);
 
 						// Update ReactPaginate's state
 						setSelectedPage(event.selected);
