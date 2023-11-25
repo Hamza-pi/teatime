@@ -15,6 +15,8 @@ const page = () => {
     setIsModalOpen(false);
   };
   //imaginary data passes to the table
+
+
   const tableData = [
     { id: 1, col1: "Mr", col2: "Ed ", col3: "Trick", col4: "Jimmy Lacrose" },
     {
@@ -61,7 +63,7 @@ const page = () => {
       id: 12,
       col1: "Mrs",
       col2: "Rhonda ",
-      col3: "Patrick",
+      col3: "Patrick",       
       col4: "Mitch Ross",
     },
     { id: 13, col1: "Mr", col2: "Ed ", col3: "Trick", col4: "Raza Shah" },

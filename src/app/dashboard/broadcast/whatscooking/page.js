@@ -7,15 +7,22 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { useState } from "react";
 import { handleToast } from "@/utils/showToast";
-import { FiCheckCircle,FiPlusCircle  } from "react-icons/fi";
+import { FiCheckCircle, FiPlusCircle } from "react-icons/fi";
 import { CgCalendar } from "react-icons/cg";
 
 const WhatsCooking = () => {
+  
   const [activeIndex, setActiveIndex] = useState(1);
 
   const [selected, setSelected] = useState(0);
 
   const [total, setTotal] = useState(0);
+
+  const [starterFields, setStarterFields] = useState(2);
+
+  const [mainFields, setMainFields] = useState(2);
+
+  const [dessertFields, setDessertFields] = useState(2);
 
   const inputStyle =
     "outline-none border-none placeholder:text-white text-white font-bold bg-[#FFFFFF0D] rounded-xl pl-5 pr-8 py-3";
@@ -33,6 +40,19 @@ const WhatsCooking = () => {
     ],
     [{ url: "/images/temp3.png" }],
   ];
+
+  const handleAddStarterField = () => {
+    setStarterFields(prevCount => prevCount + 1);
+  };
+
+  const handleAddMainField = () => {
+    setMainFields(prevCount => prevCount + 1);
+  };
+
+  const handleAddDessertField = () => {
+    setDessertFields(prevCount => prevCount + 1);
+  };
+
 
   return (
     <div className="pt-6 2xl:pt-12 bg-lightDark rounded-xl py-4">
@@ -92,7 +112,7 @@ const WhatsCooking = () => {
               </div>
             </div>
             {/* Fields */}
-            <div className="relative overflow-x-auto py-8">
+            <div className="relative overflow-x-auto py-20">
               <table className="w-full text-sm text-left">
                 <thead className="text-sm font-bold text-white">
                   <tr className="divide-x-2 divide-[#FFFFFF0D] ">
@@ -108,51 +128,77 @@ const WhatsCooking = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {[1, 2].map((item, i) => (
-                    <tr className="divide-x-[1px] divide-[#FFFFFF0D] ">
+                  {[
+                    ...Array(
+                      Math.max(starterFields, mainFields, dessertFields)
+                    ),
+                  ].map((_, index) => (
+                    <tr
+                      key={index}
+                      className="divide-x-[1px] divide-[#FFFFFF0D] "
+                    >
                       <td className="px-6 py-4">
-                        <input
-                          type="text"
-                          placeholder="Add info"
-                          className={inputStyle}
-                        />
+                        {index < starterFields && (
+                          <input
+                            type="text"
+                            placeholder="Add info"
+                            className={inputStyle}
+                          />
+                        )}
                       </td>
                       <td className="px-6 py-4">
-                        <input
-                          type="text"
-                          placeholder="Add info"
-                          className={inputStyle}
-                        />
+                        {index < mainFields && (
+                          <input
+                            type="text"
+                            placeholder="Add info"
+                            className={inputStyle}
+                          />
+                        )}
                       </td>
                       <td className="px-6 py-4">
-                        <input
-                          type="text"
-                          placeholder="Add info"
-                          className={inputStyle}
-                        />
+                        {index < dessertFields && (
+                          <input
+                            type="text"
+                            placeholder="Add info"
+                            className={inputStyle}
+                          />
+                        )}
                       </td>
                     </tr>
                   ))}
                   <tr className="divide-x-[1px] divide-[#FFFFFF0D]">
                     <td className="px-6 py-4">
-                      <div className="bg-gradient-to-r from-btnFrom to-btnTo">
-                        <FiPlusCircle/>
-                        Add field
+                      <div
+                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-[85%] cursor-pointer`}
+                        onClick={handleAddStarterField}
+                      >
+                        <p className="bg-black pl-10 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
+                          <FiPlusCircle className="text-xl" />
+                          Add field
+                        </p>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <input
-                        type="text"
-                        placeholder="Add info"
-                        className={inputStyle}
-                      />
+                      <div
+                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-[85%] cursor-pointer`}
+                        onClick={handleAddMainField}
+                      >
+                        <p className="bg-black pl-10 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
+                          <FiPlusCircle className="text-xl" />
+                          Add field
+                        </p>
+                      </div>
                     </td>
                     <td className="px-6 py-4">
-                      <input
-                        type="text"
-                        placeholder="Add info"
-                        className={inputStyle}
-                      />
+                      <div
+                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-[85%] cursor-pointer`}
+                        onClick={handleAddDessertField}
+                      >
+                        <p className="bg-black pl-10 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
+                          <FiPlusCircle className="text-xl" />
+                          Add field
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
