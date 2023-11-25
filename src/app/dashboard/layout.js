@@ -68,7 +68,8 @@ export default function AdminLayout({ children }) {
     {
       icon: FaRegHeart,
       title: "Care workers",
-      route: "",
+      route:"/dashboard/family",
+    check: "family",
     },
   ];
 
