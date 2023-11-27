@@ -1,5 +1,5 @@
 "use client";
-import FamilyModel from "@/components/FamilyModel";
+import AddResidentModal from "@/components/AddResidentModal";
 import Model from "@/components/Model";
 import React, { useState } from "react";
 import Button from "../../../components/Button";
@@ -7,6 +7,8 @@ import ResidentTable from "@/components/ResidentsTable";
 import Search from "../../../components/Search";
 const Residents = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -98,6 +100,7 @@ const Residents = () => {
       col5: false,
     },
   ];
+  
   return (
     <section className="  sm:p-3  md:pt-16 relative">
       <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center space-y-3">
@@ -111,7 +114,7 @@ const Residents = () => {
       </div>{" "}
       <Model isOpen={isModalOpen} onClose={closeModal}>
         <div className="w-full h-full ">
-          <FamilyModel onClose={closeModal}></FamilyModel>
+          <AddResidentModal onClose={closeModal} progress={progress} setProgress={setProgress} />{" "}
         </div>
       </Model>
       <ResidentTable data={tableData} />

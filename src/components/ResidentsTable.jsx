@@ -171,7 +171,7 @@ const ResidentTable = (props) => {
                   <div
                     className={`${
                       menu.disp && menu.index === rowIndex ? "block" : "hidden"
-                    } absolute top-12 right-3 w-[180px] bg-[#232323] z-10 px-3 py-2 rounded-xl`}
+                    } absolute top-12 right-3 2xl:right-12 w-[180px] bg-[#232323] z-10 px-3 py-2 rounded-xl`}
                   >
                     <div className="absolute -top-5 right-1 text-[2rem] text-[#232323]">
                       <IoMdArrowDropup />
