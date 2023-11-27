@@ -3,9 +3,9 @@ import FamilyModel from '@/components/FamilyModel';
 import Model from '@/components/Model';
 import React, { useState } from 'react';
 import Button from '../../../components/Button';
-
 import CareworkerTable from '@/components/CareworkerTable';
 import Search from '../../../components/Search';
+import Careworkermodel from '@/components/Careworkermodel';
 
 const page = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,7 +44,7 @@ const page = () => {
 	];
 	return (
 		<section className="  sm:p-3  md:pt-16 relative">
-			<div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center space-y-3">
+			<div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-end space-y-3">
 				<p className="text-greyText2 font-bold leading-[26.53px]">
 					Care workers
 				</p>
@@ -55,7 +55,7 @@ const page = () => {
 			</div>{' '}
 			<Model isOpen={isModalOpen} onClose={closeModal}>
 				<div className="w-full h-full ">
-					<FamilyModel onClose={closeModal}></FamilyModel>
+					<Careworkermodel onClose={closeModal}></Careworkermodel>
 				</div>
 			</Model>
 			<CareworkerTable data={tableData} />

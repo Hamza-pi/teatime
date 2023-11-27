@@ -106,7 +106,7 @@ const page = () => {
   ];
   return (
     <section className={`${isModalOpen?'overflow-hidden ':''}  sm:p-3  md:pt-16 relative`}>
-      <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center space-y-3">
+      <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-end space-y-3">
         <p className="text-greyText2 font-bold leading-[26.53px]">
           Family members
         </p>

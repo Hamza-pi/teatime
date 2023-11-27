@@ -44,7 +44,7 @@ const FamilyModel = ({ onClose }) => {
 
 	return (
 		<section className="bg-transparent h-screen flex flex-col items-center justify-center  ">
-			<div className="max-w-[574px]  bg-model rounded-xl">
+			<div className="max-w-[574px]  bg-model rounded-xl max-h-[537px]">
 				<div className="flex justify-center flex-col py-4">
 					<h2 className="text-[14px] font-bold text-white ">Add family member</h2>
 					<div
@@ -63,13 +63,13 @@ const FamilyModel = ({ onClose }) => {
 								for="First Name"
 								className="block mb-2 text-sm font-bold text-white/60 text-start"
 							>
-								First Name
+								FIRST NAME
 							</label>
 							<input
 								type="text"
 								name="brand"
 								id="brand"
-								className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] placeholder:text-white"
+								className="bg-white/10  text-sm rounded-2xl  block w-full sm:p-3  p-2 outline-none text-white font-[700] placeholder:text-white"
 								placeholder="Jonathan"
 								required=""
 								value={field1}
@@ -81,13 +81,13 @@ const FamilyModel = ({ onClose }) => {
 								for="Last Name"
 								className="block mb-2 text-sm font-bold text-white/60 text-start"
 							>
-								Last Name
+								LAST NAME
 							</label>
 							<input
 								type="text"
 								name="Last Name"
 								id="Last Name"
-								className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] placeholder:text-white"
+								className="bg-white/10  text-sm rounded-2xl  block w-full sm:p-3  p-2  outline-none text-white font-[700] placeholder:text-white"
 								value={field2}
 								onChange={handleField2Change}
 								placeholder="Hayes"
@@ -99,13 +99,13 @@ const FamilyModel = ({ onClose }) => {
 								for="Email address"
 								className="block mb-2 text-sm font-bold text-white/60 text-start "
 							>
-								Email address
+								EMAIL ADDRESS
 							</label>
 							<input
 								type="text"
 								name="Email address"
 								id="Email address"
-								className="bg-white/10  text-sm rounded-2xl  block w-full p-3 outline-none text-white font-[700] placeholder:text-white"
+								className="bg-white/10  text-sm rounded-2xl  block w-full sm:p-3  p-2 outline-none text-white font-[700] placeholder:text-white"
 								value={field3}
 								onChange={handleField3Change}
 								placeholder="johnh232@gmail.com"
@@ -116,13 +116,13 @@ const FamilyModel = ({ onClose }) => {
 						<div className="sm:col-span-2">
 							<label
 								htmlFor="Family member of"
-								className="block mb-2 text-sm font-bold text-white/60 text-start"
+								className="block mb-2 text-sm font-bold text-white/60 text-start capitalize"
 							>
-								Family member of
+								FAMILY MEMBER OF
 							</label>
 							<div className="relative flex items-center">
 								<div
-									className={`cursor-pointer appearance-none bg-white/10 text-sm rounded-2xl block w-full p-3 outline-none text-white font-[700] text-start ${
+									className={`cursor-pointer appearance-none bg-white/10 text-sm rounded-2xl block w-full psm:p-3  p-2  outline-none text-white font-[700] text-start ${
 										isOpen ? 'border-b-2 border-black' : ''
 									}`}
 									onClick={() => setIsOpen(!isOpen)}
@@ -157,7 +157,7 @@ const FamilyModel = ({ onClose }) => {
 						</div>
 					</div>
 					<div className="w-full h-[0.5px] bg-white/10"></div>
-					<div className="grid sm:grid-cols-2 grid-cols-1 gap-y-3 py-8 gap-x-4">
+					<div className="grid sm:grid-cols-2 grid-cols-1 gap-y-3 sm:py-8 gap-x-4 py-2">
 						<button
 							type="button"
 							className="text-white bg-white/5  font-medium rounded-xl text-sm px-12 py-2.5 text-center   "

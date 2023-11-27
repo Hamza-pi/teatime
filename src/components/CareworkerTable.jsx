@@ -109,7 +109,7 @@ const [menu, setMenu] = useState({
 						{currentItems.map((row, rowIndex) => (
 							<tr key={rowIndex}>
 								<td className=" ">
-									<div className=" text-checkbox py-4 flex items-center space-x-3">
+									<div className=" text-checkbox sm:py-5 flex items-center space-x-3">
 										{/* checkbox color to do  */}
 										<input
 											id="vue-checkbox-list"

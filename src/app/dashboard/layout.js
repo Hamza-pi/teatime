@@ -15,6 +15,7 @@ import { TbMessageCircle } from "react-icons/tb";
 import { ToastContainer } from "react-toastify";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import "react-toastify/dist/ReactToastify.css";
+import { FaRegUser } from "react-icons/fa6";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -125,7 +126,7 @@ export default function AdminLayout({ children }) {
                   className="flex text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                   onClick={() => setMenu(!menu)}
                 >
-                 <Link href='/myacc'> <Image
+                 <Link href=''> <Image
                     className="rounded-full"
                     width={32}
                     height={32}
@@ -142,6 +143,9 @@ export default function AdminLayout({ children }) {
                     <p className="text-sm font-medium" role="none">
                       jimmy.trick@teatime.com
                     </p>
+                    <Link href="/myacc"><p className="text-sm font-medium flex gap-x-[.5rem] py-2 items-center bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% w-fit my-2 px-2 rounded-lg">
+                    <FaRegUser /> MyAccount
+                    </p></Link>
                   </div>
                   <div className="flex items-center justify-between gap-x-4 py-4 px-2">
                     <button className="w-full flex items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
@@ -156,6 +160,18 @@ export default function AdminLayout({ children }) {
                     <div className=" cursor-pointer">
                       <RiSettings4Line className="text-[1.5rem]" />
                     </div>
+                  </div>
+                </div>
+                <div
+                  className={`z-50 my-4 text-base  ${menu ? "sm:block hidden" : "hidden"
+                    } list-none bg-dark divide-y divide-gray-100 rounded shadow  text-white absolute top-10 right-0`}
+                >
+                 
+                  <div className="flex items-center justify-center  py-4 px-5 w-full">
+                    <Link href="/myacc"><button className="w-full flex items-center justify-between py-[.5rem] px-[1.5rem] gap-x-[.5rem] rounded-xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80%  font-bold text-sm">
+                    <FaRegUser /> MyAccount
+                    </button></Link>
+                
                   </div>
                 </div>
               </div>

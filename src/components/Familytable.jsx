@@ -90,9 +90,9 @@ const Familytable = (props) => {
 					<tbody className="mt-12 p-8">
 						{/* Adjust data and structure based on your needs */}
 						{currentItems.map((row, rowIndex) => (
-							<tr key={rowIndex}>
+							<tr key={rowIndex} className="">
 								<td className=" ">
-									<div className=" text-checkbox py-4 flex items-center ">
+									<div className=" text-checkbox sm:py-5 flex items-center ">
 										{/* checkbox color to do  */}
 										<input
 											id="vue-checkbox-list"

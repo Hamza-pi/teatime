@@ -62,9 +62,9 @@ const Careworkermodel = ({ onClose }) => {
 						<div className="w-full">
 							<label
 								for="First Name"
-								className="block mb-2 text-sm font-bold text-white/60 text-start"
+								className="block mb-2 text-sm font-bold text-white/60 text-start capitalize"
 							>
-								First Name
+								FIRST NAME
 							</label>
 							<input
 								type="text"
@@ -80,9 +80,9 @@ const Careworkermodel = ({ onClose }) => {
 						<div className="w-full">
 							<label
 								for="Last Name"
-								className="block mb-2 text-sm font-bold text-white/60 text-start"
+								className="block mb-2 text-sm font-bold text-white/60 text-start capitalize"
 							>
-								Last Name
+								LAST NAME
 							</label>
 							<input
 								type="text"
@@ -100,7 +100,7 @@ const Careworkermodel = ({ onClose }) => {
 								for="Email address"
 								className="block mb-2 text-sm font-bold text-white/60 text-start "
 							>
-								Email address
+								EMAIL ADDRESS
 							</label>
 							<input
 								type="text"
