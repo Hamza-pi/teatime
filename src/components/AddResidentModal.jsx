@@ -76,14 +76,14 @@ const AddResidentModal = ({ onClose }) => {
           ))}
         </div>
         {/* Forms */}
-        <div className="py-4 px-6">
+        <div className="py-4 sm:px-6">
           {/* Bulk Upload */}
           <div
             className={`${
               tab === 0 ? "flex" : "hidden"
-            } w-full flex-col gap-y-4 px-10`}
+            } w-full flex-col gap-y-4 sm:px-10 px-8`}
           >
-            <p className="font-bold text-[1.2rem] text-left">
+            <p className="font-bold sm:text-xl text-sm text-left">
               {progress === 100
                 ? "Upload complete"
                 : "Add Residents via your CSV file"}
@@ -94,15 +94,15 @@ const AddResidentModal = ({ onClose }) => {
                 for="dropzone-file"
                 className={`${
                   progress === 0 ? "flex" : "hidden"
-                } flex-col items-center justify-end px-20 py-4 border-2 ${
+                } flex-col items-center justify-end sm:px-20 py-4 border-2 ${
                   valid ? "border-[#FFFFFF33]" : "border-[#FF0000]"
                 }  border-dashed rounded-xl cursor-pointer bg-[#FFFFFF0D]`}
               >
-                <div className="flex flex-col items-center justify-center gap-y-14 pt-10">
+                <div className="flex flex-col items-center justify-center sm:gap-y-14 sm:p-10 sm:py-12 p-4 ">
                   <div className="p-10 bg-[#FFFFFF33] text-white rounded-xl text-[2rem]">
-                    <FiUpload />
+                    <FiUpload className="font-[700] sm:text-5xl"/>
                   </div>
-                  <p className="font-bold text-grey">
+                  <p className="font-bold text-grey sm:text-sm text-[10px] mt-2">
                     Drag and Drop or{" "}
                     <span className="text-transparent bg-gradient-to-r from-btnFrom to-btnTo bg-clip-text">
                       Browse

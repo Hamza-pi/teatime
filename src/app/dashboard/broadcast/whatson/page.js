@@ -60,18 +60,18 @@ const WhatsOn = () => {
                   >
                     <th
                       scope="row"
-                      className="pl-8 pr-6 py-4 font-bold text-white whitespace-nowrap"
+                      className="pl-8 pr-6 py-5 font-bold text-white whitespace-nowrap"
                     >
                       {day}
                     </th>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-5">
                       <input
                         type="text"
                         placeholder="event name"
                         className={inputStyle}
                       />
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-5">
                       <input
                         type="text"
                         placeholder="event location"
@@ -85,7 +85,7 @@ const WhatsOn = () => {
           </div>
         </div>
         {/* Inputs */}
-        <div className="flex xl:flex-col sm:flex-row flex-col gap-4 pt-10 xl:pb-0 xl:pl-0 sm:pl-8 pl-2 pb-4">
+        <div className="flex xl:flex-col sm:flex-row flex-col gap-4 pt-10 xl:pb-0 xl:pl-0 sm:pl-8 pl-2 pb-4 ">
           <div className="flex flex-col gap-2">
             <p className="uppercase text-lightWhite text-[10px]">
               Week commencing

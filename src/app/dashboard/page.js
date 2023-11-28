@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="text-greyText flex flex-col items-center justify-center gap-y-8 lg:py-16 py-8 font-medium">
-      <h1 className="text-[2.7rem] text-center">Welcome to Tea Time</h1>
+      <h1 className="text-[48px] text-center">Welcome to Tea Time</h1>
       <div>
         <Image src="/images/logo.png" width={190} height={190} />
       </div>

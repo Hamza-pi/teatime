@@ -71,9 +71,9 @@ const Approvals = () => {
   return (
     <div className="py-8">
       {/* Toggle */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between sm:px-8 px-5">
         <label className="flex sm:flex-row flex-col items-start sm:items-center gap-4">
-          <span className="uppercase text-grey text-xs font-bold sm:px-2">
+          <span className="uppercase text-grey text-xs font-bold ">
             Approval requests turned {checked ? "on" : "off"}
           </span>
           <Switch
@@ -91,7 +91,7 @@ const Approvals = () => {
         <BsThreeDots className=" text-greyText2 text-[1rem] cursor-pointer" />
       </div>
       {/* Approvals Card */}
-      <div className="approvals py-4">
+      <div className="approvals py-4 px-4">
         {checked ? (
           modal ? (
             <ApprovalModal setModal={setModal} />

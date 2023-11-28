@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, children }) => {
     <section
       className={` relative ${
         isOpen ? "block" : "hidden"
-      } z-10 w-screen h-screen bg-black/50`}
+      } z-10 w-screen h-screen  bg-black/50`}
       style={modalStyles}
     >
       <div>

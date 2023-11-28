@@ -30,12 +30,12 @@ const Login = () => {
         height={139}
         className="sm:block hidden absolute 2xl:-bottom-10 -bottom-20 2xl:left-1/3 left-1/4"
       />
-      <h1 className="font-bold text-[2.5rem]">Welcome back</h1>
+      <h1 className="font-bold text-[2.5rem] leadinhg-[45.38px]">Welcome back</h1>
 
       <form className="bg-lightDark rounded-3xl shadow-form text-center xl:py-[2rem] py-[1rem] sm:px-[1.5rem] px-[1rem] z-10">
         <div className="py-[1rem] flex flex-col gap-y-[.7rem]">
-          <h3 className="font-bold text-xl">Let’s Sign You In</h3>
-          <p className="text-grey font-normal text-sm">
+          <h3 className="font-bold text-[22px] leading-[30px]">Let’s Sign You In</h3>
+          <p className="text-grey font-normal text-sm leading-[]">
             Welcome back, you’ve been missed!
           </p>
         </div>
@@ -62,13 +62,19 @@ const Login = () => {
                 setType(!type);
               }}
             />
-          </div>
-          <div className="remember py-[.5rem] flex items-cemter gap-x-[.5rem]  text-sm font-normal">
+          </div> <div className="flex justify-between items-center  text-[12px] font-bold">
+          <div className="remember py-[.5rem] flex items-cemter gap-x-[.5rem]">
             <input
               type="checkbox"
               className="border border-[#DEEBFF] outline-none rounded-lg"
             />
+           
             <p className="text-left">Remember Me</p>
+          
+            
+            
+          </div>
+            <p className="text-right bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-transparent bg-clip-text">Remember Me</p>
           </div>
         </div>
 

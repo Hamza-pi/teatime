@@ -34,7 +34,7 @@ const BoradCasts = () => {
             <FaPlus className="text-blue text-[1.5rem]" />
           </div>
           <div className="text-center space-y-4">
-            <h3 className="font-bold ">Add New Blank broadcast</h3>
+            <h3 className="font-bold text-[16px]">Add New Blank broadcast</h3>
             <p className="text-xs text-grey px-8 leading-[20px]">
               Send information to all resident groups
             </p>

@@ -1,5 +1,5 @@
-
 'use client';
+import { DM_Sans, Outfit } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -7,21 +7,19 @@ import { FaPlus, FaRegHeart } from 'react-icons/fa6';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { PiBell } from 'react-icons/pi';
 import { RiSettings4Line } from 'react-icons/ri';
-import { DM_Sans, Outfit } from "next/font/google";
-
+import "react-toastify/dist/ReactToastify.css";
 
 const dm = DM_Sans({
-        subsets: ["latin"],
-        weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-        display: "swap",
-      });
+	subsets: ['latin'],
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	display: 'swap',
+});
 const layout = ({ children }) => {
-    const [menu, setMenu] = useState(false);
- 
+	const [menu, setMenu] = useState(false);
 
-  return (
-    <div className="">
-    <nav className="sticky top-0 z-50 w-full bg-dark">
+	return (
+		<div className="">
+			<nav className="sticky top-0 z-50 w-full bg-dark">
 				<div className="px-3 py-4 lg:px-5 lg:pl-3">
 					<div className="flex items-center justify-between">
 						{/* Logo */}
@@ -127,9 +125,32 @@ const layout = ({ children }) => {
 					</div>
 				</div>
 			</nav>
-            <div className={`w-full mx-auto ${dm.className}`}>{children}</div>
-            </div>
-  )
-}
+			<div className={`w-full mx-auto ${dm.className}`}>{children}</div>
+			{/* <ToastContainer
+				className="Toastify__toast-container"
+				toastStyle={{
+					margin: 0,
+					padding: 0,
+					backgroundColor: 'transparent',
+					top: '50px',
+					boxShadow: 'none',
+					maxWidth: '625px',
+				}}
+				closeButton={false}
+				position="top-center"
+				autoClose={3000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick={false}
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable
+				pauseOnHover={false}
+				theme="dark"
+				icon={false}
+			/> */}
+		</div>
+	);
+};
 
-export default layout
+export default layout;

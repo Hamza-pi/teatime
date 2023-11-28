@@ -62,7 +62,7 @@ const Familytable = (props) => {
 	return (
 		<div className="flex flex-col  space-y-5 mb-8">
 			{/*  Table */}
-			<div className="relative sm:px-7 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3 min-h-[560px]">
+			<div className="relative sm:px-7 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3 min-h-[650px]">
 				<table className="w-full text-sm text-left rtl:text-right text-white  min-w-[540px]">
 					<thead className="w-full text-sm text-white font-bold uppercase bg-white/10 rounded-xl ">
 						<tr className="rounded-xl px-3">

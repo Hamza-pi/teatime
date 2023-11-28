@@ -17,12 +17,12 @@ export default function SignIn() {
     <div className="flex justify-between items-center sm:px-[6rem] 2xl:px-[10rem] xl:py-[3rem] py-[1.5rem] min-h-screen max-h-screen overflow-hidden">
       {/* Left Heading */}
       <div className="lg:flex hidden flex-col items-start gap-y-4 font-bold text-disable pl-[1rem]">
-        <h3 className="text-[2rem]">Welcome to</h3>
+        <h3 className="text-[38.6px]">Welcome to</h3>
         <div className="">
           <Image src="/images/logo.png" width={173.07} height={173.07} />
         </div>
-        <h1 className="text-white text-[3rem]">Tea time</h1>
-        <h2 className="text-[2.5rem] leading-10">
+        <h1 className="text-white text-[64px] font-[700]">Tea time</h1>
+        <h2 className="text-[55px] leading-[57.7px]">
           The <span className="text-primary">easy and fun</span> way to <br />{" "}
           manage your <span className="text-primary">age care</span>
         </h2>
@@ -49,7 +49,7 @@ export default function SignIn() {
         />
         <form className="bg-lightDark rounded-3xl shadow-form text-center xl:py-[2rem] py-[1rem] sm:px-[1.5rem] px-[1rem] z-10">
           <div className="py-[1rem] flex flex-col gap-y-[.7rem]">
-            <h3 className="font-bold text-xl">Getting Started</h3>
+            <h3 className="font-bold text-[20px] leading-[30px]">Getting Started</h3>
             <p className="text-grey font-normal text-sm">
               Create an account to continue!
             </p>

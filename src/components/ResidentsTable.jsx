@@ -1,5 +1,5 @@
 "use client";
-
+import Model from "@/components/Model";
 import React, { useState } from "react";
 import { FiCheckCircle } from "react-icons/fi";
 import { MdOutlineCancel } from "react-icons/md";
@@ -12,8 +12,12 @@ import {
 } from "react-icons/hi";
 import { IoMdArrowDropup } from "react-icons/io";
 import ReactPaginate from "react-paginate";
-
+import Delresmodel from "./Delresmodel";
+import Editresidentmodel from "./Editresidentmodel";
 const ResidentTable = (props) => {
+  const [iseditmodel, setiseditmodel] = useState(false)
+  const [isdelModalOpen, setIsdelModalOpen] = useState(false);
+
   const { data } = props;
 
   const [menu, setMenu] = useState({
@@ -75,6 +79,20 @@ const ResidentTable = (props) => {
       setItemOffset(newOffset);
       setSelectedPage(pageCount - 1);
     }
+  };
+  const opendelModal = () => {
+    setIsdelModalOpen(true);
+  };
+
+  const closedelModal = () => {
+    setIsdelModalOpen(false);
+  };
+  const openeditModal = () => {
+    setiseditmodel(true);
+  };
+
+  const closeeditModal = () => {
+    setiseditmodel(false);
   };
 
   return (
@@ -185,13 +203,20 @@ const ResidentTable = (props) => {
                       </li>
                       <li
                         className="px-2 py-2 cursor-pointer border-gradient"
-                        onClick={() => setMenu({ disp: false })}
+                        onClick={() => {
+                          setMenu({ disp: false });
+                          openeditModal();
+                        }}
                       >
                         <p>Edit details</p>
                       </li>
                       <li
                         className="px-2 py-2 cursor-pointer"
-                        onClick={() => setMenu({ disp: false })}
+                        onClick={() => {
+                          setMenu({ disp: false });
+                          opendelModal();
+                        }}
+                        
                       >
                         <p className="text-lightPink">Remove resident</p>
                       </li>
@@ -202,7 +227,25 @@ const ResidentTable = (props) => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> 
+      
+             {/* //models */}
+        <Model isOpen={isdelModalOpen} onClose={closedelModal}>
+        <div className="w-full h-full ">
+          <Delresmodel onClose={closedelModal} />{" "}
+        </div>
+      </Model>
+
+
+      
+        <Model isOpen={iseditmodel} onClose={closeeditModal}>
+        <div className="w-full h-full ">
+          <Editresidentmodel onClose={closeeditModal} />{" "}
+        </div>
+      </Model>
+
+
+
       <div className="flex text-black w-full md:justify-end items-center justify-center mt-2 space-x-2 ">
         <div
           className={`flex items-center bg-black px-2 py-1 cursor-pointer ${
@@ -214,7 +257,6 @@ const ResidentTable = (props) => {
             onClick={handleDoubleLeftClick}
           />
         </div>
-
         <ReactPaginate
           breakLabel={`of ${pageCount}`}
           forcePage={selectedPage}

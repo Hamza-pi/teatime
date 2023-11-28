@@ -11,7 +11,7 @@ const ApprovalCard = ({ req, setModal }) => {
 
 
   return (
-    <div className="card bg-lightDark rounded-xl p-3 flex flex-col gap-y-4">
+    <div className="card bg-lightDark rounded-2xl p-5 flex flex-col gap-y-4">
       <div>
         <img
           src={req.image}
@@ -42,7 +42,7 @@ const ApprovalCard = ({ req, setModal }) => {
           </p>
         </div>
       </div>
-      <div className="caption pr-8 h-[4rem] overflow-hidden">
+      <div className="caption pr-3 h-[4rem] overflow-hidden">
         <p className="text-white font-bold text-sm">{req.caption}</p>
       </div>
       <div className="consent flex items-center justify-between">
@@ -76,15 +76,15 @@ const ApprovalCard = ({ req, setModal }) => {
           </div>
         </div>
       </div>
-      <div className="buttons border-t border-[#2F2F2F] py-6 flex items-center justify-around">
+      <div className="buttons border-t border-[#2F2F2F] py-6 flex items-center justify-around xl:flex-row lg:flex-col  w-full xl:space-y-0  lg:space-y-5 space-y-0">
         <button
-          className="rounded-2xl px-6 sm:px-10 py-3 bg-[#ffffff0d]"
+          className="rounded-2xl px-6 sm:px-10 py-3 bg-[#ffffff0d] xl:w-fit lg:w-full"
           onClick={() => handleModal(true)}
         >
           Review
         </button>
         <button
-          className="rounded-2xl px-6 sm:px-10 py-3 bg-gradient-to-r from-btnFrom to-btnTo"
+          className="rounded-2xl px-6 sm:px-10 py-3 bg-gradient-to-r from-btnFrom to-btnTo xl:w-fit lg:w-full"
           onClick={() => handleToast("Post Shared", <FiCheckCircle />, true)}
         >
           Approve

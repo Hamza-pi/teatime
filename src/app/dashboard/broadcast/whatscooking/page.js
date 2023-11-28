@@ -169,10 +169,10 @@ const WhatsCooking = () => {
                   <tr className="divide-x-[1px] divide-[#FFFFFF0D]">
                     <td className="px-6 py-4">
                       <div
-                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-[85%] cursor-pointer`}
+                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-fit cursor-pointer`}
                         onClick={handleAddStarterField}
                       >
-                        <p className="bg-black pl-10 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
+                        <p className="bg-black px-16  py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
                           <FiPlusCircle className="text-xl" />
                           Add field
                         </p>
@@ -180,10 +180,10 @@ const WhatsCooking = () => {
                     </td>
                     <td className="px-6 py-4">
                       <div
-                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-[85%] cursor-pointer`}
+                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-fit cursor-pointer`}
                         onClick={handleAddMainField}
                       >
-                        <p className="bg-black pl-10 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
+                        <p className="bg-black px-16 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
                           <FiPlusCircle className="text-xl" />
                           Add field
                         </p>
@@ -191,10 +191,10 @@ const WhatsCooking = () => {
                     </td>
                     <td className="px-6 py-4">
                       <div
-                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-[85%] cursor-pointer`}
+                        className={`bg-gradient-to-r from-btnFrom to-btnTo p-[1px] rounded-xl w-fit cursor-pointer`}
                         onClick={handleAddDessertField}
                       >
-                        <p className="bg-black pl-10 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
+                        <p className="bg-black px-16 py-2 rounded-xl text-[#E3E3E3] text-xs font-bold flex items-center justify-start gap-x-4">
                           <FiPlusCircle className="text-xl" />
                           Add field
                         </p>

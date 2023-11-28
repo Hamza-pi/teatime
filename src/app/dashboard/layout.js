@@ -101,10 +101,10 @@ export default function AdminLayout({ children }) {
               </Link>
             </div>
             {/* Info */}
-            <div className="text-white sm:flex hidden items-center justify-between w-[75%]">
-              <h3 className="font-bold text-xl">👋Jimmy Trick</h3>
+            <div className="text-white sm:flex hidden items-center justify-between w-[75%] pr-7">
+              <h3 className="font-bold text-[22px] leading-[30px]">👋Jimmy Trick</h3>
               <div className="flex items-center justify-between gap-x-8">
-                <button className="w-full flex items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
+                <button className="w-full flex items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-2xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
                   <FaPlus /> Broadcast
                 </button>
                 <div className="relative cursor-pointer">
@@ -132,7 +132,7 @@ export default function AdminLayout({ children }) {
                     height={32}
                     src="/images/user.png"
                     alt="user photo"
-                  />
+                  /></Link>
                 </button>
                 <div
                   className={`z-50 my-4 text-base sm:hidden ${
@@ -186,8 +186,8 @@ export default function AdminLayout({ children }) {
             sider ? "translate-x-0" : "-translate-x-full"
           } bg-dark lg:translate-x-0`}
         >
-          <div className="h-full pb-4 flex flex-col items-start justify-between overflow-y-auto bg-dark text-disable">
-            <ul className="space-y-8 font-medium">
+          <div className="h-full pb-4 flex flex-col items-start justify-between overflow-y-auto bg-dark text-disable pt-8">
+            <ul className="space-y-8 font-medium text-sm">
               {links.map((item, i) => (
                 <li key={i}>
                   <Link
