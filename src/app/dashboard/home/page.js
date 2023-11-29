@@ -113,7 +113,7 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Cards Container */}
-      <div className="flex items-center justify-between flex-wrap gap-y-4">
+      <div className="flex items-center justify-normal flex-wrap gap-4">
         {cards.map((card, i) => (
           <div
             class="py-4 w-full sm:w-[267px] 2xl:w-[470px] flex flex-col items-center justify-center gap-y-4 bg-lightDark last:bg-gradient-to-r last:from-btnFrom last:to-btnTo rounded-2xl shadow"

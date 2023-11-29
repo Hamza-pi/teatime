@@ -27,7 +27,7 @@ const ApprovalCard = ({ req, setModal }) => {
           <span className="text-grey font-normal">Posted by</span>
           <div
             className="bg-[#00875A] w-[1.5rem] h-[1.5rem] rounded-full p-1 flex items-center justify-center cursor-pointer"
-            onClick={() => setToolTip(!toolTip)}
+            onMouseEnter={() => setToolTip(true)} onMouseLeave={()=>setToolTip(false)}
           >
             <p className="text-xs uppercase">{req.postedBy.split(" ")[0]}</p>
           </div>

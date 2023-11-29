@@ -1,7 +1,7 @@
 import { handleToast } from "@/utils/showToast";
 import React, { useState, useEffect, useRef } from "react";
 import { Outfit } from "next/font/google";
-import { FiUpload, FiCheckCircle,FiUser } from "react-icons/fi";
+import { FiUpload, FiCheckCircle, FiUser } from "react-icons/fi";
 import { CgCalendar } from "react-icons/cg";
 
 const AddResidentModal = ({ onClose }) => {
@@ -101,7 +101,7 @@ const AddResidentModal = ({ onClose }) => {
     >
       <div className="max-w-[574px]  bg-model rounded-xl py-2">
         {/* Tabs */}
-        <div className="w-full flex items-center justify-center gap-x-6 border-b border-[#FFFFFF0D]">
+        <div className="w-full flex items-center justify-evenly border-b border-[#FFFFFF0D]">
           {tabs.map((item, i) => (
             <div onClick={() => setTab(i)} className="cursor-pointer">
               <h3 className="py-3">{item.title}</h3>
@@ -164,7 +164,7 @@ const AddResidentModal = ({ onClose }) => {
             >
               <div className="progress min-w-full h-10 border-2 border-[#FFFFFF33] border-dashed  bg-[#FFFFFF0D] rounded-full">
                 <div
-                  className="bg-sharpGreen h-full"
+                  className="bg-sharpGreen h-full rounded-full"
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
@@ -451,9 +451,13 @@ const AddResidentModal = ({ onClose }) => {
                 <button
                   type="button"
                   className={`text-red-600 font-medium rounded-xl sm:text-sm text-[12px] sm:px-5 sm:py-2.5 p-1 text-center bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% `}
-                  onClick={()=>{
-                    handleToast(`${field3} added as a new resident`,<FiUser/>,true);
-                    onClose()
+                  onClick={() => {
+                    handleToast(
+                      `${field3} added as a new resident`,
+                      <FiUser />,
+                      true
+                    );
+                    onClose();
                   }}
                 >
                   Add family member

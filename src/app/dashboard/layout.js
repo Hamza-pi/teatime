@@ -92,7 +92,7 @@ export default function AdminLayout({ children }) {
               <Link href="/dashboard" className="flex ms-2 md:me-24">
                 <img
                   src="/images/logo.png"
-                  className="h-[57px] w-[57px] me-3"
+                  className="h-[57px] w-[57px] sm:me-3"
                   alt="FlowBite Logo"
                 />
                 <span className="self-center text-xl font-semibold sm:text-sm whitespace-nowrap dark:text-white">
@@ -101,12 +101,12 @@ export default function AdminLayout({ children }) {
               </Link>
             </div>
             {/* Info */}
-            <div className="text-white sm:flex hidden items-center justify-between w-[80%] pr-8">
-              <h3 className="font-bold text-[22px] leading-[30px]">
+            <div className="text-white flex items-center sm:justify-between justify-end sm:w-[80%] w-[50%] sm:pr-8 pr-0">
+              <h3 className="font-bold sm:block hidden text-[22px] leading-[30px]">
                 👋Jimmy Trick
               </h3>
-              <div className="flex items-center justify-between gap-x-8">
-                <button className="w-full flex items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-2xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
+              <div className="flex items-center justify-between sm:gap-x-8 gap-x-2">
+                <button className="w-full sm:flex hidden items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-2xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
                   <FaPlus /> Broadcast
                 </button>
                 <div className="relative cursor-pointer">
@@ -159,15 +159,7 @@ export default function AdminLayout({ children }) {
                     <button className="w-full flex items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
                       <FaPlus /> Broadcast
                     </button>
-                    <div className="relative cursor-pointer">
-                      <p className="w-[1rem] h-[1rem] rounded-full bg-gradient-to-r from-btnFrom to-btnTo flex items-center justify-center text-[8px] absolute -top-1 right-0">
-                        1
-                      </p>
-                      <PiBell className="text-[1.5rem]" />
-                    </div>
-                    <div className=" cursor-pointer">
-                      <RiSettings4Line className="text-[1.5rem]" />
-                    </div>
+                    
                   </div>
                 </div>
                 <div
@@ -257,7 +249,7 @@ export default function AdminLayout({ children }) {
         <div className="flex-1 lg:ml-64 px-2 sm:px-4 2xl:px-16 overflow-hidden">
           <div className={`w-full mx-auto ${dm.className} relative`}>
             {children}
-            <div className="absolute -top-[1%] left-5 sm:left-[50%] translate-x-[-50%] max-width:625px">
+            <div className="absolute -top-[1%] left-5 sm:left-[50%] translate-x-[-50%] max-w-[625px]">
               <ToastContainer
                 className="Toastify__toast-container"
                 toastStyle={{
