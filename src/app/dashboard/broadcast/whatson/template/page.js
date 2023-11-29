@@ -109,8 +109,7 @@ const Templates = () => {
             <Swiper
               spaceBetween={20}
               className="w-[90%]"
-              pagination={pagination}
-              modules={[Pagination]}
+              pagination={false}
               breakpoints={{
                 1440: {
                   slidesPerView: 3,
