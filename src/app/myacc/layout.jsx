@@ -7,6 +7,7 @@ import { FaPlus, FaRegHeart } from "react-icons/fa6";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiBell } from "react-icons/pi";
 import { RiSettings4Line } from "react-icons/ri";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const dm = DM_Sans({
@@ -125,7 +126,33 @@ const layout = ({ children }) => {
           </div>
         </div>
       </nav>
-      <div className={`w-full mx-auto ${dm.className}`}>{children}</div>
+      <div className={`w-full mx-auto ${dm.className} relative`}>
+        {children}
+        <div className="absolute -top-[1%] left-5 sm:left-[50%] translate-x-[-50%] max-w-[625px]">
+          <ToastContainer
+            className="Toastify__toast-container"
+            toastStyle={{
+              margin: 0,
+              padding: 0,
+              backgroundColor: "transparent",
+              boxShadow: "none",
+              width: "100%",
+            }}
+            closeButton={false}
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+            theme="dark"
+            icon={false}
+          />
+        </div>{" "}
+      </div>
     </div>
   );
 };

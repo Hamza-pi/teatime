@@ -17,10 +17,7 @@ const page = () => {
     setPhoneType(type);
     setIsDropdownOpen(false);
   };
-  const handletoast = () => {
-    handleToast("please input all fields", <FiUser />, true);
-    console.log("clicked");
-  };
+
   return (
     <section className="w-full min-h-screen  bg-[#f8f8f8] ">
       <div className=" lg:pr-32 lg:pl-48 md:pr-16 md:pl-24  px-6 h-full text-black">
@@ -185,7 +182,9 @@ const page = () => {
             <Link href="/myacc">
               <button
                 className=" flex items-center text-center  sm:py-[11px] sm:px-[24px] sm:gap-[12px] px-[15px] py-[6px]  justify-center bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% sm:text-lg rounded-[43px]  text-white font-[600] "
-                onClick={handletoast}
+                onClick={() => {
+                  handleToast("please input all fields", <FiUser />, true);
+                }}
               >
                 <p className="text-center ">Save Changes</p>
               </button>

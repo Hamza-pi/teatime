@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${outfit.className} bg-dark text-white`}>
         {children}
+        
       </body>
     </html>
   );
