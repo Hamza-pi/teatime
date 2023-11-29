@@ -127,7 +127,7 @@ const AddResidentModal = ({ onClose }) => {
                 : "Add Residents via your CSV file"}
             </p>
             {/* Uploader */}
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col gap-4 items-center justify-center">
               <label
                 for="dropzone-file"
                 className={`${
@@ -155,6 +155,13 @@ const AddResidentModal = ({ onClose }) => {
                   onChange={(e) => handleFileSelect(e)}
                 />
               </label>
+              <button
+                type="button"
+                className="text-white bg-white/5  font-medium rounded-xl sm:text-sm text-[12px]  sm:px-12 sm:py-2.5 p-1 text-center   "
+                onClick={onClose}
+              >
+                Cancel
+              </button>
             </div>
             {/* Progress */}
             <div
@@ -210,7 +217,7 @@ const AddResidentModal = ({ onClose }) => {
           <div
             className={`${
               tab === 1 ? "flex" : "hidden"
-            } w-full flex-col gap-y-4`}
+            } w-full flex-col gap-y-4 max-h-[500px] overflow-y-scroll overflow-x-hidden scrollbar`}
           >
             <form className="sm:px-20 px-12 sm:py-8 py-2">
               <div className="grid gap-2 mb-2 sm:grid-cols-2 sm:gap-6 sm:mb-5 max-w-[432px]">
