@@ -257,7 +257,7 @@ export default function AdminLayout({ children }) {
         <div className="flex-1 lg:ml-64 px-2 sm:px-4 2xl:px-16 overflow-hidden">
           <div className={`w-full mx-auto ${dm.className} relative`}>
             {children}
-            <div className="absolute -top-[1%] left-[50%] sm:translate-x-[-50%] max-width:625px">
+            <div className="absolute -top-[1%] left-5 sm:left-[50%] translate-x-[-50%] max-width:625px">
               <ToastContainer
                 className="Toastify__toast-container"
                 toastStyle={{
