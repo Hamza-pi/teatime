@@ -108,16 +108,16 @@ const ResidentTable = (props) => {
               >
                 title
               </th>
-              <th scope="col" className="px-2 py-3 ">
+              <th scope="col" className="px-2 py-3 uppercase">
                 First Name
               </th>
-              <th scope="col" className="px-2 py-3 ">
+              <th scope="col" className="px-2 py-3 uppercase">
                 Last Name
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-3 uppercase">
                 d.o.b
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-2 py-3 uppercase">
                 sharing consent
               </th>
               <th

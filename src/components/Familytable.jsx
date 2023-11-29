@@ -68,17 +68,17 @@ const Familytable = (props) => {
 						<tr className="rounded-xl px-3">
 							<th
 								scope="col"
-								className="pl-10 py-3 rounded-tl-xl rounded-bl-xl "
+								className="pl-10 py-3 rounded-tl-xl rounded-bl-xl uppercase"
 							>
 								title
 							</th>
-							<th scope="col" className="px-2 py-3 ">
+							<th scope="col" className="px-2 py-3 uppercase">
 								First Name
 							</th>
-							<th scope="col" className="px-2 py-3 ">
+							<th scope="col" className="px-2 py-3 uppercase">
 								Last Name
 							</th>
-							<th scope="col" className="px-2 py-3">
+							<th scope="col" className="px-2 py-3 uppercase">
 								Family of
 							</th>
 							<th

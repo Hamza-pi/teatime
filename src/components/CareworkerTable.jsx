@@ -10,8 +10,30 @@ import {
 } from 'react-icons/hi';
 import ReactPaginate from 'react-paginate';
 import { IoMdArrowDropup } from "react-icons/io";
-
+import Model from "@/components/Model";
+import Delcaremodel from "./Delcaremodel";
+import Careeditmodel from "./Careeditmodel";
 const CareworkerTable = (props) => {
+	const [iseditmodel, setiseditmodel] = useState(false);
+	const [isdelModalOpen, setIsdelModalOpen] = useState(false);
+
+
+	const opendelModal = () => {
+		setIsdelModalOpen(true);
+	  };
+	
+	  const closedelModal = () => {
+		setIsdelModalOpen(false);
+	  };
+	  const openeditModal = () => {
+		setiseditmodel(true);
+	  };
+	
+	  const closeeditModal = () => {
+		setiseditmodel(false);
+	  };
+
+
 //3 dot dropdown
 const [menu, setMenu] = useState({
     disp: false,
@@ -87,16 +109,16 @@ const [menu, setMenu] = useState({
 						<tr className="rounded-xl px-3">
 							<th
 								scope="col"
-								className="pl-10 py-3 rounded-tl-xl rounded-bl-xl "
+								className="pl-10 py-3 rounded-tl-xl rounded-bl-xl uppercase"
 							>
 								First Name
 							</th>
 
-							<th scope="col" className="px-2 py-3 ">
+							<th scope="col" className="px-2 py-3 uppercase">
 								Last Name
 							</th>
-							<th scope="col" className="px-2 py-3">
-								Family of
+							<th scope="col" className="px-2 py-3 uppercase">
+							Email
 							</th>
 							<th
 								scope="col"
@@ -171,13 +193,19 @@ const [menu, setMenu] = useState({
                       
                       <li
                         className="px-2 py-2 cursor-pointer border-gradient"
-                        onClick={() => setMenu({ disp: false })}
+                        onClick={() => {
+							setMenu({ disp: false });
+							openeditModal();
+						  }}
                       >
                         <p>Edit details</p>
                       </li>
                       <li
                         className=" py-2 cursor-pointer"
-                        onClick={() => setMenu({ disp: false })}
+                        onClick={() => {
+							setMenu({ disp: false });
+							opendelModal();
+						  }}
                       >
                         <p className="text-lightPink">Remove care-worker</p>
                       </li>
@@ -189,6 +217,18 @@ const [menu, setMenu] = useState({
 					</tbody>
 				</table>
 			</div>
+
+			<Model isOpen={isdelModalOpen} onClose={closedelModal}>
+        <div className="w-full h-full ">
+          <Delcaremodel onClose={closedelModal} />{" "}
+        </div>
+      </Model>
+
+      <Model isOpen={iseditmodel} onClose={closeeditModal}>
+        <div className="w-full h-full ">
+          <Careeditmodel onClose={closeeditModal} />{" "}
+        </div>
+      </Model>
 			<div className="flex text-black w-full md:justify-end items-center justify-center mt-2 space-x-2 ">
 				<div
 					className={`flex items-center bg-black px-2 py-1 cursor-pointer ${
