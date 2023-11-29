@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Button from "../../../components/Button";
 import ResidentTable from "@/components/ResidentsTable";
 import Search from "../../../components/Search";
+
 const Residents = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -102,12 +103,12 @@ const Residents = () => {
   ];
   
   return (
-    <section className="  sm:p-3  md:pt-16 relative">
-      <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center space-y-3">
+    <section className="sm:p-3 md:pt-16 relative">
+      <div className="flex sm:justify-between sm:px-5 sm:flex-row flex-col-reverse sm:items-center">
         <p className="text-greyText2 font-bold leading-[26.53px]">
           Current residents
         </p>
-        <div className="w-full sm:w-fit flex  items-center md:space-x-14 sm:space-x-12 space-x-5 sm:flex-row flex-ro justify-end relative">
+        <div className="w-full sm:w-fit flex  items-center md:space-x-14 sm:space-x-12 space-x-5 sm:flex-row justify-end relative">
           <Search />
           <Button onopen={openModal} />
         </div>

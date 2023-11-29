@@ -45,7 +45,7 @@ const ApprovalCard = ({ req, setModal }) => {
       <div className="caption pr-3 h-[4rem] overflow-hidden">
         <p className="text-white font-bold text-sm">{req.caption}</p>
       </div>
-      <div className="consent flex items-center justify-between">
+      {/* <div className="consent flex items-center justify-between">
         <div className="meter">
           <p className="text-grey py-1">consent meter</p>
           <div className="w-[141px] rounded-full h-[15px] bg-barColor">
@@ -75,7 +75,7 @@ const ApprovalCard = ({ req, setModal }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="buttons border-t border-[#2F2F2F] py-6 flex items-center justify-around xl:flex-row lg:flex-col  w-full xl:space-y-0  lg:space-y-5 space-y-0">
         <button
           className="rounded-2xl px-6 sm:px-10 py-3 bg-[#ffffff0d] xl:w-fit lg:w-full"

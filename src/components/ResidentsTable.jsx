@@ -15,7 +15,7 @@ import ReactPaginate from "react-paginate";
 import Delresmodel from "./Delresmodel";
 import Editresidentmodel from "./Editresidentmodel";
 const ResidentTable = (props) => {
-  const [iseditmodel, setiseditmodel] = useState(false)
+  const [iseditmodel, setiseditmodel] = useState(false);
   const [isdelModalOpen, setIsdelModalOpen] = useState(false);
 
   const { data } = props;
@@ -96,11 +96,11 @@ const ResidentTable = (props) => {
   };
 
   return (
-    <div className="flex flex-col py-8 space-y-4">
+    <div className="flex flex-col py-2 space-y-4">
       {/*  Table */}
-      <div className="relative sm:px-7 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3 min-h-[560px]">
+      <div className="relative sm:px-4 w-full overflow-x-auto shadow-md rounded-xl p-3 bg-table mt-3 min-h-[560px]">
         <table className="w-full text-sm text-left rtl:text-right text-white  min-w-[540px]">
-          <thead className="w-full text-sm text-white font-bold uppercase bg-white/10 rounded-xl ">
+          <thead className="w-full sm:text-sm text-xs text-white font-bold uppercase bg-white/10 rounded-xl ">
             <tr className="rounded-xl px-3">
               <th
                 scope="col"
@@ -126,7 +126,7 @@ const ResidentTable = (props) => {
               ></th>
             </tr>
           </thead>
-          <tbody className="mt-12 p-8">
+          <tbody>
             {/* Adjust data and structure based on your needs */}
             {currentItems.map((row, rowIndex) => (
               <tr key={rowIndex}>
@@ -194,7 +194,7 @@ const ResidentTable = (props) => {
                     <div className="absolute -top-5 right-1 text-[2rem] text-[#232323]">
                       <IoMdArrowDropup />
                     </div>
-                    <ul className="text-center font-medium text-[1rem]">
+                    <ul className="text-center font-medium text-[16.88px] leading-[26.53px] -tracking-[.48px]">
                       <li
                         className="px-2 py-2 cursor-pointer border-gradient"
                         onClick={() => setMenu({ disp: false })}
@@ -216,7 +216,6 @@ const ResidentTable = (props) => {
                           setMenu({ disp: false });
                           opendelModal();
                         }}
-                        
                       >
                         <p className="text-lightPink">Remove resident</p>
                       </li>
@@ -227,24 +226,20 @@ const ResidentTable = (props) => {
             ))}
           </tbody>
         </table>
-      </div> 
-      
-             {/* //models */}
-        <Model isOpen={isdelModalOpen} onClose={closedelModal}>
+      </div>
+
+      {/* //models */}
+      <Model isOpen={isdelModalOpen} onClose={closedelModal}>
         <div className="w-full h-full ">
           <Delresmodel onClose={closedelModal} />{" "}
         </div>
       </Model>
 
-
-      
-        <Model isOpen={iseditmodel} onClose={closeeditModal}>
+      <Model isOpen={iseditmodel} onClose={closeeditModal}>
         <div className="w-full h-full ">
           <Editresidentmodel onClose={closeeditModal} />{" "}
         </div>
       </Model>
-
-
 
       <div className="flex text-black w-full md:justify-end items-center justify-center mt-2 space-x-2 ">
         <div

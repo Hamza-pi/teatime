@@ -31,11 +31,11 @@ const BoradCasts = () => {
         {/* Add Blank broadcast */}
         <div className="w-[242px] h-[312px] bg-[#FFFFFF0D] rounded-xl flex flex-col items-center justify-center gap-6">
           <div className="bg-lightDark px-7 py-6 rounded-2xl cursor-pointer">
-            <FaPlus className="text-blue text-[1.5rem]" />
+            <FaPlus className="text-red text-[1.5rem]" />
           </div>
-          <div className="text-center space-y-4">
+          <div className="text-center space-y-4 leading-[20px] -tracking-[.4px]">
             <h3 className="font-bold text-[16px]">Add New Blank broadcast</h3>
-            <p className="text-xs text-grey px-8 leading-[20px]">
+            <p className="text-xs text-grey px-8">
               Send information to all resident groups
             </p>
           </div>
@@ -48,7 +48,7 @@ const BoradCasts = () => {
           >
             <div className="px-6 py-4 space-y-8">
               <h3 className="font-bold">{item.title}</h3>
-              <p className="text-xs font-normal leading-[20px] text-grey">
+              <p className="text-xs font-normal leading-[20px] -tracking-[.4px] text-grey">
                 {item.slogon}
               </p>
             </div>

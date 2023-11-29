@@ -13,11 +13,11 @@ const Modal = ({ isOpen, onClose, children }) => {
     <section
       className={` relative ${
         isOpen ? "block" : "hidden"
-      } z-10 w-screen h-screen  bg-black/50`}
+      } z-50 w-screen h-screen  bg-black/50`}
       style={modalStyles}
     >
       <div>
-        <div className="bg-transparent flex justify-center text-center shadow-xl ">
+        <div className="bg-transparent h-auto sm:h-1/2 overflow-scroll flex justify-center text-center shadow-xl ">
           {children}
         </div>
       </div>

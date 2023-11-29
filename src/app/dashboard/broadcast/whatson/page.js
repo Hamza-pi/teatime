@@ -22,10 +22,10 @@ const WhatsOn = () => {
   ];
 
   return (
-    <div className="pt-6 2xl:pt-12 bg-lightDark rounded-xl py-4">
+    <div className=" 2xl:pt-12 bg-lightDark rounded-xl py-2">
       {/* Heading */}
-      <div className="flex items-center justify-between px-8 sm:px-16 pt-4 pb-8 border-b border-[#FFFFFF0D]">
-        <h3 className="font-bold">Whats on this week</h3>
+      <div className="flex items-center justify-between px-8 sm:px-16 py-6 border-b border-[#FFFFFF0D]">
+        <h3 className="font-bold leading-[22px] -tracking-[.4px]">Whats on this week</h3>
         <div className="flex items-center sm:gap-x-10 gap-x-2 text-[1.5rem] text-lightWhite">
           <Link href="/dashboard/broadcast">
             <MdOutlineDelete className="cursor-pointer" />

@@ -5,6 +5,7 @@ import { FaArrowUpLong } from "react-icons/fa6";
 import { FiCheckCircle, FiUser, FiUsers, FiHome } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa6";
 import { MdOutlineCancel } from "react-icons/md";
+import { GrNotification } from "react-icons/gr";
 import Link from "next/link";
 
 const Dashboard = () => {
@@ -56,9 +57,9 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="w-full py-8 text-white flex flex-col gap-y-8">
+    <div className="w-full xl:px-2 py-8 text-white flex flex-col gap-y-8">
       {/* My Dashboard */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center px-4 justify-between">
         <h3 className="text-textBlack text-base uppercase font-bold">
           My Dashboard
         </h3>
@@ -67,25 +68,27 @@ const Dashboard = () => {
       {/* Chart Container */}
       <div className="flex  items-start xl:items-center xl:flex-row flex-col xl:justify-between gap-4">
         {/* Approvals */}
-        <div className="flex items-center gap-x-8 bg-gradient-to-r from-btnFrom to-btnTo rounded-xl pl-6 pr-14 py-4">
+        <div className="flex items-center gap-x-6 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl pl-6 pr-14 py-4">
           {/* Icon */}
           <div className="bg-[#04040434] p-4 rounded-2xl">
             <FiCheckCircle className="text-primary1 text-[1.5rem]" />
           </div>
           <div className="text-center text-black">
-            <h3 className="font-bold text-[1.85rem]">2</h3>
-            <p className="text-primary1 text-xs font-bold">Pending approvals</p>
+            <h3 className="font-bold text-[30px]">2</h3>
+            <p className="text-primary1 text-xs font-bold -tracking-[0.4px]">
+              Pending approvals
+            </p>
           </div>
         </div>
         {/* Chart */}
-        <div className="bg-lightDark flex sm:flex-row flex-col items-center gap-2 rounded-xl pr-8 xl:pr-16 pl-2 sm:py-0 py-2 max-w-full justify-between xl:w-[72%] w-full">
-          <div className="min-w-[60%]">
+        <div className="bg-lightDark flex sm:flex-row flex-col items-center gap-2 rounded-2xl pr-4 pl-2 sm:py-0 py-2 max-w-full justify-between xl:w-[50%] w-full">
+          <div className="min-w-[55%]">
             <Chart />
           </div>
-          <div className="flex items-center xl:gap-x-10 gap-x-4 ">
+          <div className="flex items-center gap-x-4 -tracking-[.4px]">
             <div>
-              <h3 className="font-bold text-[1.38rem]">120</h3>
-              <p className="font-normat text-sm text-grey">
+              <h3 className="font-bold text-[22px] leading-[30px]">120</h3>
+              <p className="font-normal text-sm text-grey leading-[20px] ">
                 Posts shared this week
               </p>
             </div>
@@ -95,31 +98,62 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        {/* Family Notifications */}
+        <div className="flex items-center gap-x-6 bg-primary1 rounded-2xl pl-6 pr-14 py-4">
+          {/* Icon */}
+          <div className="bg-gradient-to-r from-[#ff3c0033] to-[#e429832f] bg-opacity-5 p-4 rounded-2xl">
+            <GrNotification className="text-red text-[1.5rem]" />
+          </div>
+          <div className="text-center text-white">
+            <h3 className="font-bold text-[30px]">2</h3>
+            <p className="text-xs font-bold -tracking-[0.4px]">
+              Family Notifications
+            </p>
+          </div>
+        </div>
       </div>
       {/* Cards Container */}
       <div className="flex items-center justify-between flex-wrap gap-y-4">
         {cards.map((card, i) => (
           <div
-            class="py-4 w-full sm:w-[250px] 2xl:w-[470px] flex flex-col items-center justify-center gap-y-4 bg-lightDark rounded-xl shadow"
+            class="py-4 w-full sm:w-[267px] 2xl:w-[470px] flex flex-col items-center justify-center gap-y-4 bg-lightDark last:bg-gradient-to-r last:from-btnFrom last:to-btnTo rounded-2xl shadow"
             key={i}
           >
-            <div className="p-4 bg-gradient-to-tr from-cardFrom to-cardTo text-disable text-[1.5rem] rounded-2xl backdrop-blur-[2rem]">
+            <div
+              className={`p-4 ${
+                i === 3
+                  ? "bg-[#D9D9D9] bg-opacity-20 text-table"
+                  : "bg-gradient-to-tr from-cardFrom to-cardTo text-disable backdrop-blur-[2rem]"
+              }  text-[1.5rem] rounded-2xl`}
+            >
               {card.icon}
             </div>
-            <div className="text-center">
-              <h3 class="mb-2 text-[1.87rem] font-bold">{card.count}</h3>
-              <p class="mb-3 font-normal text-xs text-grey">{card.title}</p>
+            <div className="text-center font-bold">
+              <h3
+                class={`mb-2 text-[30px] ${
+                  i === 3 ? "text-primary1" : "text-white"
+                }`}
+              >
+                {card.count}
+              </h3>
+              <p
+                class={`mb-3 text-xs ${
+                  i === 3 ? "text-primary1" : "text-grey"
+                }`}
+              >
+                {card.title}
+              </p>
             </div>
           </div>
         ))}
       </div>
       {/* New Residents */}
-      <div className="flex items-center justify-between font-bold text-xl text-greyText2">
+      {/* <div className="flex items-center justify-between font-bold text-xl text-greyText2">
         <h3>New residents</h3>
         <Link href="">View all</Link>
-      </div>
+      </div> */}
       {/* Table */}
-      <div className="bg-lightDark px-6 py-4 rounded-xl">
+      {/* <div className="bg-lightDark px-6 py-4 rounded-xl">
         <div className="relative overflow-x-auto shadow-md ">
           <table className="w-full text-sm text-center">
             <thead className="text-sm text-white uppercase bg-[#ffffff13] rounded-xl">
@@ -160,7 +194,9 @@ const Dashboard = () => {
                     <div className="text-xl flex items-center justify-center">
                       <span
                         className={`${
-                          item.consent ? "bg-sharpGreen text-[#474747]" : "bg-red text-white"
+                          item.consent
+                            ? "bg-sharpGreen text-[#474747]"
+                            : "bg-red text-white"
                         } rounded-full p-[2px]`}
                       >
                         {item.consent ? <FiCheckCircle /> : <MdOutlineCancel />}
@@ -175,7 +211,7 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

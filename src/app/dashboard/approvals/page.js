@@ -73,7 +73,7 @@ const Approvals = () => {
       {/* Toggle */}
       <div className="flex items-center justify-between sm:px-8 px-5">
         <label className="flex sm:flex-row flex-col items-start sm:items-center gap-4">
-          <span className="uppercase text-grey text-xs font-bold ">
+          <span className="uppercase text-grey text-xs font-bold tracking-[1px]">
             Approval requests turned {checked ? "on" : "off"}
           </span>
           <Switch
@@ -91,7 +91,7 @@ const Approvals = () => {
         <BsThreeDots className=" text-greyText2 text-[1rem] cursor-pointer" />
       </div>
       {/* Approvals Card */}
-      <div className="approvals py-4 px-4">
+      <div className="approvals py-5 px-4">
         {checked ? (
           modal ? (
             <ApprovalModal setModal={setModal} />
@@ -107,8 +107,8 @@ const Approvals = () => {
             <div>
               <Image src="/images/logo.png" width={190} height={190} />
             </div>
-            <p className="text-sm w-[70%] sm:w-[40%] xl:w-[25%] 2xl:w-[15%] text-center">
-              Approval requests turned off, all posts shared by your care
+            <p className="text-sm text-center">
+              Approval requests turned off <br />All posts shared by your care
               workers will be directly shared with everyone
             </p>
           </div>

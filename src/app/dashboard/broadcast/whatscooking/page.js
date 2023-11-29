@@ -7,11 +7,14 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { useState } from "react";
 import { handleToast } from "@/utils/showToast";
-import { FiCheckCircle, FiPlusCircle } from "react-icons/fi";
+import { FiCheckCircle, FiPlusCircle, FiSearch } from "react-icons/fi";
+import Switch from "react-switch";
+import { GoChevronRight } from "react-icons/go";
+import Image from "next/image";
+
 import { CgCalendar } from "react-icons/cg";
 
 const WhatsCooking = () => {
-  
   const [activeIndex, setActiveIndex] = useState(1);
 
   const [selected, setSelected] = useState(0);
@@ -24,6 +27,14 @@ const WhatsCooking = () => {
 
   const [dessertFields, setDessertFields] = useState(2);
 
+  const [resident, setResident] = useState(0);
+
+  const [checked, setChecked] = useState(true);
+
+  const handleChange = (nextChecked) => {
+    setChecked(nextChecked);
+  };
+
   const inputStyle =
     "outline-none border-none placeholder:text-white text-white font-bold bg-[#FFFFFF0D] rounded-xl pl-5 pr-8 py-3";
 
@@ -33,34 +44,73 @@ const WhatsCooking = () => {
     clickable: true,
   };
   const slides = [
-    [
-      { url: "/images/temp1.png" },
-      { url: "/images/temp2.png" },
-      { url: "/images/temp3.png" },
-    ],
-    [{ url: "/images/temp3.png" }],
+    { url: "/images/brtemp1.png" },
+    { url: "/images/brtemp2.png" },
+    { url: "/images/brtemp3.png" },
+  ];
+
+  const residents = [
+    {
+      img: "/images/avatar1.png",
+      name: "All residents",
+    },
+    {
+      img: "/images/avatar2.png",
+      name: "Mia Sutton",
+      post: 20,
+    },
+    {
+      img: "/images/avatar3.png",
+      name: "Daniel Thomas",
+      post: 20,
+    },
+    {
+      img: "/images/avatar4.png",
+      name: "Joshua Smith",
+      post: 20,
+    },
+    {
+      img: "/images/avatar4.png",
+      name: "Joshua Smith",
+      post: 20,
+    },
+    {
+      img: "/images/avatar4.png",
+      name: "Joshua Smith",
+      post: 20,
+    },
+    {
+      img: "/images/avatar4.png",
+      name: "Joshua Smith",
+      post: 20,
+    },
   ];
 
   const handleAddStarterField = () => {
-    setStarterFields(prevCount => prevCount + 1);
+    setStarterFields((prevCount) => prevCount + 1);
   };
 
   const handleAddMainField = () => {
-    setMainFields(prevCount => prevCount + 1);
+    setMainFields((prevCount) => prevCount + 1);
   };
 
   const handleAddDessertField = () => {
-    setDessertFields(prevCount => prevCount + 1);
+    setDessertFields((prevCount) => prevCount + 1);
   };
-
 
   return (
     <div className="pt-6 2xl:pt-12 bg-lightDark rounded-xl py-4">
       {/* Heading */}
-      <div className="relative flex items-center justify-between px-8 sm:px-16 pt-4 pb-8 border-b border-[#FFFFFF0D]">
+      <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D]">
         <h3 className="font-bold">Whats on this week</h3>
         <h3 className="font-bold">
-          {activeIndex === 1 ? "Add details" : "Select template"}
+          {activeIndex === 1
+            ? "Add details"
+            : activeIndex === 2
+            ? "Select template"
+            : activeIndex === 3
+            ? "Preview"
+            : activeIndex===4?'Who is it for?':''}
         </h3>
         <h3 className="sm:static absolute -top-2 right-10">
           {activeIndex} of {total}
@@ -205,29 +255,131 @@ const WhatsCooking = () => {
               </table>
             </div>
           </SwiperSlide>
-          {slides.map((slide, i) => (
-            <SwiperSlide className="w-full h-full pb-12 pt-8">
-              <div className="flex flex-wrap gap-2 justify-around">
-                {slide.map((image, j) => (
+          <SwiperSlide className="pb-10">
+            <Swiper
+              spaceBetween={20}
+              className="w-[90%]"
+              pagination={pagination}
+              modules={[Pagination]}
+              breakpoints={{
+                1440: {
+                  slidesPerView: 3,
+                },
+                768: {
+                  slidesPerView: 2,
+                },
+                320: {
+                  slidesPerView: 1,
+                },
+              }}
+            >
+              {slides.map((slide, i) => (
+                <SwiperSlide className="w-full pb-12 pt-8">
                   <div
                     className={`${
-                      selected === i * 3 + j
-                        ? "p-1 bg-gradient-to-r from-btnFrom to-btnTo"
+                      selected === i
+                        ? "bg-gradient-to-r from-btnFrom to-btnTo"
                         : ""
-                    }`}
-                    key={j}
-                    onClick={() => setSelected(i * 3 + j)}
+                    }  h-[497px] p-1`}
+                    key={i}
+                    onClick={() => setSelected(i)}
                   >
                     <img
-                      src={image.url}
-                      className=" object-cover object-center"
+                      src={slide.url}
+                      className="w-full h-full object-cover object-center"
                       alt=""
                     />
                   </div>
-                ))}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </SwiperSlide>
+          <SwiperSlide className="pb-12 pt-8">
+            <div
+              className={`bg-gradient-to-r from-btnFrom to-btnTo h-[497px] p-1 xl:w-[30%] sm:w-1/2 mx-auto rounded-lg`}
+            >
+              <img
+                src={slides[selected].url}
+                className="w-full h-full object-cover object-center rounded-lg"
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide className="pb-12 pt-8">
+            <div className="xl:w-[50%] sm:w-[75%] w-[100%] mx-auto space-y-4">
+              {/* Toggle */}
+              <div className="bg-[#FFFFFF1A] rounded-[3.28px] px-4 py-3 flex items-center justify-between">
+                <p className="font-semibold text-[13.93px] leading-[18.03px] text-[#F2F2F2]">
+                  Publish to my %ageCare% feed
+                </p>
+                <Switch
+                  onChange={handleChange}
+                  checked={checked}
+                  onColor="#B1B1B1"
+                  offColor="#B1B1B1"
+                  onHandleColor="#F2F2F2"
+                  offHandleColor="#F2F2F2"
+                  handleDiameter={19.67}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                />
               </div>
-            </SwiperSlide>
-          ))}
+              {/* Share to */}
+              <div className="bg-[#FFFFFF1A] rounded-[3.28px] px-4 py-3">
+                <div className="flex items-center justify-between">
+                  <p className="font-semibold text-[13.93px] leading-[18.03px] text-[#F2F2F2]">
+                    Share with individual residents group
+                  </p>
+                  <GoChevronRight className="text-[19.67px] cursor-pointer" />
+                </div>
+                {/* Searchbar */}
+                <div className="pb-4 pt-8 px-2">
+                  <div className="bg-[#FFFFFF1A] rounded-md px-4 py-1 flex items-center gap-2">
+                    <FiSearch className="text-[14.75px]" />
+                    <input
+                      type="text"
+                      placeholder="Search Residents"
+                      className="bg-transparent px-1 py-0 w-full outline-none text-[17px] leading-[22px] text-disable"
+                    />
+                  </div>
+                </div>
+                {/* Residents */}
+                <div className="2xl:w-[80%] sm:w-[60%] w-[90%] mx-auto py-4 h-[350px]">
+                  <ul className="flex flex-col gap-y-8 max-h-full overflow-y-scroll overflow-hidden">
+                    {residents.map((item, i) => (
+                      <li className="flex items-center justify-between" key={i}>
+                        <div className="flex items-center gap-2">
+                          <Image
+                            width={40.97}
+                            height={40.97}
+                            src={item.img}
+                            alt="Residents Img"
+                          />
+                          <div className="flex flex-col items-start">
+                            <p className="text-white font-semibold text-[15px] leading-[20px]">
+                              {item.name}
+                            </p>
+                            <span className="text-[13px] leading-[18px] text-disable">
+                              {item.post
+                                ? `Last post ${item.post} hours ago`
+                                : ""}
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          className={`w-[22.12px] h-[22.12px] rounded-full ${
+                            i === resident ? "bg-primary" : "bg-[#848484]"
+                          } cursor-pointer`}
+                          onClick={() => setResident(i)}
+                        ></div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
       {/* Buttons */}

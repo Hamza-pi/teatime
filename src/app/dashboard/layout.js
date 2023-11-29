@@ -76,7 +76,7 @@ export default function AdminLayout({ children }) {
   ];
 
   return (
-    <section className={`bg-shade min-h-screen ${outfit.className} relative`}>
+    <section className={`bg-shade min-h-screen ${outfit.className}`}>
       <nav className="sticky top-0 z-50 w-full bg-dark">
         <div className="px-3 py-4 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
@@ -92,7 +92,7 @@ export default function AdminLayout({ children }) {
               <Link href="/dashboard" className="flex ms-2 md:me-24">
                 <img
                   src="/images/logo.png"
-                  className="h-8 me-3"
+                  className="h-[57px] w-[57px] me-3"
                   alt="FlowBite Logo"
                 />
                 <span className="self-center text-xl font-semibold sm:text-sm whitespace-nowrap dark:text-white">
@@ -101,8 +101,10 @@ export default function AdminLayout({ children }) {
               </Link>
             </div>
             {/* Info */}
-            <div className="text-white sm:flex hidden items-center justify-between w-[75%] pr-7">
-              <h3 className="font-bold text-[22px] leading-[30px]">👋Jimmy Trick</h3>
+            <div className="text-white sm:flex hidden items-center justify-between w-[80%] pr-8">
+              <h3 className="font-bold text-[22px] leading-[30px]">
+                👋Jimmy Trick
+              </h3>
               <div className="flex items-center justify-between gap-x-8">
                 <button className="w-full flex items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-2xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
                   <FaPlus /> Broadcast
@@ -126,13 +128,16 @@ export default function AdminLayout({ children }) {
                   className="flex text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                   onClick={() => setMenu(!menu)}
                 >
-                 <Link href=''> <Image
-                    className="rounded-full"
-                    width={32}
-                    height={32}
-                    src="/images/user.png"
-                    alt="user photo"
-                  /></Link>
+                  <Link href="">
+                    {" "}
+                    <Image
+                      className="rounded-full"
+                      width={32}
+                      height={32}
+                      src="/images/user.png"
+                      alt="user photo"
+                    />
+                  </Link>
                 </button>
                 <div
                   className={`z-50 my-4 text-base sm:hidden ${
@@ -144,9 +149,11 @@ export default function AdminLayout({ children }) {
                     <p className="text-sm font-medium" role="none">
                       jimmy.trick@teatime.com
                     </p>
-                    <Link href="/myacc"><p className="text-sm font-medium flex gap-x-[.5rem] py-2 items-center bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% w-fit my-2 px-2 rounded-lg">
-                    <FaRegUser /> MyAccount
-                    </p></Link>
+                    <Link href="/myacc">
+                      <p className="text-sm font-medium flex gap-x-[.5rem] py-2 items-center bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% w-fit my-2 px-2 rounded-lg">
+                        <FaRegUser /> MyAccount
+                      </p>
+                    </Link>
                   </div>
                   <div className="flex items-center justify-between gap-x-4 py-4 px-2">
                     <button className="w-full flex items-center justify-between py-[.5rem] px-[1rem] gap-x-[.5rem] rounded-xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80% text-base font-bold">
@@ -164,15 +171,16 @@ export default function AdminLayout({ children }) {
                   </div>
                 </div>
                 <div
-                  className={`z-50 my-4 text-base  ${menu ? "sm:block hidden" : "hidden"
-                    } list-none bg-dark divide-y divide-gray-100 rounded shadow  text-white absolute top-10 right-0`}
+                  className={`z-50 my-4 text-base  ${
+                    menu ? "sm:block hidden" : "hidden"
+                  } list-none bg-dark divide-y divide-gray-100 rounded shadow  text-white absolute top-10 right-0`}
                 >
-                 
                   <div className="flex items-center justify-center  py-4 px-5 w-full">
-                    <Link href="/myacc"><button className="w-full flex items-center justify-between py-[.5rem] px-[1.5rem] gap-x-[.5rem] rounded-xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80%  font-bold text-sm">
-                    <FaRegUser /> MyAccount
-                    </button></Link>
-                
+                    <Link href="/myacc">
+                      <button className="w-full flex items-center justify-between py-[.5rem] px-[1.5rem] gap-x-[.5rem] rounded-xl bg-gradient-to-r from-btnFrom from-10% to-btnTo to-80%  font-bold text-sm">
+                        <FaRegUser /> MyAccount
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -186,13 +194,13 @@ export default function AdminLayout({ children }) {
             sider ? "translate-x-0" : "-translate-x-full"
           } bg-dark lg:translate-x-0`}
         >
-          <div className="h-full pb-4 flex flex-col items-start justify-between overflow-y-auto bg-dark text-disable pt-8">
-            <ul className="space-y-8 font-medium text-sm">
+          <div className="h-full pb-4 flex flex-col items-start justify-between overflow-y-auto bg-dark text-disable lg:pt-14 pt-8">
+            <ul className="space-y-6 font-medium text-sm">
               {links.map((item, i) => (
                 <li key={i}>
                   <Link
                     href={`${item.route}`}
-                    className={`font-bold text-base flex items-center gap-3 relative ${
+                    className={`font-bold text-sm leading-[24px] flex items-center gap-3 relative ${
                       i === 0
                         ? pathname === item.route || pathname.includes("/home")
                           ? "text-transparent bg-clip-text bg-gradient-to-r from-btnFrom to-btnTo"
@@ -203,7 +211,7 @@ export default function AdminLayout({ children }) {
                     }`}
                   >
                     <div
-                      className={`min-w-[3px] min-h-[28px] ${
+                      className={`min-w-[3px] min-h-[32px] ${
                         i === 0
                           ? pathname === item.route ||
                             pathname.includes("/home")
@@ -214,7 +222,7 @@ export default function AdminLayout({ children }) {
                           : "bg-none"
                       } rounded-r-full`}
                     ></div>
-                    <div className="text-[1.5rem]">
+                    <div className="text-[1.5rem] pl-2">
                       {
                         <CIcon
                           isActive={
@@ -247,32 +255,35 @@ export default function AdminLayout({ children }) {
           </div>
         </aside>
         <div className="flex-1 lg:ml-64 px-2 sm:px-4 2xl:px-16 overflow-hidden">
-          <div className={`w-full mx-auto ${dm.className}`}>{children}</div>
+          <div className={`w-full mx-auto ${dm.className} relative`}>
+            {children}
+            <div className="absolute -top-[1%] left-[50%] sm:translate-x-[-50%] max-width:625px">
+              <ToastContainer
+                className="Toastify__toast-container"
+                toastStyle={{
+                  margin: 0,
+                  padding: 0,
+                  backgroundColor: "transparent",
+                  boxShadow: "none",
+                  width: "100%",
+                }}
+                closeButton={false}
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover={false}
+                theme="dark"
+                icon={false}
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <ToastContainer
-        className="Toastify__toast-container"
-        toastStyle={{
-          margin: 0,
-          padding: 0,
-          backgroundColor: "transparent",
-          top: "50px",
-          boxShadow: "none",
-          maxWidth: "625px",
-        }}
-        closeButton={false}
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover={false}
-        theme="dark"
-        icon={false}
-      />
     </section>
   );
 }
