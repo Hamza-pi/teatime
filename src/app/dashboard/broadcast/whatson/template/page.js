@@ -196,8 +196,8 @@ const Templates = () => {
                   </div>
                 </div>
                 {/* Residents */}
-                <div className="2xl:w-[80%] sm:w-[60%] w-[90%] mx-auto py-4 h-[350px]">
-                  <ul className="flex flex-col gap-y-8 max-h-full overflow-y-scroll overflow-hidden">
+                <div className="xl:w-[80%] sm:w-[60%] w-[90%] mx-auto py-4 h-[350px]">
+                  <ul className="flex flex-col gap-y-8 max-h-full overflow-y-scroll overflow-x-hidden px-2 scrollbar">
                     {residents.map((item, i) => (
                       <li className="flex items-center justify-between" key={i}>
                         <div className="flex items-center gap-2">
@@ -218,7 +218,12 @@ const Templates = () => {
                             </span>
                           </div>
                         </div>
-                        <div className={`w-[22.12px] h-[22.12px] rounded-full ${i===resident?'bg-primary':'bg-[#848484]'} cursor-pointer`} onClick={()=>setResident(i)}></div>
+                        <div
+                          className={`w-[22.12px] h-[22.12px] rounded-full ${
+                            i === resident ? "bg-primary" : "bg-[#848484]"
+                          } cursor-pointer`}
+                          onClick={() => setResident(i)}
+                        ></div>
                       </li>
                     ))}
                   </ul>

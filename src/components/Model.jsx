@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const Modal = ({ isOpen, onClose, children }) => {
   const modalStyles = {
-    display: isOpen ? "block" : "none",
     position: "fixed",
     top: "50%",
     left: "50%",
@@ -17,7 +16,7 @@ const Modal = ({ isOpen, onClose, children }) => {
       style={modalStyles}
     >
       <div>
-        <div className="bg-transparent h-auto sm:h-1/2 overflow-scroll flex justify-center text-center shadow-xl ">
+        <div className="bg-transparent max-h-[80%] overflow-scroll flex justify-center text-center shadow-xl ">
           {children}
         </div>
       </div>

@@ -345,7 +345,7 @@ const WhatsCooking = () => {
                 </div>
                 {/* Residents */}
                 <div className="2xl:w-[80%] sm:w-[60%] w-[90%] mx-auto py-4 h-[350px]">
-                  <ul className="flex flex-col gap-y-8 max-h-full overflow-y-scroll overflow-hidden">
+                  <ul className="flex flex-col gap-y-8 max-h-full overflow-y-scroll overflow-x-hidden scrollbar">
                     {residents.map((item, i) => (
                       <li className="flex items-center justify-between" key={i}>
                         <div className="flex items-center gap-2">
