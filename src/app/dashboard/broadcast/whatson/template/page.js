@@ -1,16 +1,20 @@
 "use client";
+import Template1 from "@/components/Whatsontemp/Template1";
+import Template2 from "@/components/Whatsontemp/Template2";
+import Template3 from "@/components/Whatsontemp/Template3";
+import Template4 from "@/components/Whatsontemp/Template4";
+import Template5 from "@/components/Whatsontemp/Template5";
+import { handleToast } from "@/utils/showToast";
+import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useState } from "react";
+import { FiCheckCircle, FiSearch } from "react-icons/fi";
+import { GoChevronRight } from "react-icons/go";
+import Switch from "react-switch";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import { useState } from "react";
-import { handleToast } from "@/utils/showToast";
-import Switch from "react-switch";
-import { FiCheckCircle, FiSearch } from "react-icons/fi";
-import { GoChevronRight } from "react-icons/go";
-import Image from "next/image";
-
+import { Swiper, SwiperSlide } from "swiper/react";
 const Templates = () => {
   const [activeIndex, setActiveIndex] = useState(1);
 
@@ -21,7 +25,6 @@ const Templates = () => {
   const [resident, setResident] = useState(0);
 
   const [checked, setChecked] = useState(true);
-
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
   };
@@ -35,6 +38,15 @@ const Templates = () => {
     { url: "/images/temp2.png" },
     { url: "/images/temp3.png" },
   ];
+  const templateSlides = [
+    { component: Template1 },
+    { component: Template2 },
+    { component: Template3 },
+    { component: Template4 },
+    { component: Template5 },
+  ];
+  const selectedSlide = templateSlides[selected];
+  // console.log(selectedSlide.component.name)
 
   const residents = [
     {
@@ -76,30 +88,30 @@ const Templates = () => {
   return (
     <div className="2xl:pt-12 bg-lightDark rounded-xl py-2">
       {/* Heading */}
-      <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D]">
+      <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D] ">
         <h3 className="font-bold">Whats on this week</h3>
         <h3 className="font-bold">
           {activeIndex === 1
             ? "Select Template"
             : activeIndex === 2
-            ? "Preview"
-            : activeIndex === 3
-            ? "Who is it for?"
-            : ""}
+              ? "Preview"
+              : activeIndex === 3
+                ? "Who is it for?"
+                : ""}
         </h3>
         <h3 className="sm:static absolute -top-2 right-10">
           {activeIndex} of {total}
         </h3>
       </div>
       {/* Slider */}
-      <div className="slider">
+      <div className="slider ">
         <Swiper
           pagination={pagination}
           modules={[Pagination]}
           nested={true}
           slidesPerView={1}
           spaceBetween={50}
-          className="w-[90%] 2xl:w-[50%]"
+          className="w-[90%] "
           onPaginationRender={(swiper) => setTotal(swiper.slides.length)}
           onSlideChange={(swiper) => {
             setActiveIndex(swiper.activeIndex + 1);
@@ -108,11 +120,11 @@ const Templates = () => {
           <SwiperSlide className="pb-10">
             <Swiper
               spaceBetween={20}
-              className="w-[90%]"
+              className="w-[90%] h-[700px]"
               pagination={pagination}
               modules={[Pagination]}
               breakpoints={{
-                1440: {
+                1400: {
                   slidesPerView: 3,
                 },
                 768: {
@@ -123,22 +135,14 @@ const Templates = () => {
                 },
               }}
             >
-              {slides.map((slide, i) => (
-                <SwiperSlide className="w-full pb-12 pt-8">
+              {templateSlides.map((slide, i) => (
+                <SwiperSlide className="w-full pb-12 pt-8" key={i}>
                   <div
-                    className={`${
-                      selected === i
-                        ? "bg-gradient-to-r from-btnFrom to-btnTo"
-                        : ""
-                    }  h-[497px] p-1`}
-                    key={i}
+                    className={`${selected === i ? "bg-gradient-to-r from-btnFrom to-btnTo rounded-xl" : ""
+                      }   p-1`}
                     onClick={() => setSelected(i)}
                   >
-                    <img
-                      src={slide.url}
-                      className="w-full h-full object-cover object-center"
-                      alt=""
-                    />
+                    <slide.component />
                   </div>
                 </SwiperSlide>
               ))}
@@ -147,17 +151,13 @@ const Templates = () => {
 
           <SwiperSlide className="pb-12 pt-8">
             <div
-              className={`bg-gradient-to-r from-btnFrom to-btnTo h-[497px] p-1 xl:w-[30%] sm:w-1/2 mx-auto rounded-lg`}
+              className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 xl:w-[40%] sm:w-1/2 mx-auto rounded-xl`}
             >
-              <img
-                src={slides[selected].url}
-                className="w-full h-full object-cover object-center rounded-lg"
-                alt=""
-              />
+              {React.createElement(selectedSlide.component)}
             </div>
           </SwiperSlide>
 
-          <SwiperSlide className="pb-12 pt-8">
+          <SwiperSlide className="pb-12 pt-8 h-full">
             <div className="xl:w-[50%] sm:w-[75%] w-[100%] mx-auto space-y-4">
               {/* Toggle */}
               <div className="bg-[#FFFFFF1A] rounded-[3.28px] px-4 py-3 flex items-center justify-between">
@@ -219,9 +219,8 @@ const Templates = () => {
                           </div>
                         </div>
                         <div
-                          className={`w-[22.12px] h-[22.12px] rounded-full ${
-                            i === resident ? "bg-primary" : "bg-[#848484]"
-                          } cursor-pointer`}
+                          className={`w-[22.12px] h-[22.12px] rounded-full ${i === resident ? "bg-primary" : "bg-[#848484]"
+                            } cursor-pointer`}
                           onClick={() => setResident(i)}
                         ></div>
                       </li>

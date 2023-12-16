@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import { useState } from "react";
+import React, { useState } from "react";
 import { handleToast } from "@/utils/showToast";
 import { FiCheckCircle, FiPlusCircle, FiSearch } from "react-icons/fi";
 import Switch from "react-switch";
@@ -13,7 +13,11 @@ import { GoChevronRight } from "react-icons/go";
 import Image from "next/image";
 
 import { CgCalendar } from "react-icons/cg";
-
+import Template1 from "@/components/WhatsCoking/Template1";
+import Template2 from "@/components/WhatsCoking/Template2";
+import Template3 from "@/components/WhatsCoking/Template3";
+import Template4 from "@/components/WhatsCoking/Template4";
+import Template5 from "@/components/WhatsCoking/Template5";
 const WhatsCooking = () => {
   const [activeIndex, setActiveIndex] = useState(1);
 
@@ -48,6 +52,14 @@ const WhatsCooking = () => {
     { url: "/images/brtemp2.png" },
     { url: "/images/brtemp3.png" },
   ];
+  const templateSlides = [
+    { component: Template1 },
+    { component: Template2 },
+    { component: Template3 },
+    { component: Template4 },
+    { component: Template5 },
+  ];
+  const selectedSlide = templateSlides[selected];
 
   const residents = [
     {
@@ -123,7 +135,7 @@ const WhatsCooking = () => {
           modules={[Pagination]}
           slidesPerView={1}
           spaceBetween={50}
-          className="w-[90%] 2xl:w-[50%]"
+          className="w-[90%] 2xl:w-[70%]"
           onPaginationRender={(swiper) => setTotal(swiper.slides.length)}
           onSlideChange={(swiper) => {
             setActiveIndex(swiper.activeIndex + 1);
@@ -258,10 +270,11 @@ const WhatsCooking = () => {
           <SwiperSlide className="pb-10">
             <Swiper
               spaceBetween={20}
-              className="w-[90%]"
-              pagination={false}
+              className="w-[90%] h-[750px]"
+              pagination={pagination}
+              modules={[Pagination]}
               breakpoints={{
-                1440: {
+                1400: {
                   slidesPerView: 3,
                 },
                 768: {
@@ -272,36 +285,25 @@ const WhatsCooking = () => {
                 },
               }}
             >
-              {slides.map((slide, i) => (
-                <SwiperSlide className="w-full pb-12 pt-8">
+              {templateSlides.map((slide, i) => (
+                <SwiperSlide className="w-full pb-12 pt-8" key={i}>
                   <div
-                    className={`${
-                      selected === i
-                        ? "bg-gradient-to-r from-btnFrom to-btnTo"
-                        : ""
-                    }  h-[497px] p-1`}
-                    key={i}
+                    className={`${selected === i ? "bg-gradient-to-r from-btnFrom to-btnTo rounded-xl" : ""
+                      }   p-1`}
                     onClick={() => setSelected(i)}
                   >
-                    <img
-                      src={slide.url}
-                      className="w-full h-full object-cover object-center"
-                      alt=""
-                    />
+                    <slide.component />
                   </div>
                 </SwiperSlide>
               ))}
             </Swiper>
           </SwiperSlide>
+
           <SwiperSlide className="pb-12 pt-8">
             <div
-              className={`bg-gradient-to-r from-btnFrom to-btnTo h-[497px] p-1 xl:w-[30%] sm:w-1/2 mx-auto rounded-lg`}
+              className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 xl:w-[40%] sm:w-1/2 mx-auto rounded-xl`}
             >
-              <img
-                src={slides[selected].url}
-                className="w-full h-full object-cover object-center rounded-lg"
-                alt=""
-              />
+              {React.createElement(selectedSlide.component)}
             </div>
           </SwiperSlide>
 
