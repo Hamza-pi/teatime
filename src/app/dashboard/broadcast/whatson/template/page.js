@@ -120,7 +120,7 @@ const Templates = () => {
           <SwiperSlide className="pb-10">
             <Swiper
               spaceBetween={20}
-              className="2xl:w-[80%] xl:w-[70%] lg:w-[89%] md:w-[90%] sm:w-[65%] w-[95%]  h-fit"
+              className="2xl:w-[80%] xl:w-[70%] lg:w-[89%] md:w-[90%] sm:w-[65%] w-[95%]  "
               pagination={pagination}
               modules={[Pagination]}
               breakpoints={{
