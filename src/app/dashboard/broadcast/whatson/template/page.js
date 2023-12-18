@@ -124,7 +124,7 @@ const Templates = () => {
               pagination={pagination}
               modules={[Pagination]}
               breakpoints={{
-                1600:{
+                1600: {
                   slidesPerView: 3,
                 },
                 1400: {
