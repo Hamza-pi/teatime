@@ -120,7 +120,7 @@ const Templates = () => {
           <SwiperSlide className="pb-10">
             <Swiper
               spaceBetween={20}
-              className="2xl:w-[70%] xl:w-[70%] lg:w-[89%] md:w-[90%] sm:w-[65%] w-[95%]"
+              className="2xl:w-[80%] xl:w-[70%] lg:w-[89%] md:w-[90%] sm:w-[65%] w-[95%] sm:h-[850px] h-fit"
               pagination={pagination}
               modules={[Pagination]}
               breakpoints={{
@@ -139,7 +139,7 @@ const Templates = () => {
               }}
             >
               {templateSlides.map((slide, i) => (
-                <SwiperSlide className="w-full pb-10 pt-8 max-w-[430px]" key={i}>
+                <SwiperSlide className="w-full  pt-8 max-w-[440px]  " key={i}>
                   <div
                     className={`${selected === i ? "bg-gradient-to-r from-btnFrom to-btnTo rounded-xl" : ""
                       }   p-1`}
