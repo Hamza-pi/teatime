@@ -88,7 +88,7 @@ const Templates = () => {
   return (
     <div className="2xl:pt-12 bg-lightDark rounded-xl py-2">
       {/* Heading */}
-      <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D] ">
+      <div className="relative flex sm:flex-row flex-col items-center justify-between px-2 sm:px-2 py-4 border-b border-[#FFFFFF0D] ">
         <h3 className="font-bold">Whats on this week</h3>
         <h3 className="font-bold">
           {activeIndex === 1
@@ -111,7 +111,7 @@ const Templates = () => {
           nested={true}
           slidesPerView={1}
           spaceBetween={50}
-          className="w-[90%] "
+          className="w-full "
           onPaginationRender={(swiper) => setTotal(swiper.slides.length)}
           onSlideChange={(swiper) => {
             setActiveIndex(swiper.activeIndex + 1);
@@ -120,12 +120,15 @@ const Templates = () => {
           <SwiperSlide className="pb-10">
             <Swiper
               spaceBetween={20}
-              className="w-[90%] h-[700px]"
+              className="2xl:w-[70%] xl:w-[70%] lg:w-[89%] md:w-[90%] sm:w-[65%] w-[95%]"
               pagination={pagination}
               modules={[Pagination]}
               breakpoints={{
-                1400: {
+                1600:{
                   slidesPerView: 3,
+                },
+                1400: {
+                  slidesPerView: 2,
                 },
                 768: {
                   slidesPerView: 2,
@@ -136,7 +139,7 @@ const Templates = () => {
               }}
             >
               {templateSlides.map((slide, i) => (
-                <SwiperSlide className="w-full pb-12 pt-8" key={i}>
+                <SwiperSlide className="w-full pb-10 pt-8 max-w-[430px]" key={i}>
                   <div
                     className={`${selected === i ? "bg-gradient-to-r from-btnFrom to-btnTo rounded-xl" : ""
                       }   p-1`}
@@ -149,9 +152,9 @@ const Templates = () => {
             </Swiper>
           </SwiperSlide>
 
-          <SwiperSlide className="pb-12 pt-8">
+          <SwiperSlide className="pt-8">
             <div
-              className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 xl:w-[40%] sm:w-1/2 mx-auto rounded-xl`}
+              className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[430px] sm:w-1/2 mx-auto rounded-xl`}
             >
               {React.createElement(selectedSlide.component)}
             </div>

@@ -270,12 +270,12 @@ const WhatsCooking = () => {
           <SwiperSlide className="pb-10">
             <Swiper
               spaceBetween={20}
-              className="w-[90%] h-[750px]"
+              className="w-[90%] "
               pagination={pagination}
               modules={[Pagination]}
               breakpoints={{
                 1400: {
-                  slidesPerView: 3,
+                  slidesPerView: 2,
                 },
                 768: {
                   slidesPerView: 2,
@@ -299,9 +299,9 @@ const WhatsCooking = () => {
             </Swiper>
           </SwiperSlide>
 
-          <SwiperSlide className="pb-12 pt-8">
+          <SwiperSlide className="pb-1 pt-8">
             <div
-              className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 xl:w-[40%] sm:w-1/2 mx-auto rounded-xl`}
+              className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[430px] sm:w-1/2 mx-auto rounded-xl`}
             >
               {React.createElement(selectedSlide.component)}
             </div>

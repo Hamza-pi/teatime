@@ -3,17 +3,17 @@ import React from 'react';
 import './Template.css';
 const Template1 = () => {
 	return (
-		<div className="px-3  bg-black rounded-xl font-popin">
+		<div className="px-3  bg-black rounded-xl font-popin ">
 			<div className=" flex flex-col">
-				<div className="font sm:py-14 py-3 flex flex-col">
+				<div className="font  py-14  mb-5 flex flex-col">
 					<div className="flex justify-between ">
 						<div className="w-fit ">
-							<p className="text-2xl font-bold mb-1 bg-gradient-to-r from-[#FF3D00E0] to-[#E42982D9] text-transparent bg-clip-text">
+							<p className="text-[30px] font-bold mb-1 bg-gradient-to-r from-[#FF3D00E0] to-[#E42982D9] text-transparent bg-clip-text">
                             WHATS COOKING?
 							</p>
 
 							<div className="bg-gradient-to-r from-[#FF3D00E0]  to-[#E42982D9]  py-[1px] rounded-2xl"></div>
-							<p className="text-sm opacity-70 font-semibold">
+							<p className="text-[17.5px] opacity-70 font-semibold">
 								Vasey RSL Brighton East
 							</p>
 						</div>
@@ -24,14 +24,22 @@ const Template1 = () => {
 							alt="Residents Img"
 						/>
 					</div>
-                    <p className="text-sm text-[#F34F9D]">Mon 25th Sep</p>
-					<div className="rounded-[18px] bg-[#1C1C1C] max-w-[320px] p-2 pb-8 my-1 mt-4">
-                        <p className="text-[#F34F9D] text-sm">Breakfast </p>
-                        <p className="text-[#FFFFFF] text-xs">Food Item name </p>
+                    <p className="text-[17.5px] text-[#F34F9D]">Mon 25th Sep</p>
+					<div className="rounded-[18px] bg-[#1C1C1C] p-2 pr-1 pb-0  my-1 mt-4 max-w-[90%]">
+                        <p className="text-[#F34F9D] text-[17.5px]">Breakfast </p>
+                        <p className="text-[#FFFFFF] text-[17.5px]">Food Item name </p>
+						<div className="sm:pt-5 pt-2 float-right">
+                        <Image
+						width={50}
+						height={50}
+						src="/images/t1.png"
+						alt="Residents Img"
+					/>
+                        </div>
                     </div>
-					<div className="rounded-[18px] bg-[#1C1C1C] max-w-[320px] p-2 pb-0  my-1 ">
-                        <p className="text-[#F34F9D] text-sm">Lunch </p>
-                        <p className="text-[#FFFFFF] text-xs">Food Item name </p>
+					<div className="rounded-[18px] bg-[#1C1C1C] p-2 pr-1 pb-0  my-1 max-w-[90%]">
+                        <p className="text-[#F34F9D] text-[17.5px]">Lunch </p>
+                        <p className="text-[#FFFFFF] text-[17.5px]">Food Item name </p>
                         <div className="sm:pt-5 pt-2 float-right">
                         <Image
 						width={50}
@@ -41,9 +49,9 @@ const Template1 = () => {
 					/>
                         </div>
                     </div>
-					<div className="rounded-[18px] bg-[#1C1C1C] max-w-[320px] p-2 pb-0  my-1 ">
-                        <p className="text-[#F34F9D] text-sm">Dinner </p>
-                        <p className="text-[#FFFFFF] text-xs">Food Item name </p>
+					<div className="rounded-[18px] bg-[#1C1C1C] p-2 pr-1 pb-0  my-1 max-w-[90%]">
+                        <p className="text-[#F34F9D] text-[17.5px]">Dinner </p>
+                        <p className="text-[#FFFFFF] text-[17.5px]">Food Item name </p>
                         <div className="sm:pt-5 pt-2 float-right">
                         <Image
 						width={50}
@@ -55,7 +63,7 @@ const Template1 = () => {
                     </div>
 		
 				</div>
-				<div className="">
+				<div className="mb-8">
 					<Image
 						width={99}
 						height={99}
