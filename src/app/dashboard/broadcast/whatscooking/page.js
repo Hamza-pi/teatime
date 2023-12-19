@@ -218,8 +218,17 @@ const WhatsCooking = () => {
             setActiveIndex(swiper.activeIndex + 1);
           }}
         >
-          <SwiperSlide className="py-6 border-b border-[#FFFFFF0D]">
-            <div className="2xl:w-[70%] xl:ml-24">
+          <SwiperSlide
+  className="py-6 border-b border-[#FFFFFF0D]"
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    '@media (max-width: 1024px)': {  // Apply styles until lg screens (1024px)
+      justifyContent: 'flex-start',  // Change to 'flex-start' for lg screens
+    },
+  }}
+>
+            <div className="2xl:w-[100%] xl:ml-24">
             {/* Inputs */}
             <div className="flex gap-4 items-start justify-center  ">
               <div className="flex flex-col gap-2">
@@ -347,10 +356,10 @@ const WhatsCooking = () => {
               
        
         
-            </div>  
-             </div>
-            <button  className="absolute left-[40%]  hide text-3xl" onClick={() => handleScrollButtonClick('left')}><FaAngleLeft /></button>
+            </div>   <button  className="absolute left-[40%]  hide text-3xl" onClick={() => handleScrollButtonClick('left')}><FaAngleLeft /></button>
           <button className="absolute right-[40%]  hide text-3xl" onClick={() => handleScrollButtonClick('right')}><FaAngleRight /></button>
+             </div>
+           
           </SwiperSlide>
           <SwiperSlide className="">
             <Swiper
