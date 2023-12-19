@@ -487,11 +487,41 @@ const WhatsCooking = () => {
       {/* Buttons */}
       <div className="px-10">
         <div className="py-6 font-bold text-xs text-white flex sm:flex-row flex-col items-center justify-center gap-4">
-          <Link href="/dashboard/broadcast/whatson">
+          {activeIndex === 1 &&(<Link href="/dashboard/broadcast/whatson">
             <button className="px-20 py-3 bg-[#FFFFFF0D] rounded-2xl">
               Back
             </button>
-          </Link>
+          </Link>)}
+          {activeIndex === 2 &&( <button
+                className="px-20 py-3 bg-[#FFFFFF0D]  rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slidePrev(); // Move to the next slide
+                }}
+              >
+                 
+                 Back
+              </button>)}
+          {activeIndex === 3 &&( <button
+                className="px-20 py-3 bg-[#FFFFFF0D]  rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slidePrev(); // Move to the next slide
+                }}
+              >
+                 
+                 Back
+              </button>)}
+          {activeIndex === 4 &&( <button
+                className="px-20 py-3 bg-[#FFFFFF0D]  rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slidePrev(); // Move to the next slide
+                }}
+              >
+                 
+                 Back
+              </button>)}
           {activeIndex === 1 &&( <button
                 className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
                 onClick={() => {
