@@ -11,7 +11,8 @@ import { FiCheckCircle, FiPlusCircle, FiSearch } from "react-icons/fi";
 import Switch from "react-switch";
 import { GoChevronRight } from "react-icons/go";
 import Image from "next/image";
-import { CgScrollH } from "react-icons/cg";
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 import { CgCalendar } from "react-icons/cg";
 import Template1 from "@/components/WhatsCoking/Template1";
 import Template2 from "@/components/WhatsCoking/Template2";
@@ -189,7 +190,7 @@ const WhatsCooking = () => {
       </style>
     <div className=" bg-lightDark rounded-xl ">
       {/* Heading */}
-      <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D]">
+      <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 sm:py-4 py-6 border-b border-[#FFFFFF0D]">
         <h3 className="font-bold">Whats on this week</h3>
         <h3 className="font-bold">
           {activeIndex === 1
@@ -200,7 +201,7 @@ const WhatsCooking = () => {
             ? "Preview"
             : activeIndex===4?'Who is it for?':''}
         </h3>
-        <h3 className="sm:static absolute -top-2 right-10">
+        <h3 className="sm:static absolute top-2 right-10">
           {activeIndex} of {total}
         </h3>
       </div>
@@ -211,15 +212,16 @@ const WhatsCooking = () => {
           modules={[Pagination]}
           slidesPerView={1}
           spaceBetween={50}
-          className="w-[full] 2xl:w-[90%]"
+          className="w-[full] "
           onPaginationRender={(swiper) => setTotal(swiper.slides.length)}
           onSlideChange={(swiper) => {
             setActiveIndex(swiper.activeIndex + 1);
           }}
         >
-          <SwiperSlide className="py-6 border-b border-[#FFFFFF0D] 2xl:w-[70%] xl:ml-24 ">
+          <SwiperSlide className="py-6 border-b border-[#FFFFFF0D]">
+            <div className="2xl:w-[70%] xl:ml-24">
             {/* Inputs */}
-            <div className="flex gap-4 items-start justify-center">
+            <div className="flex gap-4 items-start justify-center  ">
               <div className="flex flex-col gap-2">
                 <p className="uppercase text-lightWhite text-[10px]">Date</p>
                 <div
@@ -346,9 +348,9 @@ const WhatsCooking = () => {
        
         
             </div>  
-             
-            <button  className="absolute left-0 top-60 hide text-3xl" onClick={() => handleScrollButtonClick('left')}><CgScrollH /></button>
-          <button className="absolute right-0 top-60 hide text-3xl" onClick={() => handleScrollButtonClick('right')}><CgScrollH /></button>
+             </div>
+            <button  className="absolute left-[40%]  hide text-3xl" onClick={() => handleScrollButtonClick('left')}><FaAngleLeft /></button>
+          <button className="absolute right-[40%]  hide text-3xl" onClick={() => handleScrollButtonClick('right')}><FaAngleRight /></button>
           </SwiperSlide>
           <SwiperSlide className="">
             <Swiper

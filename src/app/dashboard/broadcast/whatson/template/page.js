@@ -215,7 +215,7 @@ const Templates = () => {
               </div>
             </SwiperSlide>
 
-            <SwiperSlide className="pb- pt-16 h-full">
+            <SwiperSlide className=" pt-8 h-full">
               <div className="xl:w-[50%] sm:w-[75%] w-[100%] mx-auto space-y-4">
                 {/* Toggle */}
                 <div className="bg-[#FFFFFF1A] rounded-[3.28px] px-4 py-3 flex items-center justify-between">
