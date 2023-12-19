@@ -20,6 +20,7 @@ import Template3 from "@/components/WhatsCoking/Template3";
 import Template4 from "@/components/WhatsCoking/Template4";
 import Template5 from "@/components/WhatsCoking/Template5";
 const WhatsCooking = () => {
+  const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(1);
 
   const [selected, setSelected] = useState(0);
@@ -213,7 +214,10 @@ const WhatsCooking = () => {
           slidesPerView={1}
           spaceBetween={50}
           className="w-[full] "
-          onPaginationRender={(swiper) => setTotal(swiper.slides.length)}
+          onPaginationRender={(s) => {
+            setSwiper(s); // Set swiper instance once it's available
+            setTotal(s.slides.length);
+          }}
           onSlideChange={(swiper) => {
             setActiveIndex(swiper.activeIndex + 1);
           }}
@@ -488,16 +492,49 @@ const WhatsCooking = () => {
               Back
             </button>
           </Link>
-          <Link href="/dashboard/broadcast">
-            <button
-              className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
-              onClick={() =>
-                handleToast("Broadcast shared", <FiCheckCircle />, true)
-              }
-            >
-              next
-            </button>
-          </Link>
+          {activeIndex === 1 &&( <button
+                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slideNext(); // Move to the next slide
+                }}
+              >
+                 
+            Next
+              </button>)}
+               {activeIndex === 2 &&( <button
+                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slideNext(); // Move to the next slide
+                }}
+              >
+                 
+                 Preview
+              </button>)}
+               {activeIndex === 3 &&( <button
+                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slideNext(); // Move to the next slide
+                }}
+              >
+                 
+                 Next
+              </button>)}
+         { activeIndex === 4&&(   <Link href="/dashboard/broadcast">
+       
+              <button
+                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+                onClick={() =>
+                  handleToast("Broadcast shared", <FiCheckCircle />, true)
+                }
+              >
+                 {  activeIndex === 3
+            ? "Publish"
+            : activeIndex===4?'Publish':''}
+              </button>
+            </Link>)}
         </div>
       </div>
     </div>

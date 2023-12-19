@@ -14,8 +14,11 @@ import Switch from "react-switch";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+
 const Templates = () => {
+  
+  const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(1);
 
   const [selected, setSelected] = useState(0);
@@ -167,7 +170,10 @@ const Templates = () => {
             slidesPerView={1}
             spaceBetween={50}
             className="w-full "
-            onPaginationRender={(swiper) => setTotal(swiper.slides.length)}
+            onPaginationRender={(s) => {
+              setSwiper(s); // Set swiper instance once it's available
+              setTotal(s.slides.length);
+            }}
             onSlideChange={(swiper) => {
               setActiveIndex(swiper.activeIndex + 1);
             }}
@@ -298,16 +304,39 @@ const Templates = () => {
                 Back
               </button>
             </Link>
-            <Link href="/dashboard/broadcast">
+               {activeIndex === 1 &&( <button
+                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slideNext(); // Move to the next slide
+                }}
+              >
+                 
+            Next
+              </button>)}
+               {activeIndex === 2 &&( <button
+                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+                onClick={() => {
+                 
+                  swiper.slideNext(); // Move to the next slide
+                }}
+              >
+                 
+                 Preview
+              </button>)}
+         { activeIndex === 3&&(   <Link href="/dashboard/broadcast">
+       
               <button
                 className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
                 onClick={() =>
                   handleToast("Broadcast shared", <FiCheckCircle />, true)
                 }
               >
-                next
+                 {  activeIndex === 3
+            ? "Publish"
+            : activeIndex===4?'Publish':''}
               </button>
-            </Link>
+            </Link>)}
           </div>
         </div>
       </div>
