@@ -1,17 +1,17 @@
 "use client";
 import Link from "next/link";
-import { useRef } from "react";
+import React, { useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { handleToast } from "@/utils/showToast";
 import { FiCheckCircle, FiPlusCircle, FiSearch } from "react-icons/fi";
 import Switch from "react-switch";
 import { GoChevronRight } from "react-icons/go";
 import Image from "next/image";
-
+import { CgScrollH } from "react-icons/cg";
 import { CgCalendar } from "react-icons/cg";
 import Template1 from "@/components/WhatsCoking/Template1";
 import Template2 from "@/components/WhatsCoking/Template2";
@@ -43,7 +43,7 @@ const WhatsCooking = () => {
     "outline-none border-none placeholder:text-white text-white font-bold bg-[#FFFFFF0D] rounded-xl pl-5 pr-8 py-3";
 
   const date = useRef(null);
-
+ 
   const pagination = {
     clickable: true,
   };
@@ -109,8 +109,84 @@ const WhatsCooking = () => {
   const handleAddDessertField = () => {
     setDessertFields((prevCount) => prevCount + 1);
   };
+  
 
+
+  const tableRef = useRef(null);
+  const handleScrollButtonClick = (direction) => {
+    // Scroll the table horizontally based on the direction (left or right)
+    if (tableRef.current) {
+      const scrollAmount = 80; // Adjust the scroll amount as needed
+      if (direction === 'left') {
+        tableRef.current.scrollLeft -= scrollAmount;
+      } else {
+        tableRef.current.scrollLeft += scrollAmount;
+      }
+    }
+  };
   return (
+    <>
+     <style>
+        {`
+          .swiper-container {
+            // space-between: 20px;
+            width: 95%; /* Default width */
+          }
+          .hide{
+            display: none;
+}
+
+          @media (max-width: 1106px) {
+            .hide{
+              display: block;
+  }
+          }
+          @media (max-width: 1400px) {
+            .swiper-container {
+              width: 98%;
+            }
+          }
+
+          @media (max-width: 1330px) {
+            .swiper-container {
+              width: 85%;
+            }
+          }
+
+          @media (max-width: 1090px) {
+            .swiper-container {
+              width: 95%;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .swiper-container {
+              width: 60%;
+            }
+          }
+
+          @media (max-width: 640px) {
+            .swiper-container {
+              width: 70%;
+            }
+          }
+          @media (max-width: 500px) {
+            .swiper-container {
+              width: 95%;
+            }
+          }
+          @media (max-width: 400px) {
+            .swiper-container {
+              width: 98%;
+            }
+          }
+          @media (max-width: 350px) {
+            .swiper-container {
+              width: 95%;
+            }
+          }
+        `}
+      </style>
     <div className="pt-6 2xl:pt-12 bg-lightDark rounded-xl py-4">
       {/* Heading */}
       <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D]">
@@ -135,7 +211,7 @@ const WhatsCooking = () => {
           modules={[Pagination]}
           slidesPerView={1}
           spaceBetween={50}
-          className="w-[90%] 2xl:w-[70%]"
+          className="w-[full] 2xl:w-[90%]"
           onPaginationRender={(swiper) => setTotal(swiper.slides.length)}
           onSlideChange={(swiper) => {
             setActiveIndex(swiper.activeIndex + 1);
@@ -174,7 +250,8 @@ const WhatsCooking = () => {
               </div>
             </div>
             {/* Fields */}
-            <div className="relative overflow-x-auto py-20">
+            <div className="relative overflow-x-scroll py-20 w-[90%] 2xl:w-[70%] xl:ml-24 lg:ml-12 md:ml-12"  
+          style={{ overflowX: 'auto' }}  ref={tableRef}>
               <table className="w-full text-sm text-left">
                 <thead className="text-sm font-bold text-white">
                   <tr className="divide-x-2 divide-[#FFFFFF0D] ">
@@ -265,17 +342,26 @@ const WhatsCooking = () => {
                   </tr>
                 </tbody>
               </table>
-            </div>
+              
+       
+        
+            </div>  
+             
+            <button  className="absolute left-0 top-60 hide text-3xl" onClick={() => handleScrollButtonClick('left')}><CgScrollH /></button>
+          <button className="absolute right-0 top-60 hide text-3xl" onClick={() => handleScrollButtonClick('right')}><CgScrollH /></button>
           </SwiperSlide>
           <SwiperSlide className="pb-10">
             <Swiper
-              spaceBetween={20}
-              className="w-[90%] "
+              spaceBetween={10}
+              className="swiper-container"
               pagination={pagination}
               modules={[Pagination]}
               breakpoints={{
-                1400: {
-                  slidesPerView: 2,
+                1600: {
+                  slidesPerView: 3,
+                },
+                1330: {
+                  slidesPerView: 3,
                 },
                 768: {
                   slidesPerView: 2,
@@ -307,7 +393,7 @@ const WhatsCooking = () => {
             </div>
           </SwiperSlide>
 
-          <SwiperSlide className="pb-12 pt-8">
+          <SwiperSlide className="pb-1 pt-12">
             <div className="xl:w-[50%] sm:w-[75%] w-[100%] mx-auto space-y-4">
               {/* Toggle */}
               <div className="bg-[#FFFFFF1A] rounded-[3.28px] px-4 py-3 flex items-center justify-between">
@@ -404,6 +490,7 @@ const WhatsCooking = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
