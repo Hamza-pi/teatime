@@ -30,7 +30,7 @@ const Template5 = () => {
 					<div className="rounded-[18px] bg-[#1C1C1C] p-2 pr-1 pb-0  my-1 mt-4 max-w-[90%]">
                         <p className="font-[300] text-[#5FC8F5] text-[17.5px]">Breakfast </p>
                         <p className="text-[#FFFFFF] text-sm font-[300]">Food Item name </p>
-						<div className="sm:pt-5 pt-2 float-right">
+						<div className=" float-right">
                         <Image
 						width={50}
 						height={50}
@@ -42,7 +42,7 @@ const Template5 = () => {
 					<div className="rounded-[18px] bg-[#1C1C1C] p-2 pr-1 pb-0  my-1 max-w-[90%]">
                         <p className="font-[300] text-[#5FC8F5] text-[17.5px]">Lunch </p>
                         <p className="text-[#FFFFFF] text-sm font-[300]">Food Item name </p>
-                        <div className="sm:pt-5 pt-2 float-right">
+                        <div className=" float-right">
                         <Image
 						width={50}
 						height={50}
@@ -54,7 +54,7 @@ const Template5 = () => {
 					<div className="rounded-[18px] bg-[#1C1C1C] p-2 pr-1 pb-0  my-1 max-w-[90%]">
                         <p className="font-[300] text-[#5FC8F5] text-[17.5px]">Dinner </p>
                         <p className="text-[#FFFFFF] text-sm font-[300]">Food Item name </p>
-                        <div className="sm:pt-5 pt-2 float-right">
+                        <div className=" float-right">
                         <Image
 						width={50}
 						height={50}
@@ -69,7 +69,7 @@ const Template5 = () => {
 					<Image
 						width={99}
 						height={99}
-						className='w-[99px] h-[99px]  p-4  float-right'
+						className='md:w-[68px] md:h-[68px] w-[99px] h-[99px]  p-4  float-right'
 						src="/images/te5.png"
 						alt="Residents Img"
                        

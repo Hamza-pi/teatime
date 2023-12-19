@@ -22,9 +22,9 @@ const WhatsOn = () => {
   ];
 
   return (
-    <div className=" 2xl:pt-12 bg-lightDark rounded-xl py-2">
+    <div className=" 2xl:pt-12 bg-lightDark rounded-xl ">
       {/* Heading */}
-      <div className="flex items-center justify-between px-8 sm:px-16 py-6 border-b border-[#FFFFFF0D]">
+      <div className="flex items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D]">
         <h3 className="font-bold leading-[22px] -tracking-[.4px]">Whats on this week</h3>
         <div className="flex items-center sm:gap-x-10 gap-x-2 text-[1.5rem] text-lightWhite">
           <Link href="/dashboard/broadcast">

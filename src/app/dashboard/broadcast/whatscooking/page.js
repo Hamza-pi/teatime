@@ -187,7 +187,7 @@ const WhatsCooking = () => {
           }
         `}
       </style>
-    <div className="pt-6 2xl:pt-12 bg-lightDark rounded-xl py-4">
+    <div className=" bg-lightDark rounded-xl ">
       {/* Heading */}
       <div className="relative flex sm:flex-row flex-col items-center justify-between px-8 sm:px-16 py-4 border-b border-[#FFFFFF0D]">
         <h3 className="font-bold">Whats on this week</h3>
@@ -217,7 +217,7 @@ const WhatsCooking = () => {
             setActiveIndex(swiper.activeIndex + 1);
           }}
         >
-          <SwiperSlide className="py-6 border-b border-[#FFFFFF0D]">
+          <SwiperSlide className="py-6 border-b border-[#FFFFFF0D] 2xl:w-[70%] xl:ml-24 ">
             {/* Inputs */}
             <div className="flex gap-4 items-start justify-center">
               <div className="flex flex-col gap-2">
@@ -250,7 +250,7 @@ const WhatsCooking = () => {
               </div>
             </div>
             {/* Fields */}
-            <div className="relative overflow-x-scroll py-20 w-[90%] 2xl:w-[70%] xl:ml-24 lg:ml-12 md:ml-12"  
+            <div className="relative overflow-x-scroll py-20 w-[90%] "  
           style={{ overflowX: 'auto' }}  ref={tableRef}>
               <table className="w-full text-sm text-left">
                 <thead className="text-sm font-bold text-white">
@@ -350,12 +350,12 @@ const WhatsCooking = () => {
             <button  className="absolute left-0 top-60 hide text-3xl" onClick={() => handleScrollButtonClick('left')}><CgScrollH /></button>
           <button className="absolute right-0 top-60 hide text-3xl" onClick={() => handleScrollButtonClick('right')}><CgScrollH /></button>
           </SwiperSlide>
-          <SwiperSlide className="pb-10">
+          <SwiperSlide className="">
             <Swiper
               spaceBetween={10}
               className="swiper-container"
               pagination={pagination}
-              modules={[Pagination]}
+              // modules={[Pagination]}
               breakpoints={{
                 1600: {
                   slidesPerView: 3,
@@ -372,7 +372,7 @@ const WhatsCooking = () => {
               }}
             >
               {templateSlides.map((slide, i) => (
-                <SwiperSlide className="w-full pb-12 pt-8" key={i}>
+                <SwiperSlide className="w-full pb-12 pt-6" key={i}>
                   <div
                     className={`${selected === i ? "bg-gradient-to-r from-btnFrom to-btnTo rounded-xl" : ""
                       }   p-1`}

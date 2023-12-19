@@ -88,7 +88,7 @@ const Template4 = () => {
 				<Image
 							width={346.86}
 							height={400.72}
-							className='w-[257px] h-[89px]'
+							className='w-[257px] h-[89px] 2xl:mt-0 lg:mt-[-68px]'
 							src="/images/t4s.png"
 							alt="Residents Img"
 						/>

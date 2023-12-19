@@ -88,7 +88,7 @@ const Templates = () => {
 
   return (
     <>
-     <style>
+      <style>
         {`
           .swiper-container {
             // space-between: 20px;
@@ -141,9 +141,9 @@ const Templates = () => {
           }
         `}
       </style>
-      <div className=" bg-lightDark rounded-xl py-3">
+      <div className=" bg-lightDark rounded-xl ">
         {/* Heading */}
-        <div className="relative flex sm:flex-row flex-col items-center justify-between px-3 sm:px-6 py-3 border-b border-[#FFFFFF0D] ">
+        <div className="relative flex sm:flex-row flex-col items-center justify-between px-3 sm:px-6 py-4 border-b border-[#FFFFFF0D] ">
           <h3 className="font-bold">Whats on this week</h3>
           <h3 className="font-bold">
             {activeIndex === 1
@@ -172,12 +172,12 @@ const Templates = () => {
               setActiveIndex(swiper.activeIndex + 1);
             }}
           >
-            <SwiperSlide className="pb-10 pt-4">
+            <SwiperSlide className=" ">
               <Swiper
                 spaceBetween={20}
                 className="swiper-container"
                 pagination={pagination}
-                modules={[Pagination]}
+                // modules={[Pagination]}
                 breakpoints={{
                   1600: {
                     slidesPerView: 3,
@@ -207,7 +207,7 @@ const Templates = () => {
               </Swiper>
             </SwiperSlide>
 
-            <SwiperSlide className="pt-12">
+            <SwiperSlide className="pt-8">
               <div
                 className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[320px] sm:w-1/2 mx-auto rounded-xl`}
               >
@@ -311,7 +311,7 @@ const Templates = () => {
           </div>
         </div>
       </div>
-      </>
+    </>
   );
 };
 
