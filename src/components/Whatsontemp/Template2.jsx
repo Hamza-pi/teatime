@@ -95,7 +95,7 @@ const Template2 = ({ venue,event,weekCommencing }) => {
 					<div className="flex justify-between">
 						{' '}
 						<div className="flex flex-col items-start">
-							<p className="font-[300] text-[16px] text-[#F34F9D]">{event2.name===''?"No evnt":event2.name}</p>
+							<p className="font-[300] text-[16px] text-[#F34F9D]">{result[1]}</p>
 							<div className="bg-gradient-to-r from-[#E42982D9]  to-[#FF3D00E0]  p-[1px] rounded-2xl w-[120%]"></div>
 							<p className="text-[16px] text-[#F34F9D] font-bold">{event3.name===''?"No evnt":event3.name}</p>
 						</div>
