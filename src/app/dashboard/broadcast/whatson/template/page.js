@@ -7,7 +7,8 @@ import Template5 from "@/components/Whatsontemp/Template5";
 import { handleToast } from "@/utils/showToast";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from "react";
 import { FiCheckCircle, FiSearch } from "react-icons/fi";
 import { GoChevronRight } from "react-icons/go";
 import Switch from "react-switch";
@@ -17,7 +18,12 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 const Templates = () => {
-  
+  const search_parms = useSearchParams();
+  const data = search_parms.get('eventData')
+  const result = JSON.parse(data)
+  // console.log(result)
+
+
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(1);
 
@@ -25,7 +31,6 @@ const Templates = () => {
 
   const [total, setTotal] = useState(0);
 
-  const [resident, setResident] = useState(0);
 
   const [checked, setChecked] = useState(true);
   const handleChange = (nextChecked) => {
@@ -88,7 +93,7 @@ const Templates = () => {
     },
   ];
 
-
+  const [residentsState, setResidentsState] = useState(Array(residents.length).fill(false));
   return (
     <>
       <style>
@@ -206,7 +211,7 @@ const Templates = () => {
                         }   p-1`}
                       onClick={() => setSelected(i)}
                     >
-                      <slide.component />
+                      <slide.component venue={result.venue} weekCommencing={result.weekCommencing} event={result.events} />
                     </div>
                   </SwiperSlide>
                 ))}
@@ -217,7 +222,13 @@ const Templates = () => {
               <div
                 className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[320px] sm:w-1/2 mx-auto rounded-xl`}
               >
-                {React.createElement(selectedSlide.component)}
+                {React.createElement(selectedSlide.component, {
+                  venue: result.venue,
+                  weekCommencing: result.weekCommencing,
+                  event: result.events 
+                })}
+
+
               </div>
             </SwiperSlide>
 
@@ -231,7 +242,7 @@ const Templates = () => {
                   <Switch
                     onChange={handleChange}
                     checked={checked}
-                    onColor="#B1B1B1"
+                    onColor="#F72585"
                     offColor="#B1B1B1"
                     onHandleColor="#F2F2F2"
                     offHandleColor="#F2F2F2"
@@ -283,9 +294,25 @@ const Templates = () => {
                             </div>
                           </div>
                           <div
-                            className={`w-[22.12px] h-[22.12px] rounded-full ${i === resident ? "bg-primary" : "bg-[#848484]"
+                            className={`w-[22.12px] h-[22.12px] rounded-full ${residentsState[i] ? "bg-primary" : "bg-[#848484]"
                               } cursor-pointer`}
-                            onClick={() => setResident(i)}
+                            onClick={() => {
+                              const updatedResidentsState = [...residentsState];
+                              updatedResidentsState[i] = !updatedResidentsState[i];
+                              setResidentsState(updatedResidentsState);
+                            }}
+                          // onClick={() => {
+                          //   if (i === 0) {
+                          //     // If the clicked index is the first index, toggle all states
+                          //     const updatedResidentsState = residentsState.map((state, index) => !residentsState[index]);
+                          //     setResidentsState(updatedResidentsState);
+                          //   } else {
+                          //     // Otherwise, toggle only the clicked index
+                          //     const updatedResidentsState = [...residentsState];
+                          //     updatedResidentsState[i] = !updatedResidentsState[i];
+                          //     setResidentsState(updatedResidentsState);
+                          //   }
+                          // }}
                           ></div>
                         </li>
                       ))}
@@ -299,62 +326,62 @@ const Templates = () => {
         {/* Buttons */}
         <div className="px-10">
           <div className="py-6 font-bold text-xs text-white flex sm:flex-row flex-col items-center justify-center gap-4">
-          {activeIndex === 1 &&(  <Link href="/dashboard/broadcast/whatson">
+            {activeIndex === 1 && (<Link href="/dashboard/broadcast/whatson">
               <button className="px-20 py-3 bg-[#FFFFFF0D] rounded-2xl">
                 Back
               </button>
             </Link>)}
-            {activeIndex === 2 &&( <button
-                className="px-20 py-3 bg-[#FFFFFF0D] rounded-2xl"
-                onClick={() => {
-                 
-                  swiper.slidePrev(); // Move to the next slide
-                }}
-              >
-                 
-                 Back
-              </button>)}
-            {activeIndex === 3 &&( <button
-                className="px-20 py-3 bg-[#FFFFFF0D] rounded-2xl"
-                onClick={() => {
-                 
-                  swiper.slidePrev(); // Move to the next slide
-                }}
-              >
-                 
-                 Back
-              </button>)}
-               {activeIndex === 1 &&( <button
-                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
-                onClick={() => {
-                 
-                  swiper.slideNext(); // Move to the next slide
-                }}
-              >
-                 
-            Next
-              </button>)}
-               {activeIndex === 2 &&( <button
-                className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
-                onClick={() => {
-                 
-                  swiper.slideNext(); // Move to the next slide
-                }}
-              >
-                 
-                 Preview
-              </button>)}
-         { activeIndex === 3&&(   <Link href="/dashboard/broadcast">
-       
+            {activeIndex === 2 && (<button
+              className="px-20 py-3 bg-[#FFFFFF0D] rounded-2xl"
+              onClick={() => {
+
+                swiper.slidePrev(); // Move to the next slide
+              }}
+            >
+
+              Back
+            </button>)}
+            {activeIndex === 3 && (<button
+              className="px-20 py-3 bg-[#FFFFFF0D] rounded-2xl"
+              onClick={() => {
+
+                swiper.slidePrev(); // Move to the next slide
+              }}
+            >
+
+              Back
+            </button>)}
+            {activeIndex === 1 && (<button
+              className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+              onClick={() => {
+
+                swiper.slideNext(); // Move to the next slide
+              }}
+            >
+
+              Next
+            </button>)}
+            {activeIndex === 2 && (<button
+              className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
+              onClick={() => {
+
+                swiper.slideNext(); // Move to the next slide
+              }}
+            >
+
+              Preview
+            </button>)}
+            {activeIndex === 3 && (<Link href="/dashboard/broadcast">
+
               <button
                 className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
                 onClick={() =>
                   handleToast("Broadcast shared", <FiCheckCircle />, true)
                 }
               >
-                 {  activeIndex === 3
-            ? "Publish"
-            : activeIndex===4?'Publish':''}
+                {activeIndex === 3
+                  ? "Publish"
+                  : activeIndex === 4 ? 'Publish' : ''}
               </button>
             </Link>)}
           </div>
