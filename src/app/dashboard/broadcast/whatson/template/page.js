@@ -359,7 +359,7 @@ const Templates = () => {
               }}
             >
 
-              Next
+        Preview
             </button>)}
             {activeIndex === 2 && (<button
               className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
@@ -369,7 +369,7 @@ const Templates = () => {
               }}
             >
 
-              Preview
+              Next
             </button>)}
             {activeIndex === 3 && (<Link href="/dashboard/broadcast">
 
