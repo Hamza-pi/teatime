@@ -10,7 +10,7 @@ const Template5 = ({ date, mealData ,venue}) => {
 				<div className="font  pt-8  mb-3 flex flex-col">
 					<div className="flex justify-between ">
 						<div className="w-fit ">
-							<p className="sm:text-2xl text-[22px] font-bold mb-1 bg-gradient-to-r from-[#5FC8F5] to-[#6DFFED] text-transparent bg-clip-text">
+							<p className="sm:text-2xl text-[22px] font-bold mb-1 text-[#6DFFED] ">
                             WHATS COOKING?
 							</p>
 
@@ -71,7 +71,7 @@ const Template5 = ({ date, mealData ,venue}) => {
 					<Image
 						width={99}
 						height={99}
-						className='md:w-[68px] md:h-[68px] w-[99px] h-[99px]  p-4  float-right'
+						className='md:w-[68px] md:h-[68px] w-[99px] h-[99px]  p-3  float-right'
 						src="/images/te5.png"
 						alt="Residents Img"
                        

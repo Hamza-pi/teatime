@@ -16,10 +16,7 @@ const Template5 = ({ venue,event,weekCommencing }) => {
 
 	function generateFullWeek(startDate) {
 		// Convert the input date string to a JavaScript Date object
-		if(startDate===''){
-			return 'Your date';
-		}
-		else{
+	
 
 		
 		const currentDate = new Date(startDate);
@@ -49,7 +46,7 @@ const Template5 = ({ venue,event,weekCommencing }) => {
 		  currentDate.setDate(currentDate.getDate() + 1);
 		}
 	  
-		return fullWeek;}
+		return fullWeek;
 	  }
 	  
 	  // Example usage
@@ -58,12 +55,12 @@ const Template5 = ({ venue,event,weekCommencing }) => {
 	  
 	  
 	return (
-		<div className="px-3 pr-6 bg-black rounded-xl font-popin ">
+		<div className="px-3 pr-6 bg-black rounded-xl  font-popin ">
 			<div className=" flex flex-col">
 				<div className="font py-8 flex flex-col">
 					<div className="flex justify-between ">
 						<div className="w-fit ">
-							<p className="text-2xl bg-gradient-to-r from-[#5FC8F5]  to-[#5FC8F5] text-transparent bg-clip-text  font-bold mb-1">
+							<p className="text-2xl text-[#5FC8F5]   font-bold mb-1" >
 								WHATS ON?
 							</p>
 							<div className="bg-gradient-to-r from-[#5FC8F5]  to-[#5FC8F5]  py-[1px] rounded-2xl"></div>

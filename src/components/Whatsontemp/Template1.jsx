@@ -16,10 +16,7 @@ const Template1 = ({ venue,event,weekCommencing }) => {
 
 	function generateFullWeek(startDate) {
 		// Convert the input date string to a JavaScript Date object
-		if(startDate===''){
-			return 'Your date';
-		}
-		else{
+	
 
 		
 		const currentDate = new Date(startDate);
@@ -48,8 +45,8 @@ const Template1 = ({ venue,event,weekCommencing }) => {
 		  // Move to the next day
 		  currentDate.setDate(currentDate.getDate() + 1);
 		}
-	  
-		return fullWeek;}
+	
+		return fullWeek;
 	  }
 	  
 	  // Example usage
@@ -95,7 +92,7 @@ const Template1 = ({ venue,event,weekCommencing }) => {
 					<div className="flex justify-between">
 						{' '}
 						<div className="flex flex-col items-start">
-							<p className="font-[300] text-[16px] text-[#62F55F]">{result[1]}</p>
+							<p className="font-[300] text-[16px] text-[#62F55F]">{result[2]}</p>
 							<div className="bg-gradient-to-r from-[#EBFF00E0]  to-[#62F55FD9]  p-[1px] rounded-2xl w-[120%]"></div>
 							<p className="text-[16px] text-[#62F55F] font-bold">{event3.name===''?"No evnt":event3.name}</p>
 						</div>

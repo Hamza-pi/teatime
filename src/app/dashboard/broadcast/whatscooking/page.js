@@ -17,6 +17,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import html2canvas from "html2canvas";
 const WhatsCooking = () => {
   const [swiper, setSwiper] = useState(null);
   const [activeIndex, setActiveIndex] = useState(1);
@@ -144,6 +145,32 @@ const WhatsCooking = () => {
   // console.log(mealData)
   // console.log(venue)
   // console.log(datev)
+
+
+  const handleDownloadImage = async () => {
+    // Wait for a brief moment before capturing the screenshot
+   
+  
+    const element = document.getElementById('print');
+
+    // Set html2canvas configuration
+    const canvas = await html2canvas(element, {
+      backgroundColor: null, // Set background color to transparent
+    });
+
+  
+  
+    const data = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+  
+    link.href = data;
+    link.download = 'downloaded-image.png';
+  
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <style>
@@ -241,7 +268,7 @@ const WhatsCooking = () => {
             }}
           >
             <SwiperSlide
-              className="py-6 border-b border-[#FFFFFF0D]"
+              className="py-6 border-b border-[#FFFFFF0D] w-full mb-16"
               style={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -250,9 +277,9 @@ const WhatsCooking = () => {
                 },
               }}
             >
-              <div className="2xl:w-[100%] xl:ml-24">
+              <div className="2xl:w-[100%] w-full xl:ml-24">
                 {/* Inputs */}
-                <div className="flex gap-4 items-start justify-center  ">
+                <div className="flex gap-4 sm:items-start justify-center sm:flex-row  flex-col items-center w-full">
                   <div className="flex flex-col gap-2">
                     <p className="uppercase text-lightWhite text-[10px]">Date</p>
                     <div
@@ -382,8 +409,8 @@ const WhatsCooking = () => {
 
 
 
-                </div>   <button className="absolute left-[40%]  hide text-3xl" onClick={() => handleScrollButtonClick('left')}><FaAngleLeft /></button>
-                <button className="absolute right-[40%]  hide text-3xl" onClick={() => handleScrollButtonClick('right')}><FaAngleRight /></button>
+                </div>   <button className="absolute left-[30%] bottom-10  hide text-3xl" onClick={() => handleScrollButtonClick('left')}><FaAngleLeft /></button>
+                <button className="absolute right-[30%] bottom-10  hide text-3xl" onClick={() => handleScrollButtonClick('right')}><FaAngleRight /></button>
               </div>
 
             </SwiperSlide>
@@ -425,13 +452,13 @@ const WhatsCooking = () => {
 
             <SwiperSlide className="pb-1 pt-8">
               <div
-                className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[430px] sm:w-1/2 mx-auto rounded-xl`}
-              >
+                className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[350px] sm:w-1/2 mx-auto rounded-xl`}
+              >   <div id="print" className="bg-transparent">
                   {React.createElement(selectedSlide.component, { mealData: mealData[0], venue, date: datev })}
-              </div>
+              </div></div>
             </SwiperSlide>
 
-            <SwiperSlide className="pb-1 pt-12">
+            <SwiperSlide className="pb-1 pt-8">
               <div className="xl:w-[50%] sm:w-[75%] w-[100%] mx-auto space-y-4">
                 {/* Toggle */}
                 <div className="bg-[#FFFFFF1A] rounded-[3.28px] px-4 py-3 flex items-center justify-between">
@@ -594,9 +621,10 @@ const WhatsCooking = () => {
 
               <button
                 className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
-                onClick={() =>
-                  handleToast("Broadcast shared", <FiCheckCircle />, true)
-                }
+                onClick={() => {
+                  handleToast("Broadcast shared", <FiCheckCircle />, true);
+                  handleDownloadImage()
+                }}
               >
                 {activeIndex === 3
                   ? "Publish"

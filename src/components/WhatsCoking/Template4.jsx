@@ -10,7 +10,7 @@ const Template4 = ({ date, mealData ,venue}) => {
 				<div className="font  pt-8  mb-3 flex flex-col">
 					<div className="flex justify-between ">
 						<div className="w-fit ">
-							<p className="sm:text-2xl text-[22px] font-bold mb-1 bg-gradient-to-r from-[#5FF5C8] to-[#5FF5C8] text-transparent bg-clip-text">
+							<p className="sm:text-2xl text-[22px] font-bold mb-1 text-[#5FF5C8]">
                             WHATS COOKING?
 							</p>
 

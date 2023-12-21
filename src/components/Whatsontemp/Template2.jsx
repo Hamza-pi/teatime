@@ -16,10 +16,7 @@ const Template2 = ({ venue,event,weekCommencing }) => {
 
 	function generateFullWeek(startDate) {
 		// Convert the input date string to a JavaScript Date object
-		if(startDate===''){
-			return 'Your date';
-		}
-		else{
+	
 
 		
 		const currentDate = new Date(startDate);
@@ -49,7 +46,7 @@ const Template2 = ({ venue,event,weekCommencing }) => {
 		  currentDate.setDate(currentDate.getDate() + 1);
 		}
 	  
-		return fullWeek;}
+		return fullWeek;
 	  }
 	  
 	  // Example usage
@@ -63,7 +60,7 @@ const Template2 = ({ venue,event,weekCommencing }) => {
 				<div className="font py-8 flex flex-col">
 					<div className="flex justify-between ">
 						<div className="w-fit ">
-							<p className="text-2xl bg-gradient-to-r from-[#FF3D00E0] to-[#E42982D9] text-transparent bg-clip-text font-bold mb-1">
+							<p className="text-2xl text-[#CD2B57] font-bold mb-1">
 								WHATS ON?
 							</p>
 							<div className="bg-gradient-to-r from-[#E42982D9]  to-[#FF3D00E0]  py-[1px] rounded-2xl"></div>
@@ -95,7 +92,7 @@ const Template2 = ({ venue,event,weekCommencing }) => {
 					<div className="flex justify-between">
 						{' '}
 						<div className="flex flex-col items-start">
-							<p className="font-[300] text-[16px] text-[#F34F9D]">{result[1]}</p>
+							<p className="font-[300] text-[16px] text-[#F34F9D]">{result[2]}</p>
 							<div className="bg-gradient-to-r from-[#E42982D9]  to-[#FF3D00E0]  p-[1px] rounded-2xl w-[120%]"></div>
 							<p className="text-[16px] text-[#F34F9D] font-bold">{event3.name===''?"No evnt":event3.name}</p>
 						</div>

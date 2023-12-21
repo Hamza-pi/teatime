@@ -8,7 +8,7 @@ import { handleToast } from "@/utils/showToast";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { FiCheckCircle, FiSearch } from "react-icons/fi";
 import { GoChevronRight } from "react-icons/go";
 import Switch from "react-switch";
@@ -16,7 +16,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-
+import html2canvas from "html2canvas";
 const Templates = () => {
   const search_parms = useSearchParams();
   const data = search_parms.get('eventData')
@@ -92,6 +92,35 @@ const Templates = () => {
       post: 20,
     },
   ];
+
+
+ 
+  const handleDownloadImage = async () => {
+    // Wait for a brief moment before capturing the screenshot
+   
+  
+    const element = document.getElementById('print');
+
+    // Set html2canvas configuration
+    const canvas = await html2canvas(element, {
+      backgroundColor: null, // Set background color to transparent
+    });
+
+  
+  
+    const data = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+  
+    link.href = data;
+    link.download = 'downloaded-image.png';
+  
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+
+
 
   const [residentsState, setResidentsState] = useState(Array(residents.length).fill(false));
   return (
@@ -207,7 +236,7 @@ const Templates = () => {
                 {templateSlides.map((slide, i) => (
                   <SwiperSlide className="w-full pb-8 pt-8 max-w-[440px] select-none  " key={i}>
                     <div
-                      className={`${selected === i ? "bg-gradient-to-r from-btnFrom to-btnTo rounded-xl" : ""
+                      className={`${selected === i ? "bg-gradient-to-r from-btnFrom to-btnTo rounded-xl overflow-hidden" : ""
                         }   p-1`}
                       onClick={() => setSelected(i)}
                     >
@@ -220,13 +249,14 @@ const Templates = () => {
 
             <SwiperSlide className="pt-8">
               <div
-                className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[320px] sm:w-1/2 mx-auto rounded-xl`}
+                className={`bg-gradient-to-r from-btnFrom to-btnTo  p-1 max-w-[320px]  mx-auto rounded-xl`}
               >
+                <div id="print" className="bg-transparent">
                 {React.createElement(selectedSlide.component, {
                   venue: result.venue,
                   weekCommencing: result.weekCommencing,
                   event: result.events 
-                })}
+                })}</div>
 
 
               </div>
@@ -375,9 +405,11 @@ const Templates = () => {
 
               <button
                 className="px-20 py-3 bg-gradient-to-r from-btnFrom to-btnTo rounded-2xl"
-                onClick={() =>
-                  handleToast("Broadcast shared", <FiCheckCircle />, true)
-                }
+                onClick={() => {
+                  handleToast("Broadcast shared", <FiCheckCircle />, true);
+                  handleDownloadImage()
+                }}
+                
               >
                 {activeIndex === 3
                   ? "Publish"
